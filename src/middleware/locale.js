@@ -33,7 +33,6 @@ function buildNav(locale, dict) {
     { key: 'services', path: '/services' },
     { key: 'about', path: '/about' },
     { key: 'skills', path: '/skills' },
-    { key: 'cv', path: '/cv' },
     { key: 'contact', path: '/contact' },
   ];
   return items.map((item) => ({ ...item, label: dict.nav[item.key], href: i18n.localePath(locale, item.path) }));

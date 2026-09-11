@@ -22,7 +22,6 @@ module.exports = {
   email: config.contact.toAddress,
   github: config.social.github,
   linkedin: config.social.linkedin,
-  cvPath: config.cvPath,
   languages: [
     { code: 'tr', level: 'native' },
     { code: 'de', level: 'C1' },

@@ -2,7 +2,7 @@
 
 Date: 2026-09-11. Autonomous session, owner away. Scope: GitHub Issue #1, `CLAUDE.md`, `docs/PORTFOLIO_MASTER_BRIEF.md`.
 
-This is the historical report from the initial Fable build. The subsequent independent review is recorded in `docs/CODEX_REVIEW.md`.
+This is the historical report from the initial Fable build. The subsequent independent review is recorded in `docs/CODEX_REVIEW.md`. A later owner decision removed the CV route and download from the launch scope.
 
 ## Outcome in one paragraph
 
@@ -19,7 +19,6 @@ The multilingual portfolio is implemented end to end as an Express/EJS applicati
 | `/{locale}/services`                                                             | Seven service groups, fit list, related case studies, explicit "no penetration testing" note                |
 | `/{locale}/about`                                                                | Narrative, facts, working principles, profiles                                                              |
 | `/{locale}/skills`                                                               | Grouped by use, evidence links to projects, no percentages                                                  |
-| `/{locale}/cv`                                                                   | Profile, focus, projects, education, languages, skills; PDF state "on request" until supplied               |
 | `/{locale}/contact`                                                              | Nine fields incl. consent; server validation, honeypot, timing check, rate limit; honest dev notice         |
 | `/{locale}/imprint`, `/{locale}/privacy`                                         | § 5 DDG skeleton with visible address placeholder; GDPR privacy text incl. logs, form, local storage        |
 | 404 / 500                                                                        | Localized via `Accept-Language`, `noindex`, no stack traces in production                                   |
@@ -100,7 +99,7 @@ Unique titles/descriptions (tested), canonical and hreflang cluster with `x-defa
 
 ## Missing real materials
 
-See `docs/ASSET_CHECKLIST.md`: portrait, CV PDF, project screenshots (10 files), WOFF2 font, imprint street address, LinkedIn URL, confirmation of project years and of the GitHub profile URL, mailbox `info@mustafakelesoglu.de`.
+See `docs/ASSET_CHECKLIST.md`: portrait, project screenshots (10 files), WOFF2 font, imprint street address, LinkedIn URL, confirmation of project years and of the GitHub profile URL, mailbox `info@mustafakelesoglu.de`.
 
 ## Known issues and limitations
 
@@ -128,8 +127,8 @@ Local branch `fable/initial-build` is three commits ahead of `origin/fable/initi
      --body-file docs/SESSION_REPORT.md
    ```
 2. Run `npm ci`, `npm audit`, `npm run check`, then `npm run test:e2e` against a local server; CI does the same.
-3. Supply the assets from `docs/ASSET_CHECKLIST.md`; fill the imprint address; set `SOCIAL_LINKEDIN`, `CV_PDF_PATH`.
-4. Decide on the contact-form provider, implement the transport in `src/lib/contact-delivery.js`, configure credentials only in the hosting environment.
+3. Supply the assets from `docs/ASSET_CHECKLIST.md`; fill the imprint address; set `SOCIAL_LINKEDIN` when the profile URL is ready.
+4. Activate the existing SMTP transport only after the `info@mustafakelesoglu.de` mailbox exists, and configure credentials only in the hosting environment.
 5. Review copy in all three languages (claim level, project years), then approve the PR for merge and the Hostinger Node.js deployment (`npm ci && npm start`, `PORT` from the platform, `NODE_ENV=production`, `SITE_URL=https://mustafakelesoglu.de`, `TRUST_PROXY=1`).
 
 ## Stop conditions respected

@@ -28,7 +28,6 @@ const PAGES = [
   '/de/services',
   '/de/about',
   '/de/skills',
-  '/de/cv',
   '/de/contact',
   '/de/imprint',
   '/de/does-not-exist',

@@ -10,14 +10,6 @@ Real materials that were not available during the autonomous session. The site i
 
 To add: place the files in `public/img/portrait/` and reference them from `src/content/site.js` (`portrait` field), then adjust `views/pages/home.ejs` hero right column.
 
-## CV
-
-| Item                                 | Format                                                                          | Used on                                                  | Status                                                         |
-| ------------------------------------ | ------------------------------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------------- |
-| CV as PDF (German; optional English) | PDF, ≤ 2 MB, no home address or phone number if it is meant for public download | Home hero link, About page, CV page download box, footer | Missing. Pages show "on request" and link to the contact form. |
-
-To add: copy to `public/files/mustafa-kelesoglu-cv-de.pdf` and set `CV_PDF_PATH=/files/mustafa-kelesoglu-cv-de.pdf` in the environment. The hero, about and CV pages then show a direct download.
-
 ## Project screenshots
 
 All frames fall back to a text-led spec panel and the detail page hides the media section until files exist. File names are fixed in `src/content/projects.js`.

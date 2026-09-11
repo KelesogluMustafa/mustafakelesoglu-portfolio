@@ -22,7 +22,7 @@ Record of the choices made during the autonomous build session on `fable/initial
 
 **Typography.** Manrope (OFL) as a single variable font, subset to Latin + Latin Extended (covers German and Turkish) and served locally as TTF (`public/fonts/Manrope-latin-ext.ttf`, 87 KB) with a system-UI fallback stack. WOFF2 conversion was not possible in the build environment (no Brotli); see the asset checklist. Fluid type scale via `clamp()`, headings with tight tracking, long German compounds handled with `overflow-wrap: anywhere` and `hyphens: auto`.
 
-**Hero without portrait.** Text-led: eyebrow, display headline (the approved German line), supporting text, location line, two buttons and the CV text link. A compact fact sheet on the right (location, focus, languages, availability) plus a truthful "live" line listing the three public domains. When an approved portrait arrives, it can replace the fact sheet on wide screens without touching the copy.
+**Hero without portrait.** Text-led: eyebrow, display headline (the approved German line), supporting text, location line and two buttons. A compact fact sheet on the right (location, focus, languages, availability) plus a truthful "live" line listing the three public domains. When an approved portrait arrives, it can replace the fact sheet on wide screens without touching the copy.
 
 **Media frames instead of fake screenshots.** Where no approved screenshot exists, project entries render a browser-style frame with a text-led spec panel (title, tagline, type, status, stack). It is clearly not a screenshot and the detail page omits the media section entirely until real files exist in `public/img/projects/`. Dropping the files in switches both views automatically.
 
@@ -46,7 +46,7 @@ Helmet with a strict CSP: `default-src 'self'`, scripts only from self plus a pe
 
 ## Contact delivery
 
-`CONTACT_TRANSPORT=log` (default) validates, logs a data-free event and tells the visitor plainly that delivery is not active yet, with the direct email address as fallback. There is no "thank you" state until a provider is approved and `deliver()` reports `delivered: true`. Adding SMTP or an API provider later is a single function in `src/lib/contact-delivery.js` plus environment variables.
+`CONTACT_TRANSPORT=log` (default) validates, logs a data-free event and tells the visitor plainly that delivery is not active yet, with the direct email address as fallback. SMTP delivery through Nodemailer is implemented behind `CONTACT_TRANSPORT=smtp`, but remains disabled until the `info@mustafakelesoglu.de` mailbox exists and the SMTP credentials are configured only in the hosting environment. There is no "thank you" state until the provider accepts the message and `deliver()` reports `delivered: true`.
 
 ## Assumptions
 
@@ -59,7 +59,8 @@ Helmet with a strict CSP: `default-src 'self'`, scripts only from self plus a pe
 
 - No deployment, DNS, email provider, credentials, paid services, repository settings changes or merge (stop conditions).
 - `package-lock.json` was added during the later Codex review.
-- No WOFF2 font, no real screenshots, no portrait, no CV PDF (see `ASSET_CHECKLIST.md`).
+- The CV route and download were intentionally removed at the owner's request.
+- No WOFF2 font, no real screenshots or portrait (see `ASSET_CHECKLIST.md`).
 - No analytics or cookies of any kind.
 - No React/Vue/Svelte, no CSS framework, no bundler.
 - The design skills named in the task (`frontend-design`, `web-design-guidelines`, `accessibility`, `i18n`, `technical-seo`, `web-security`) were not available in this environment; the same checks were done manually and with the Playwright scripts, as documented in `SESSION_REPORT.md`.

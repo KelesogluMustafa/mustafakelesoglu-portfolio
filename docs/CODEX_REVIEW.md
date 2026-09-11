@@ -39,10 +39,10 @@ review environment.
 
 ## Still required before production
 
-- Owner-approved portrait, CV PDF, and real project screenshots.
-- Full postal address for the imprint and a confirmed LinkedIn URL.
+- Owner-approved portrait and real project screenshots.
+- Full postal address for the imprint. LinkedIn remains hidden until a confirmed URL is supplied.
 - Confirmed project years.
-- A chosen contact-form delivery provider and production-only credentials.
+- Activation of the implemented SMTP transport after the mailbox exists; production-only credentials must never be committed.
 - Owner review of all German, English, and Turkish copy.
 
 No deployment, DNS change, production contact delivery, merge, or repository

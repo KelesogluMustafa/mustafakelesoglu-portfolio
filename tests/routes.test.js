@@ -61,6 +61,14 @@ test('unknown locale and unknown pages return a localized 404', async () => {
   assert.match(await res3.text(), /Bu sayfa mevcut değil/);
 });
 
+test('CV is intentionally excluded from the public site and sitemap', async () => {
+  const page = await srv.get('/de/cv');
+  assert.equal(page.status, 404);
+
+  const sitemap = await (await srv.get('/sitemap.xml')).text();
+  assert.doesNotMatch(sitemap, /\/cv<\/loc>/);
+});
+
 test('sitemap lists every page in every locale with hreflang alternates', async () => {
   const res = await srv.get('/sitemap.xml');
   assert.equal(res.status, 200);

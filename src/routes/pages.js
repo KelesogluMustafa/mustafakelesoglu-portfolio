@@ -4,7 +4,6 @@ const express = require('express');
 const projects = require('../content/projects');
 const services = require('../content/services');
 const skills = require('../content/skills');
-const site = require('../content/site');
 const { buildMeta, personSchema, projectSchema, breadcrumbSchema } = require('../lib/seo');
 
 const router = express.Router({ mergeParams: true });
@@ -132,15 +131,6 @@ router.get('/skills', (req, res) => {
     pagePath: '/skills',
     metaKey: 'skills',
     extra: { skillGroups: skills.allLocalized(locale), projects: all },
-  });
-});
-
-router.get('/cv', (req, res) => {
-  const locale = res.locals.locale;
-  page(res, 'pages/cv', {
-    pagePath: '/cv',
-    metaKey: 'cv',
-    extra: { skillGroups: skills.allLocalized(locale), projects: projects.allLocalized(locale), cvPath: site.cvPath },
   });
 });
 

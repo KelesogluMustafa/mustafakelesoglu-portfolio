@@ -57,7 +57,7 @@ test('home page carries Person structured data without invented facts', async ()
 });
 
 test('titles and descriptions are unique per page within a locale', async () => {
-  const paths = ['/de/', '/de/projects', '/de/services', '/de/about', '/de/skills', '/de/cv', '/de/contact', '/de/imprint', '/de/privacy'];
+  const paths = ['/de/', '/de/projects', '/de/services', '/de/about', '/de/skills', '/de/contact', '/de/imprint', '/de/privacy'];
   const titles = new Set();
   const descriptions = new Set();
   for (const p of paths) {
@@ -72,7 +72,7 @@ test('titles and descriptions are unique per page within a locale', async () => 
 test('error pages are noindex and there is exactly one h1 per page', async () => {
   const nf = await (await srv.get('/de/missing')).text();
   assert.match(nf, /<meta name="robots" content="noindex, follow">/);
-  for (const p of ['/de/', '/en/projects', '/tr/projects/savefold', '/de/contact', '/en/cv']) {
+  for (const p of ['/de/', '/en/projects', '/tr/projects/savefold', '/de/contact', '/en/about']) {
     const html = await (await srv.get(p)).text();
     assert.equal((html.match(/<h1[\s>]/g) || []).length, 1, `${p} must have one h1`);
   }

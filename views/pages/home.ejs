@@ -14,11 +14,6 @@
         <div class="hero__actions">
           <a class="button button--primary button--large" href="<%= url('/projects') %>"><%= t('hero.primary') %> <%- include('../partials/icon', { name: 'arrow' }) %></a>
           <a class="button button--secondary button--large" href="<%= url('/contact') %>"><%= t('hero.secondary') %></a>
-          <% if (site.cvPath) { %>
-          <a class="link-plain hero__tertiary" href="<%= site.cvPath %>" download><%- include('../partials/icon', { name: 'download' }) %> <%= t('hero.tertiary') %></a>
-          <% } else { %>
-          <a class="link-plain hero__tertiary" href="<%= url('/cv') %>"><%- include('../partials/icon', { name: 'download' }) %> <%= t('hero.tertiary') %></a>
-          <% } %>
         </div>
       </div>
       <aside class="hero__facts" aria-label="<%= t('about.factsTitle') %>">

@@ -4,6 +4,7 @@ const { test, before, after } = require('node:test');
 const assert = require('node:assert/strict');
 const { startServer, validContactBody } = require('./helpers');
 const { validateContact, looksLikeSpam } = require('../src/lib/contact-validation');
+const { composeText, assertSmtpConfig } = require('../src/lib/contact-delivery');
 
 let srv;
 before(async () => {
@@ -45,6 +46,23 @@ test('honeypot and timing heuristics flag bots', () => {
   assert.equal(looksLikeSpam({ website_url: '', ts: String(Date.now() - 500) }), true);
   assert.equal(looksLikeSpam({ website_url: '', ts: String(Date.now() - 10000) }), false);
   assert.equal(looksLikeSpam({ website_url: '' }), false);
+});
+
+test('SMTP message composition is text-only and carries the validated request', () => {
+  const body = validContactBody({ name: 'Erika Mustermann', email: 'erika@example.com' });
+  const { values } = validateContact(body);
+  const message = composeText('de', values);
+  assert.match(message, /Portfolio contact request \(de\)/);
+  assert.match(message, /Name: Erika Mustermann/);
+  assert.match(message, /Email: erika@example.com/);
+  assert.match(message, /Message:/);
+});
+
+test('SMTP activation fails closed when credentials are missing', () => {
+  assert.throws(
+    () => assertSmtpConfig({ host: 'smtp.hostinger.com', port: 465, secure: true, user: '', pass: '', from: '' }),
+    /missing user, pass, from/,
+  );
 });
 
 test('GET /{locale}/contact renders the localized form', async () => {

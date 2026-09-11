@@ -7,7 +7,7 @@ const { LOCALES, localePath, negotiateLocale, DEFAULT_LOCALE } = require('../i18
 
 const router = express.Router();
 
-const STATIC_PATHS = ['/', '/projects', '/services', '/about', '/skills', '/cv', '/contact', '/imprint', '/privacy'];
+const STATIC_PATHS = ['/', '/projects', '/services', '/about', '/skills', '/contact', '/imprint', '/privacy'];
 
 function allPaths() {
   return [...STATIC_PATHS, ...projects.slugs.map((slug) => `/projects/${slug}`)];

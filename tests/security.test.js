@@ -28,7 +28,7 @@ test('security headers are set on HTML responses', async () => {
 });
 
 test('inline scripts carry the per-request nonce and no style attributes are used', async () => {
-  for (const path of ['/de/', '/de/projects/savefold', '/en/contact', '/tr/services', '/de/cv']) {
+  for (const path of ['/de/', '/de/projects/savefold', '/en/contact', '/tr/services', '/de/about']) {
     const res = await srv.get(path);
     const csp = res.headers.get('content-security-policy');
     const nonce = csp.match(/'nonce-([^']+)'/)[1];
