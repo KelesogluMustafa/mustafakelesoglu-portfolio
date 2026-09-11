@@ -44,13 +44,12 @@ The build environment could not reach the live client sites, so no screenshots w
 
 ## Profile and legal data
 
-| Item                                              | Where                                                               | Status                                                                                                           |
-| ------------------------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Street and house number for the imprint (§ 5 DDG) | `src/locales/*.js` → `legal.imprint.sections[0].lines`              | Placeholder text in brackets, visibly marked. Must be filled before go-live. Never copy from a scanned document. |
-| Professional email `info@mustafakelesoglu.de`     | `CONTACT_TO` env, shown on contact, footer, imprint                 | Mailbox does not exist yet; create it at the hosting provider before go-live.                                    |
-| LinkedIn URL                                      | `SOCIAL_LINKEDIN` env                                               | Empty: link is hidden until set.                                                                                 |
-| GitHub URL                                        | `SOCIAL_GITHUB` env (default `https://github.com/KelesogluMustafa`) | Confirm this is the public profile to show.                                                                      |
-| Project years                                     | `src/content/projects.js` → `year`                                  | Approximate; confirm.                                                                                            |
+| Item                                          | Where                                                               | Status                                                                        |
+| --------------------------------------------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Professional email `info@mustafakelesoglu.de` | `CONTACT_TO` env, shown on contact, footer, imprint                 | Mailbox does not exist yet; create it at the hosting provider before go-live. |
+| LinkedIn URL                                  | `SOCIAL_LINKEDIN` env                                               | Empty: link is hidden until set.                                              |
+| GitHub URL                                    | `SOCIAL_GITHUB` env (default `https://github.com/KelesogluMustafa`) | Confirm this is the public profile to show.                                   |
+| Project years                                 | `src/content/projects.js` → `year`                                  | Approximate; confirm.                                                         |
 
 ## Certificates and degree evaluation
 

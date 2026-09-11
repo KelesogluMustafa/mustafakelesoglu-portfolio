@@ -483,18 +483,12 @@ module.exports = {
       sections: [
         {
           title: 'Anbieter',
-          lines: [
-            'Mustafa Keleşoğlu',
-            'Webentwicklung',
-            '[Straße und Hausnummer werden vom Inhaber ergänzt]',
-            '46535 Dinslaken',
-            'Deutschland',
-          ],
+          lines: ['Mustafa Keleşoğlu', 'Webentwicklung', '46537 Dinslaken', 'Deutschland'],
         },
         { title: 'Kontakt', lines: ['E-Mail: {email}'] },
         {
           title: 'Verantwortlich für den Inhalt',
-          lines: ['Mustafa Keleşoğlu (Anschrift wie oben)'],
+          lines: ['Mustafa Keleşoğlu'],
         },
         {
           title: 'Haftung für Inhalte',
@@ -521,7 +515,6 @@ module.exports = {
           ],
         },
       ],
-      placeholderNote: 'Hinweis: Die vollständige ladungsfähige Anschrift wird vor der Veröffentlichung vom Inhaber ergänzt.',
     },
     privacy: {
       title: 'Datenschutzerklärung',
@@ -530,7 +523,7 @@ module.exports = {
         {
           title: '1. Verantwortlicher',
           paragraphs: [
-            'Verantwortlich für die Datenverarbeitung auf dieser Website ist Mustafa Keleşoğlu, Dinslaken, Deutschland. Kontakt: {email}. Die vollständige Anschrift finden Sie im Impressum.',
+            'Verantwortlich für die Datenverarbeitung auf dieser Website ist Mustafa Keleşoğlu, Dinslaken, Deutschland. Kontakt: {email}.',
           ],
         },
         {

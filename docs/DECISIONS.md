@@ -50,7 +50,7 @@ Helmet with a strict CSP: `default-src 'self'`, scripts only from self plus a pe
 
 ## Assumptions
 
-- Postal code 46535 for Dinslaken is used in the imprint skeleton; the street address is a visible placeholder to be filled by the owner before publication (never taken from documents).
+- The owner explicitly chose to publish the personal portfolio with only `46537 Dinslaken` and the public email address in the imprint. No street or house number is stored in the repository.
 - The GitHub profile URL defaults to `https://github.com/KelesogluMustafa` (from the repository owner); LinkedIn stays empty until supplied via `SOCIAL_LINKEDIN`.
 - Project years remain unset and are hidden in the interface until confirmed by the owner.
 - Client case-study content comes from public, read-only inspection of the live sites. Security bullets on client projects are phrased as implementation principles, not audited outcomes.

@@ -471,10 +471,10 @@ module.exports = {
       sections: [
         {
           title: 'Provider',
-          lines: ['Mustafa Keleşoğlu', 'Web development', '[Street and number to be added by the owner]', '46535 Dinslaken', 'Germany'],
+          lines: ['Mustafa Keleşoğlu', 'Web development', '46537 Dinslaken', 'Germany'],
         },
         { title: 'Contact', lines: ['Email: {email}'] },
-        { title: 'Responsible for content', lines: ['Mustafa Keleşoğlu (address as above)'] },
+        { title: 'Responsible for content', lines: ['Mustafa Keleşoğlu'] },
         {
           title: 'Liability for content',
           lines: [
@@ -498,8 +498,6 @@ module.exports = {
           lines: ['I am neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board.'],
         },
       ],
-      placeholderNote:
-        'Note: the complete postal address will be added by the owner before publication. The German version of this imprint is authoritative.',
     },
     privacy: {
       title: 'Privacy Policy',
@@ -507,9 +505,7 @@ module.exports = {
       sections: [
         {
           title: '1. Controller',
-          paragraphs: [
-            'The controller for data processing on this website is Mustafa Keleşoğlu, Dinslaken, Germany. Contact: {email}. The full address can be found in the imprint.',
-          ],
+          paragraphs: ['The controller for data processing on this website is Mustafa Keleşoğlu, Dinslaken, Germany. Contact: {email}.'],
         },
         {
           title: '2. Hosting and server log files',

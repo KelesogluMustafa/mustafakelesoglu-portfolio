@@ -99,7 +99,7 @@ Unique titles/descriptions (tested), canonical and hreflang cluster with `x-defa
 
 ## Missing real materials
 
-See `docs/ASSET_CHECKLIST.md`: portrait, project screenshots (10 files), WOFF2 font, imprint street address, LinkedIn URL, confirmation of project years and of the GitHub profile URL, mailbox `info@mustafakelesoglu.de`.
+See `docs/ASSET_CHECKLIST.md`: portrait, project screenshots (10 files), WOFF2 font, LinkedIn URL, confirmation of project years and of the GitHub profile URL, mailbox `info@mustafakelesoglu.de`.
 
 ## Known issues and limitations
 
@@ -127,7 +127,7 @@ Local branch `fable/initial-build` is three commits ahead of `origin/fable/initi
      --body-file docs/SESSION_REPORT.md
    ```
 2. Run `npm ci`, `npm audit`, `npm run check`, then `npm run test:e2e` against a local server; CI does the same.
-3. Supply the assets from `docs/ASSET_CHECKLIST.md`; fill the imprint address; set `SOCIAL_LINKEDIN` when the profile URL is ready.
+3. Supply the assets from `docs/ASSET_CHECKLIST.md`; set `SOCIAL_LINKEDIN` when the profile URL is ready.
 4. Activate the existing SMTP transport only after the `info@mustafakelesoglu.de` mailbox exists, and configure credentials only in the hosting environment.
 5. Review copy in all three languages (claim level, project years), then approve the PR for merge and the Hostinger Node.js deployment (`npm ci && npm start`, `PORT` from the platform, `NODE_ENV=production`, `SITE_URL=https://mustafakelesoglu.de`, `TRUST_PROXY=1`).
 

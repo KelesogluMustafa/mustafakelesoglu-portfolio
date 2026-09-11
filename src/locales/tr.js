@@ -478,10 +478,10 @@ module.exports = {
       sections: [
         {
           title: 'Sağlayıcı',
-          lines: ['Mustafa Keleşoğlu', 'Web geliştirme', '[Sokak ve numara sahip tarafından eklenecek]', '46535 Dinslaken', 'Almanya'],
+          lines: ['Mustafa Keleşoğlu', 'Web geliştirme', '46537 Dinslaken', 'Almanya'],
         },
         { title: 'İletişim', lines: ['E-posta: {email}'] },
-        { title: 'İçerikten sorumlu', lines: ['Mustafa Keleşoğlu (yukarıdaki adres)'] },
+        { title: 'İçerikten sorumlu', lines: ['Mustafa Keleşoğlu'] },
         {
           title: 'İçerik sorumluluğu',
           lines: [
@@ -505,7 +505,6 @@ module.exports = {
           lines: ['Bir tüketici tahkim kurulu önünde uyuşmazlık çözüm sürecine katılmaya istekli veya yükümlü değilim.'],
         },
       ],
-      placeholderNote: 'Not: Tam posta adresi yayından önce sahip tarafından eklenecektir. Bu künyenin Almanca sürümü esastır.',
     },
     privacy: {
       title: 'Gizlilik Politikası',
@@ -513,9 +512,7 @@ module.exports = {
       sections: [
         {
           title: '1. Veri sorumlusu',
-          paragraphs: [
-            'Bu web sitesindeki veri işlemeden sorumlu kişi Mustafa Keleşoğlu, Dinslaken, Almanya’dır. İletişim: {email}. Tam adres künyede yer almaktadır.',
-          ],
+          paragraphs: ['Bu web sitesindeki veri işlemeden sorumlu kişi Mustafa Keleşoğlu, Dinslaken, Almanya’dır. İletişim: {email}.'],
         },
         {
           title: '2. Hosting ve sunucu log dosyaları',

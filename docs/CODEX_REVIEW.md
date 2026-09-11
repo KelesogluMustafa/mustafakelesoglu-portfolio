@@ -40,7 +40,7 @@ review environment.
 ## Still required before production
 
 - Owner-approved portrait and real project screenshots.
-- Full postal address for the imprint. LinkedIn remains hidden until a confirmed URL is supplied.
+- The owner explicitly chose not to publish a street address; the imprint contains only `46537 Dinslaken` and the public email address. LinkedIn remains hidden until a confirmed URL is supplied.
 - Confirmed project years.
 - Activation of the implemented SMTP transport after the mailbox exists; production-only credentials must never be committed.
 - Owner review of all German, English, and Turkish copy.
