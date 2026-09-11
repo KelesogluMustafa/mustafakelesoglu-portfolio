@@ -1,0 +1,60 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%
+/* Map skill groups to the projects that demonstrate them. */
+var evidence = {
+  frontend: ['savefold', 'pv-solar', 'bestfood-chur', 'verein-rhein'],
+  cms: ['pv-solar', 'bestfood-chur', 'verein-rhein'],
+  backend: ['savefold', 'authoritylab'],
+  data: ['savefold'],
+  security: ['savefold', 'authoritylab'],
+  delivery: ['savefold', 'authoritylab', 'pv-solar'],
+  engineering: ['authoritylab'],
+};
+function proj(slug) { return projects.find(function (p) { return p.slug === slug; }); }
+%>
+
+<main id="main" tabindex="-1">
+  <header class="page-header">
+    <div class="container">
+      <%- include('../partials/breadcrumbs', { items: [{ name: t('nav.home'), path: '/' }, { name: t('nav.skills'), path: '/skills' }] }) %>
+      <p class="eyebrow"><%= t('skills.eyebrow') %></p>
+      <h1 class="page-header__title"><%= t('skills.title') %></h1>
+      <p class="page-header__intro"><%= t('skills.intro') %></p>
+    </div>
+  </header>
+
+  <div class="container section">
+    <div class="skill-groups skill-groups--detail">
+      <% skillGroups.forEach(function (g) { %>
+      <section class="skill-group" aria-labelledby="sg-<%= g.key %>">
+        <h2 class="skill-group__title" id="sg-<%= g.key %>"><%= g.title %></h2>
+        <p class="skill-group__text"><%= g.text %></p>
+        <ul class="tag-list">
+          <% g.items.forEach(function (item) { %><li><%= item %></li><% }); %>
+        </ul>
+        <% var ev = (evidence[g.key] || []).map(proj).filter(Boolean); %>
+        <% if (ev.length) { %>
+        <p class="skill-group__evidence"><%= t('skills.evidenceTitle') %>:
+          <% ev.forEach(function (p, i) { %><a href="<%= url('/projects/' + p.slug) %>"><%= p.title %></a><%= i < ev.length - 1 ? ', ' : '' %><% }); %>
+        </p>
+        <% } %>
+      </section>
+      <% }); %>
+    </div>
+
+    <h2 class="subheading subheading--spaced"><%= t('skills.approachTitle') %></h2>
+    <div class="skill-approach">
+      <% dict.skills.approach.forEach(function (a) { %>
+      <div class="skill-approach__item">
+        <h3><%= a.title %></h3>
+        <p><%= a.text %></p>
+      </div>
+      <% }); %>
+    </div>
+  </div>
+
+  <%- include('../partials/cta-band', { title: t('home.contact.title'), text: t('home.contact.text'), label: t('home.contact.cta') }) %>
+</main>
+
+<%- include('../partials/footer') %>

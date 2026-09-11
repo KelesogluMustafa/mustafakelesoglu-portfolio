@@ -1,0 +1,15 @@
+<%
+/* Contact call-to-action band. Accepts title, text, label (button), optional secondaryLabel/secondaryHref. */
+%>
+<section class="cta-band" aria-labelledby="cta-band-title">
+  <div class="container cta-band__inner">
+    <div>
+      <h2 class="cta-band__title" id="cta-band-title"><%= title %></h2>
+      <p class="cta-band__text"><%= text %></p>
+    </div>
+    <div class="cta-band__actions">
+      <a class="button button--primary button--large" href="<%= url('/contact') %>"><%= label %> <%- include('icon', { name: 'arrow' }) %></a>
+      <a class="link-plain" href="mailto:<%= site.email %>"><%- include('icon', { name: 'mail' }) %> <%= site.email %></a>
+    </div>
+  </div>
+</section>

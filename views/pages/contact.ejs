@@ -1,0 +1,166 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%
+var F = dict.contact.form;
+var E = dict.contact.errors;
+var v = values || {};
+var err = errors || {};
+var errorKeys = Object.keys(err);
+var fieldOrder = ['name', 'email', 'company', 'projectType', 'website', 'budget', 'deadline', 'message', 'consent'];
+var jsMessages = JSON.stringify({ name: E.name, email: E.email, company: E.company, projectType: E.projectType, website: E.website, budget: E.budget, deadline: E.deadline, message: E.message, consent: E.consent });
+%>
+
+<main id="main" tabindex="-1">
+  <header class="page-header">
+    <div class="container">
+      <%- include('../partials/breadcrumbs', { items: [{ name: t('nav.home'), path: '/' }, { name: t('nav.contact'), path: '/contact' }] }) %>
+      <p class="eyebrow"><%= t('contact.eyebrow') %></p>
+      <h1 class="page-header__title"><%= t('contact.title') %></h1>
+      <p class="page-header__intro"><%= t('contact.intro') %></p>
+    </div>
+  </header>
+
+  <div class="container contact-grid">
+    <div>
+      <% if (state === 'success') { %>
+      <div class="contact-result" role="status">
+        <div class="notice notice--success">
+          <h2 class="notice__title"><%= t('contact.success.title') %></h2>
+          <p><%= t('contact.success.text') %></p>
+        </div>
+        <p><a class="button button--secondary" href="<%= url('/') %>"><%= t('contact.success.back') %></a></p>
+      </div>
+      <% } else if (state === 'dev') { %>
+      <div class="contact-result" role="status">
+        <div class="notice notice--warning">
+          <h2 class="notice__title"><%= t('contact.devNotice.title') %></h2>
+          <p><%= t('contact.devNotice.text', { email: site.email }) %></p>
+        </div>
+        <p>
+          <a class="button button--primary" href="mailto:<%= site.email %>"><%- include('../partials/icon', { name: 'mail' }) %> <%= site.email %></a>
+          <a class="button button--secondary" href="<%= url('/') %>"><%= t('contact.success.back') %></a>
+        </p>
+      </div>
+      <% } else { %>
+
+      <form class="form" method="post" action="<%= url('/contact') %>" novalidate data-contact-form data-messages="<%= jsMessages %>">
+        <% if (globalError) { %>
+        <div class="form__summary notice--danger" role="alert" tabindex="-1">
+          <strong><%= E[globalError] || E.generic %></strong>
+        </div>
+        <% } %>
+
+        <div class="form__summary" data-form-summary role="alert" tabindex="-1" <%= errorKeys.length ? '' : 'hidden' %>>
+          <strong><%= E.summary %></strong>
+          <% if (errorKeys.length) { %>
+          <ul>
+            <% fieldOrder.filter(function (k) { return err[k]; }).forEach(function (k) { %>
+            <li><a href="#field-<%= k %>"><%= E[err[k]] %></a></li>
+            <% }); %>
+          </ul>
+          <% } %>
+        </div>
+
+        <fieldset>
+          <legend><%= F.legend %></legend>
+
+          <div class="form__row form__row--2">
+            <div class="field<%= err.name ? ' is-invalid' : '' %>">
+              <label class="field__label" for="field-name"><%= F.name %></label>
+              <input class="field__input" type="text" id="field-name" name="name" value="<%= v.name || '' %>" required maxlength="100" autocomplete="name" data-validate aria-describedby="err-name" aria-invalid="<%= err.name ? 'true' : 'false' %>">
+              <p class="field__error" id="err-name"><%= err.name ? E.name : '' %></p>
+            </div>
+            <div class="field<%= err.email ? ' is-invalid' : '' %>">
+              <label class="field__label" for="field-email"><%= F.email %></label>
+              <input class="field__input" type="email" id="field-email" name="email" value="<%= v.email || '' %>" required maxlength="254" autocomplete="email" inputmode="email" data-validate aria-describedby="err-email" aria-invalid="<%= err.email ? 'true' : 'false' %>">
+              <p class="field__error" id="err-email"><%= err.email ? E.email : '' %></p>
+            </div>
+          </div>
+
+          <div class="form__row form__row--2">
+            <div class="field<%= err.company ? ' is-invalid' : '' %>">
+              <label class="field__label" for="field-company"><%= F.company %> <span class="field__optional">(<%= F.optional %>)</span></label>
+              <input class="field__input" type="text" id="field-company" name="company" value="<%= v.company || '' %>" maxlength="150" autocomplete="organization" data-validate aria-describedby="err-company">
+              <p class="field__error" id="err-company"><%= err.company ? E.company : '' %></p>
+            </div>
+            <div class="field<%= err.projectType ? ' is-invalid' : '' %>">
+              <label class="field__label" for="field-projectType"><%= F.projectType %></label>
+              <select class="field__select" id="field-projectType" name="projectType" required data-validate aria-describedby="err-projectType" aria-invalid="<%= err.projectType ? 'true' : 'false' %>">
+                <option value="" <%= !v.projectType ? 'selected' : '' %>><%= F.projectTypePlaceholder %></option>
+                <% projectTypes.forEach(function (pt) { %>
+                <option value="<%= pt %>" <%= v.projectType === pt ? 'selected' : '' %>><%= F.projectTypes[pt] %></option>
+                <% }); %>
+              </select>
+              <p class="field__error" id="err-projectType"><%= err.projectType ? E.projectType : '' %></p>
+            </div>
+          </div>
+
+          <div class="form__row form__row--2">
+            <div class="field<%= err.website ? ' is-invalid' : '' %>">
+              <label class="field__label" for="field-website"><%= F.website %> <span class="field__optional">(<%= F.optional %>)</span></label>
+              <input class="field__input" type="text" id="field-website" name="website" value="<%= v.website || '' %>" maxlength="300" autocomplete="url" inputmode="url" placeholder="https://" data-validate aria-describedby="hint-website err-website" aria-invalid="<%= err.website ? 'true' : 'false' %>">
+              <p class="field__hint" id="hint-website"><%= F.websiteHint %></p>
+              <p class="field__error" id="err-website"><%= err.website ? E.website : '' %></p>
+            </div>
+            <div class="field<%= err.budget ? ' is-invalid' : '' %>">
+              <label class="field__label" for="field-budget"><%= F.budget %> <span class="field__optional">(<%= F.optional %>)</span></label>
+              <select class="field__select" id="field-budget" name="budget" aria-describedby="err-budget">
+                <% budgets.forEach(function (b) { %>
+                <option value="<%= b %>" <%= (v.budget || 'unknown') === b ? 'selected' : '' %>><%= F.budgets[b] %></option>
+                <% }); %>
+              </select>
+              <p class="field__error" id="err-budget"><%= err.budget ? E.budget : '' %></p>
+            </div>
+          </div>
+
+          <div class="field<%= err.deadline ? ' is-invalid' : '' %>">
+            <label class="field__label" for="field-deadline"><%= F.deadline %> <span class="field__optional">(<%= F.optional %>)</span></label>
+            <input class="field__input" type="text" id="field-deadline" name="deadline" value="<%= v.deadline || '' %>" maxlength="100" data-validate aria-describedby="hint-deadline err-deadline">
+            <p class="field__hint" id="hint-deadline"><%= F.deadlineHint %></p>
+            <p class="field__error" id="err-deadline"><%= err.deadline ? E.deadline : '' %></p>
+          </div>
+
+          <div class="field<%= err.message ? ' is-invalid' : '' %>">
+            <label class="field__label" for="field-message"><%= F.message %></label>
+            <textarea class="field__textarea" id="field-message" name="message" required minlength="20" maxlength="3000" rows="7" data-validate aria-describedby="hint-message err-message count-message" aria-invalid="<%= err.message ? 'true' : 'false' %>"><%= v.message || '' %></textarea>
+            <p class="field__hint" id="hint-message"><%= F.messageHint %></p>
+            <p class="field__count" id="count-message" data-char-count data-template="<%= F.charsLeft %>" aria-live="polite"></p>
+            <p class="field__error" id="err-message"><%= err.message ? E.message : '' %></p>
+          </div>
+
+          <div class="field field--check<%= err.consent ? ' is-invalid' : '' %>">
+            <input type="checkbox" id="field-consent" name="consent" value="on" required data-validate aria-describedby="err-consent" <%= v.consent ? 'checked' : '' %> aria-invalid="<%= err.consent ? 'true' : 'false' %>">
+            <label class="field__label" for="field-consent"><%= F.consent %> (<a href="<%= url('/privacy') %>" target="_blank" rel="noopener"><%= F.consentLink %></a>)</label>
+            <p class="field__error" id="err-consent"><%= err.consent ? E.consent : '' %></p>
+          </div>
+
+          <!-- Spam protection: honeypot + render timestamp. Not shown to people. -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="website_url">Website URL</label>
+            <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="hidden" name="ts" value="<%= formTs %>">
+        </fieldset>
+
+        <div class="form__actions">
+          <button class="button button--primary button--large" type="submit" data-submitting="<%= F.submitting %>"><%= F.submit %> <%- include('../partials/icon', { name: 'arrow' }) %></button>
+          <span class="muted text-xs"><%= t('common.responseLanguages') %></span>
+        </div>
+      </form>
+      <% } %>
+    </div>
+
+    <aside class="contact-aside">
+      <h2 class="contact-aside__title"><%= t('contact.asideTitle') %></h2>
+      <p class="muted text-sm"><%= t('contact.asideText') %></p>
+      <ul class="contact-aside__list">
+        <li><a href="mailto:<%= site.email %>"><%- include('../partials/icon', { name: 'mail' }) %> <%= site.email %></a></li>
+        <li><span><%- include('../partials/icon', { name: 'pin' }) %> <%= t('common.locationLine') %></span></li>
+        <li><a href="<%= site.github %>" rel="me noopener" target="_blank"><%- include('../partials/icon', { name: 'github' }) %> GitHub<span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a></li>
+      </ul>
+      <p class="contact-aside__note"><%= t('contact.asideNote') %></p>
+    </aside>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

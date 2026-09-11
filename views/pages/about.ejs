@@ -1,0 +1,61 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<main id="main" tabindex="-1">
+  <header class="page-header">
+    <div class="container">
+      <%- include('../partials/breadcrumbs', { items: [{ name: t('nav.home'), path: '/' }, { name: t('nav.about'), path: '/about' }] }) %>
+      <p class="eyebrow"><%= t('about.eyebrow') %></p>
+      <h1 class="page-header__title"><%= t('about.title') %></h1>
+      <p class="page-header__intro"><%= t('about.lead') %></p>
+    </div>
+  </header>
+
+  <div class="container section">
+    <div class="split">
+      <div>
+        <div class="about-story">
+          <% dict.about.story.forEach(function (p) { %><p><%= p %></p><% }); %>
+        </div>
+
+        <h2 class="subheading subheading--spaced"><%= t('about.workingTitle') %></h2>
+        <div class="about-working">
+          <% dict.about.working.forEach(function (w) { %>
+          <div class="about-working__item">
+            <h3><%= w.title %></h3>
+            <p><%= w.text %></p>
+          </div>
+          <% }); %>
+        </div>
+
+        <div class="about-actions">
+          <a class="button button--primary" href="<%= url('/contact') %>"><%= t('about.cta') %> <%- include('../partials/icon', { name: 'arrow' }) %></a>
+          <a class="button button--secondary" href="<%= url('/cv') %>"><%= t('about.cvCta') %></a>
+        </div>
+      </div>
+
+      <aside class="about-aside sticky-aside">
+        <div class="about-aside__box">
+          <h2 class="about-aside__title"><%= t('about.factsTitle') %></h2>
+          <dl class="fact-sheet">
+            <% dict.about.facts.forEach(function (f) { %>
+            <div class="fact-sheet__row"><dt><%= f.label %></dt><dd><%= f.value %></dd></div>
+            <% }); %>
+          </dl>
+        </div>
+        <div class="about-aside__box">
+          <h2 class="about-aside__title"><%= t('about.linksTitle') %></h2>
+          <ul class="profile-links">
+            <li><a href="<%= site.github %>" rel="me noopener" target="_blank"><%- include('../partials/icon', { name: 'github' }) %> GitHub<span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a></li>
+            <% if (site.linkedin) { %><li><a href="<%= site.linkedin %>" rel="me noopener" target="_blank"><%- include('../partials/icon', { name: 'linkedin' }) %> LinkedIn<span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a></li><% } %>
+            <li><a href="mailto:<%= site.email %>"><%- include('../partials/icon', { name: 'mail' }) %> <%= site.email %></a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <%- include('../partials/cta-band', { title: t('home.contact.title'), text: t('home.contact.text'), label: t('home.contact.cta') }) %>
+</main>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,37 @@
+{
+  "name": "mustafakelesoglu-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Multilingual portfolio and client-acquisition website for Mustafa Keleşoğlu (mustafakelesoglu.de)",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch-path=src --watch-path=public src/server.js",
+    "test": "node --test \"tests/**/*.test.js\"",
+    "test:e2e": "node scripts/e2e.js",
+    "lint": "eslint .",
+    "format": "prettier --write \"**/*.{js,json,md,css}\"",
+    "format:check": "prettier --check \"**/*.{js,json,md,css}\"",
+    "check": "npm run lint && npm run format:check && npm test"
+  },
+  "dependencies": {
+    "compression": "^1.8.0",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "playwright": "^1.50.0",
+    "prettier": "^3.3.0"
+  },
+  "overrides": {
+    "qs": "6.16.0"
+  },
+  "license": "UNLICENSED"
+}

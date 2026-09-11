@@ -1,0 +1,9 @@
+{
+  "name": "Mustafa Keleşoğlu – Web Developer",
+  "short_name": "M. Keleşoğlu",
+  "start_url": "/de/",
+  "display": "browser",
+  "background_color": "#f5f7fa",
+  "theme_color": "#0b1f3a",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

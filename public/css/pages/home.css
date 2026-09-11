@@ -1,0 +1,96 @@
+/* ==========================================================================
+   Home page: hero
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  padding-block: clamp(3rem, 2rem + 4vw, 6.5rem) clamp(3rem, 2rem + 3vw, 5rem);
+  overflow: hidden;
+}
+/* A single, quiet geometric accent instead of decoration on every section. */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle 32rem at 88% 8%, color-mix(in srgb, var(--color-accent) 13%, transparent), transparent 100%);
+  pointer-events: none;
+}
+.hero__inner {
+  position: relative;
+  display: grid;
+  gap: clamp(2.5rem, 2rem + 2vw, 4rem);
+  align-items: center;
+}
+@media (min-width: 62rem) {
+  .hero__inner {
+    grid-template-columns: minmax(0, 1.5fr) minmax(18rem, 1fr);
+    gap: clamp(3rem, 2rem + 4vw, 6rem);
+  }
+}
+.hero__eyebrow {
+  margin-bottom: var(--space-4);
+}
+.hero__title {
+  font-size: var(--text-display);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  max-width: 14ch;
+  margin-bottom: var(--space-5);
+  text-wrap: balance;
+}
+.hero__text {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-muted);
+  max-width: 34rem;
+  margin-bottom: var(--space-4);
+}
+.hero__context {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-6);
+}
+.hero__context svg {
+  color: var(--color-accent-text);
+}
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-4);
+}
+.hero__tertiary {
+  margin-left: var(--space-2);
+}
+@media (max-width: 30rem) {
+  .hero__actions .button {
+    width: 100%;
+  }
+  .hero__tertiary {
+    margin-left: 0;
+  }
+}
+.hero__facts {
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+.hero__facts .fact-sheet {
+  border-top: 0;
+}
+.hero__facts .fact-sheet__row:first-child {
+  padding-top: 0;
+}
+@media (max-width: 30rem) {
+  .hero__facts .fact-sheet__row {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+}

@@ -350,7 +350,7 @@ If email delivery is not configured, keep the development behavior explicit and 
 
 Planned professional address after owner setup:
 
-`kontakt@mustafakelesoglu.de`
+`info@mustafakelesoglu.de`
 
 ## 14. Design direction
 

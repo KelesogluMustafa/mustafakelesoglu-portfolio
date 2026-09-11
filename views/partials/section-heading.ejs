@@ -1,0 +1,10 @@
+<%
+/* Section heading: eyebrow (optional), title, text (optional). `level` defaults to 2. */
+var lvl = typeof level !== 'undefined' ? level : 2;
+var align = typeof center !== 'undefined' && center ? ' section-heading--center' : '';
+%>
+<div class="section-heading<%= align %>">
+  <% if (typeof eyebrow !== 'undefined' && eyebrow) { %><p class="eyebrow"><%= eyebrow %></p><% } %>
+  <h<%= lvl %> class="section-heading__title"><%= title %></h<%= lvl %>>
+  <% if (typeof text !== 'undefined' && text) { %><p class="section-heading__text"><%= text %></p><% } %>
+</div>

@@ -1,0 +1,30 @@
+<%
+/*
+ * Media frame for a project. Renders real screenshots when present in /public/img/projects,
+ * otherwise a text-led "spec frame" so the layout stays complete without placeholders that
+ * pretend to be screenshots. `variant` = "card" | "detail".
+ */
+var v = typeof variant !== 'undefined' ? variant : 'card';
+var hasMedia = project.mediaAvailable && project.mediaAvailable.desktop;
+var statusLabel = t('common.statusLabels.' + project.statusKey);
+%>
+<div class="media-frame media-frame--<%= v %> media-frame--<%= project.accent %>">
+  <div class="media-frame__chrome" aria-hidden="true">
+    <span class="media-frame__dot"></span><span class="media-frame__dot"></span><span class="media-frame__dot"></span>
+    <span class="media-frame__url"><%= project.liveUrl ? project.liveUrl.replace(/^https?:\/\//, '').replace(/\/$/, '') : project.title + ' · ' + statusLabel %></span>
+  </div>
+  <% if (hasMedia) { %>
+  <img class="media-frame__img" src="/img/projects/<%= project.media.desktop %>" alt="<%= project.title %> – <%= t('projects.mediaDesktop') %>" width="1280" height="800" loading="lazy" decoding="async">
+  <% } else { %>
+  <div class="media-frame__spec">
+    <p class="media-frame__title"><%= project.title %></p>
+    <p class="media-frame__tagline"><%= project.tagline %></p>
+    <dl class="media-frame__facts">
+      <div><dt><%= t('projects.facts.type') %></dt><dd><%= project.kind === 'client' ? t('projects.kindClient') : t('projects.kindPersonal') %></dd></div>
+      <div><dt><%= t('projects.facts.status') %></dt><dd><%= statusLabel %></dd></div>
+      <div><dt><%= t('projects.facts.stack') %></dt><dd><%= project.tech.slice(0, 3).join(' · ') %></dd></div>
+    </dl>
+    <% if (v === 'detail') { %><p class="media-frame__pending"><%= t('projects.mediaPending') %></p><% } %>
+  </div>
+  <% } %>
+</div>

@@ -1,0 +1,18 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<% var Er = dict.errors.notFound; %>
+
+<main id="main" tabindex="-1">
+  <div class="container error-page">
+    <p class="error-page__code"><%= Er.code %></p>
+    <h1 class="error-page__title"><%= Er.title %></h1>
+    <p class="error-page__text"><%= Er.text %></p>
+    <div class="error-page__actions">
+      <a class="button button--primary" href="<%= url('/') %>"><%= Er.home %></a>
+      <a class="button button--secondary" href="<%= url('/projects') %>"><%= Er.projects %></a>
+      <a class="button button--secondary" href="<%= url('/contact') %>"><%= Er.contact %></a>
+    </div>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,14 @@
+<% var pp = typeof pagePath !== 'undefined' ? pagePath : '/'; %>
+<nav class="lang-switch" aria-label="<%= t('common.languageSwitch') %>">
+  <ul class="lang-switch__list">
+    <% meta.alternates.forEach(function (alt) { %>
+    <li>
+      <% if (alt.code === locale) { %>
+      <span class="lang-switch__item is-current" aria-current="true" lang="<%= alt.code %>" title="<%= alt.label %> (<%= t('common.currentLanguage') %>)"><%= alt.short %><span class="visually-hidden"> – <%= alt.label %></span></span>
+      <% } else { %>
+      <a class="lang-switch__item" href="<%= alt.href.replace(site.siteUrl, '') %>" hreflang="<%= alt.code %>" lang="<%= alt.code %>" title="<%= alt.label %>"><%= alt.short %><span class="visually-hidden"> – <%= alt.label %></span></a>
+      <% } %>
+    </li>
+    <% }); %>
+  </ul>
+</nav>
