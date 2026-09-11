@@ -1,0 +1,165 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<main id="main" tabindex="-1">
+
+  <!-- 1. Hero: text-led, no portrait yet -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow hero__eyebrow"><%= t('hero.eyebrow') %></p>
+        <h1 class="hero__title" id="hero-title"><%= t('hero.title') %></h1>
+        <p class="hero__text"><%= t('hero.text') %></p>
+        <p class="hero__context"><%- include('../partials/icon', { name: 'pin' }) %> <%= t('hero.context') %></p>
+        <div class="hero__actions">
+          <a class="button button--primary button--large" href="<%= url('/projects') %>"><%= t('hero.primary') %> <%- include('../partials/icon', { name: 'arrow' }) %></a>
+          <a class="button button--secondary button--large" href="<%= url('/contact') %>"><%= t('hero.secondary') %></a>
+        </div>
+      </div>
+      <aside class="hero__facts" aria-label="<%= t('about.factsTitle') %>">
+        <dl class="fact-sheet">
+          <% dict.hero.facts.forEach(function (f) { %>
+          <div class="fact-sheet__row">
+            <dt><%= f.label %></dt>
+            <dd><%= f.value %></dd>
+          </div>
+          <% }); %>
+        </dl>
+        <p class="fact-sheet__foot">
+          <span class="status status--live"><%= t('common.statusLabels.live') %></span>
+          <span>pvsolargmbh.com · bestfoodchur.ch · vereinrhein.ch</span>
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 2. Evidence strip: only true, countable facts -->
+  <section class="evidence" aria-label="<%= t('home.evidence.label') %>">
+    <div class="container">
+      <ul class="evidence__list">
+        <% dict.home.evidence.items.forEach(function (item) { %>
+        <li class="evidence__item">
+          <span class="evidence__value"><%= item.value %></span>
+          <span class="evidence__label"><%= item.label %></span>
+          <span class="evidence__detail"><%= item.detail %></span>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3. Featured work -->
+  <section class="section section--featured" aria-labelledby="featured-title">
+    <div class="container">
+      <%- include('../partials/section-heading', { eyebrow: t('home.featured.eyebrow'), title: t('home.featured.title'), text: t('home.featured.text') }) %>
+      <div class="project-list project-list--feature" data-reveal-group>
+        <% featured.forEach(function (project) { %>
+        <%- include('../partials/project-card', { project: project, layout: 'feature' }) %>
+        <% }); %>
+      </div>
+      <p class="section__more"><a class="link-arrow" href="<%= url('/projects') %>"><%= t('common.viewAllProjects') %> <%- include('../partials/icon', { name: 'arrow' }) %></a></p>
+    </div>
+  </section>
+
+  <!-- 4. Services -->
+  <section class="section section--services section--tinted" aria-labelledby="services-title">
+    <div class="container">
+      <%- include('../partials/section-heading', { eyebrow: t('home.services.eyebrow'), title: t('home.services.title'), text: t('home.services.text') }) %>
+      <ol class="service-index" data-reveal-group>
+        <% services.forEach(function (s, i) { %>
+        <li class="service-index__item">
+          <a class="service-index__link" href="<%= url('/services') %>#<%= s.slug %>">
+            <span class="service-index__num" aria-hidden="true"><%= String(i + 1).padStart(2, '0') %></span>
+            <span class="service-index__icon" aria-hidden="true"><%- include('../partials/icon', { name: s.icon }) %></span>
+            <span class="service-index__body">
+              <span class="service-index__title"><%= s.title %></span>
+              <span class="service-index__text"><%= s.short %></span>
+            </span>
+            <span class="service-index__arrow" aria-hidden="true"><%- include('../partials/icon', { name: 'arrow' }) %></span>
+          </a>
+        </li>
+        <% }); %>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 5. Process -->
+  <section class="section section--process" aria-labelledby="process-title">
+    <div class="container">
+      <%- include('../partials/section-heading', { eyebrow: t('home.process.eyebrow'), title: t('home.process.title') }) %>
+      <ol class="process" data-reveal-group>
+        <% dict.home.process.steps.forEach(function (step, i) { %>
+        <li class="process__step">
+          <span class="process__num"><%= i + 1 %></span>
+          <h3 class="process__title"><%= step.title %></h3>
+          <p class="process__text"><%= step.text %></p>
+        </li>
+        <% }); %>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 6. Security-focused development differentiator -->
+  <section class="section section--security section--dark" aria-labelledby="security-title">
+    <div class="container security__inner">
+      <div class="security__copy">
+        <p class="eyebrow eyebrow--on-dark"><%= t('home.security.eyebrow') %></p>
+        <h2 class="section-heading__title" id="security-title"><%= t('home.security.title') %></h2>
+        <p class="security__text"><%= t('home.security.text') %></p>
+        <p class="security__note"><%- include('../partials/icon', { name: 'shield' }) %> <span><%= t('home.security.note') %></span></p>
+      </div>
+      <ul class="security__points">
+        <% var secIcons = ['lock', 'filter', 'header', 'log']; %>
+        <% dict.home.security.points.forEach(function (p, i) { %>
+        <li class="security__point">
+          <span class="security__icon" aria-hidden="true"><%- include('../partials/icon', { name: secIcons[i] || 'shield' }) %></span>
+          <h3 class="security__point-title"><%= p.title %></h3>
+          <p><%= p.text %></p>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 7. Short about -->
+  <section class="section section--about" aria-labelledby="about-title">
+    <div class="container about-teaser">
+      <div class="about-teaser__copy">
+        <p class="eyebrow"><%= t('home.about.eyebrow') %></p>
+        <h2 class="section-heading__title" id="about-title"><%= t('home.about.title') %></h2>
+        <p class="about-teaser__text"><%= t('home.about.text') %></p>
+        <p><a class="link-arrow" href="<%= url('/about') %>"><%= t('home.about.cta') %> <%- include('../partials/icon', { name: 'arrow' }) %></a></p>
+      </div>
+      <dl class="about-teaser__facts fact-sheet fact-sheet--compact">
+        <div class="fact-sheet__row"><dt><%= t('common.location') %></dt><dd><%= t('common.locationLine') %></dd></div>
+        <div class="fact-sheet__row"><dt><%= t('common.languages') %></dt><dd><%= site.languages.map(function (l) { return t('common.languageNames.' + l.code) + ' (' + t('common.languageLevels.' + l.level) + ')'; }).join(', ') %></dd></div>
+        <div class="fact-sheet__row"><dt><%= t('common.availability') %></dt><dd><%= t('common.workMode') %></dd></div>
+        <div class="fact-sheet__row"><dt><%= t('common.github') %></dt><dd><a href="<%= site.github %>" rel="me noopener" target="_blank"><%= site.github.replace(/^https?:\/\//, '') %></a></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 8. Skills grouped by use -->
+  <section class="section section--skills section--tinted" aria-labelledby="skills-title">
+    <div class="container">
+      <%- include('../partials/section-heading', { eyebrow: t('home.skills.eyebrow'), title: t('home.skills.title') }) %>
+      <div class="skill-groups skill-groups--compact">
+        <% skillGroups.forEach(function (g) { %>
+        <div class="skill-group">
+          <h3 class="skill-group__title"><%= g.title %></h3>
+          <ul class="tag-list tag-list--plain">
+            <% g.items.forEach(function (item) { %><li><%= item %></li><% }); %>
+          </ul>
+        </div>
+        <% }); %>
+      </div>
+      <p class="section__more"><a class="link-arrow" href="<%= url('/skills') %>"><%= t('home.skills.cta') %> <%- include('../partials/icon', { name: 'arrow' }) %></a></p>
+    </div>
+  </section>
+
+  <!-- 9. Contact CTA -->
+  <%- include('../partials/cta-band', { title: t('home.contact.title'), text: t('home.contact.text'), label: t('home.contact.cta') }) %>
+
+</main>
+
+<%- include('../partials/footer') %>

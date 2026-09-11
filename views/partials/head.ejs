@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="<%= localeMeta.htmlLang %>" dir="<%= localeMeta.dir %>" data-theme="system">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= meta.title %></title>
+  <meta name="description" content="<%= meta.description %>">
+  <% if (meta.noindex) { %><meta name="robots" content="noindex, follow"><% } %>
+  <link rel="canonical" href="<%= meta.canonical %>">
+  <% meta.alternates.forEach(function (alt) { %>
+  <link rel="alternate" hreflang="<%= alt.code %>" href="<%= alt.href %>">
+  <% }); %>
+  <link rel="alternate" hreflang="x-default" href="<%= meta.xDefault %>">
+
+  <meta property="og:type" content="<%= meta.type %>">
+  <meta property="og:site_name" content="<%= dict.meta.siteName %>">
+  <meta property="og:title" content="<%= meta.rawTitle %>">
+  <meta property="og:description" content="<%= meta.description %>">
+  <meta property="og:url" content="<%= meta.canonical %>">
+  <meta property="og:image" content="<%= meta.image %>">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="<%= meta.ogLocale %>">
+  <% meta.ogAlternateLocales.forEach(function (l) { %>
+  <meta property="og:locale:alternate" content="<%= l %>">
+  <% }); %>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<%= meta.rawTitle %>">
+  <meta name="twitter:description" content="<%= meta.description %>">
+  <meta name="twitter:image" content="<%= meta.image %>">
+
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="<%= site.themeColor.light %>">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="<%= site.themeColor.dark %>">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preload" href="/fonts/Manrope-latin-ext.ttf" as="font" type="font/ttf" crossorigin>
+  <% assets.cssUrls().forEach(function (href) { %>
+  <link rel="stylesheet" href="<%= href %>">
+  <% }); %>
+
+  <script nonce="<%= cspNonce %>">
+    // Apply the stored theme before first paint to avoid a flash. Falls back to "system".
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+  <% (meta.structuredData || []).forEach(function (obj) { %>
+  <script type="application/ld+json"><%- JSON.stringify(obj).replace(/</g, '\\u003c') %></script>
+  <% }); %>
+</head>
+<body class="<%= bodyClass || '' %>">
+  <a class="skip-link" href="#main"><%= t('common.skipToContent') %></a>

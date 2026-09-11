@@ -1,0 +1,29 @@
+<%
+/* Project entry for lists. `layout` = "feature" (alternating rows) or "compact". */
+var lay = typeof layout !== 'undefined' ? layout : 'feature';
+var href = url('/projects/' + project.slug);
+%>
+<article class="project-row project-row--<%= lay %>" data-project data-group="<%= project.group %>">
+  <div class="project-row__media">
+    <a href="<%= href %>" tabindex="-1" aria-hidden="true"><%- include('project-media', { project: project, variant: 'card' }) %></a>
+  </div>
+  <div class="project-row__body">
+    <p class="project-row__meta">
+      <span class="status status--<%= project.statusKey %>"><%= t('common.statusLabels.' + project.statusKey) %></span>
+      <span class="project-row__kind"><%= project.kind === 'client' ? t('projects.kindClient') : t('projects.kindPersonal') %></span>
+      <% if (project.year) { %><span class="project-row__year"><%= project.year %></span><% } %>
+    </p>
+    <h3 class="project-row__title"><a href="<%= href %>"><%= project.title %></a></h3>
+    <p class="project-row__tagline"><%= project.tagline %></p>
+    <% if (lay === 'feature') { %><p class="project-row__summary"><%= project.summary %></p><% } %>
+    <ul class="tag-list" aria-label="<%= t('common.technology') %>">
+      <% project.tech.slice(0, lay === 'feature' ? 6 : 4).forEach(function (tech) { %><li><%= tech %></li><% }); %>
+    </ul>
+    <p class="project-row__actions">
+      <a class="link-arrow" href="<%= href %>"><%= t('common.viewProject') %> <%- include('icon', { name: 'arrow' }) %></a>
+      <% if (project.liveUrl) { %>
+      <a class="link-plain" href="<%= project.liveUrl %>" target="_blank" rel="noopener"><%= t('common.liveSite') %> <%- include('icon', { name: 'external' }) %><span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a>
+      <% } %>
+    </p>
+  </div>
+</article>

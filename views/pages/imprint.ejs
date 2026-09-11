@@ -1,0 +1,35 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<% var L = dict.legal.imprint; %>
+
+<main id="main" tabindex="-1">
+  <header class="page-header">
+    <div class="container">
+      <%- include('../partials/breadcrumbs', { items: [{ name: t('nav.home'), path: '/' }, { name: t('nav.imprint'), path: '/imprint' }] }) %>
+      <h1 class="page-header__title"><%= L.title %></h1>
+      <p class="page-header__intro"><%= L.intro %></p>
+    </div>
+  </header>
+
+  <div class="container section">
+    <div class="prose">
+      <% L.sections.forEach(function (s) { %>
+      <section class="legal-section">
+        <h2><%= s.title %></h2>
+        <div class="legal-lines">
+          <% s.lines.forEach(function (line) { %>
+          <% var text = line.replace('{email}', site.email); %>
+          <% if (text.indexOf(site.email) !== -1) { %>
+          <p><%= text.split(site.email)[0] %><a href="mailto:<%= site.email %>"><%= site.email %></a><%= text.split(site.email)[1] || '' %></p>
+          <% } else { %>
+          <p><%= text %></p>
+          <% } %>
+          <% }); %>
+        </div>
+      </section>
+      <% }); %>
+    </div>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

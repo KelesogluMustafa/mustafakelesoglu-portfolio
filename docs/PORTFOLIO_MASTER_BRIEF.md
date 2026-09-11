@@ -72,11 +72,11 @@ English home → Projects → case study → Contact
 
 ### Recruiter or technical team
 
-Needs skills, product work, engineering approach, GitHub, languages, location, and downloadable CV.
+Needs skills, product work, engineering approach, GitHub, languages, location, and a direct contact path.
 
 Primary path:
 
-Home → Software projects → About/Skills → CV/GitHub
+Home → Software projects → About/Skills → GitHub/Contact
 
 ## 6. Information architecture
 
@@ -92,7 +92,6 @@ Required routes in every supported language where applicable:
 - `/{locale}/services`
 - `/{locale}/about`
 - `/{locale}/skills`
-- `/{locale}/cv`
 - `/{locale}/contact`
 - `/{locale}/imprint`
 - `/{locale}/privacy`
@@ -140,7 +139,6 @@ Preferred German hero starting point:
 
 - `Projekte ansehen`
 - `Projekt anfragen`
-- secondary text link: `Lebenslauf herunterladen`
 
 Copy may be refined for natural German, English, and Turkish, but its meaning and claim level must remain conservative.
 
@@ -318,7 +316,7 @@ Core narrative:
 
 Mustafa is a security-minded web developer with a mechanical-engineering background. He combines analytical engineering habits with practical WordPress delivery, full-stack product work, and cybersecurity learning to build usable, maintainable digital solutions.
 
-Include location, languages, GitHub, LinkedIn placeholder configuration, and CV availability. Do not publish private contact data from screenshots or documents.
+Include location, languages, GitHub, and LinkedIn placeholder configuration. LinkedIn remains hidden until a URL is supplied. The CV route and download are intentionally excluded from the initial launch. Do not publish private contact data from screenshots or documents.
 
 ## 13. Contact
 
@@ -350,7 +348,7 @@ If email delivery is not configured, keep the development behavior explicit and 
 
 Planned professional address after owner setup:
 
-`kontakt@mustafakelesoglu.de`
+`info@mustafakelesoglu.de`
 
 ## 14. Design direction
 

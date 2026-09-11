@@ -1,0 +1,43 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<main id="main" tabindex="-1">
+  <header class="page-header">
+    <div class="container">
+      <%- include('../partials/breadcrumbs', { items: [{ name: t('nav.home'), path: '/' }, { name: t('nav.projects'), path: '/projects' }] }) %>
+      <p class="eyebrow"><%= t('projects.eyebrow') %></p>
+      <h1 class="page-header__title"><%= t('projects.title') %></h1>
+      <p class="page-header__intro"><%= t('projects.intro') %></p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="filter-bar" data-filter-bar>
+      <div class="segmented" role="group" aria-label="<%= t('projects.filter.label') %>">
+        <button class="segmented__btn" type="button" data-filter="all" aria-pressed="true"><%= t('projects.filter.all') %></button>
+        <button class="segmented__btn" type="button" data-filter="product" aria-pressed="false"><%= t('projects.filter.product') %></button>
+        <button class="segmented__btn" type="button" data-filter="client" aria-pressed="false"><%= t('projects.filter.client') %></button>
+      </div>
+      <p class="filter-bar__count" data-filter-count data-template="<%= t('projects.filter.count') %>" aria-live="polite"><%= t('projects.filter.count', { count: allProjects.length }) %></p>
+    </div>
+
+    <% groups.forEach(function (group) { %>
+    <section class="project-group" data-project-group="<%= group.key %>" aria-labelledby="group-<%= group.key %>">
+      <div class="project-group__head">
+        <h2 class="project-group__title" id="group-<%= group.key %>"><%= group.title %></h2>
+        <p class="project-group__text"><%= group.text %></p>
+      </div>
+      <div class="project-list project-list--compact">
+        <% group.items.forEach(function (project) { %>
+        <%- include('../partials/project-card', { project: project, layout: 'compact' }) %>
+        <% }); %>
+      </div>
+    </section>
+    <% }); %>
+  </div>
+
+  <div class="spacer-section"></div>
+  <%- include('../partials/cta-band', { title: t('home.contact.title'), text: t('home.contact.text'), label: t('home.contact.cta') }) %>
+</main>
+
+<%- include('../partials/footer') %>

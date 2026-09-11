@@ -1,0 +1,173 @@
+/* ==========================================================================
+   Design tokens — mustafakelesoglu.de
+   Deep navy + off-white surfaces + a single teal accent. Light is the default;
+   dark follows the system unless the visitor picks a theme.
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-latin-ext.ttf') format('truetype');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Type */
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9rem;
+  --text-base: 1.0625rem;
+  --text-md: 1.1875rem;
+  --text-lg: clamp(1.3rem, 1.1rem + 0.8vw, 1.6rem);
+  --text-xl: clamp(1.7rem, 1.35rem + 1.4vw, 2.3rem);
+  --text-2xl: clamp(2.1rem, 1.6rem + 2.2vw, 3.2rem);
+  --text-display: clamp(2.5rem, 1.8rem + 3.6vw, 4.6rem);
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.25;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.7;
+
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.08em;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --section-y: clamp(3.5rem, 2.5rem + 4vw, 6.5rem);
+
+  /* Layout */
+  --container: 74rem;
+  --container-narrow: 46rem;
+  --gutter: clamp(1rem, 0.6rem + 2.2vw, 2.5rem);
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-lg: 20px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 150ms;
+  --dur: 240ms;
+
+  /* Light palette */
+  --color-bg: #f5f7fa;
+  --color-surface: #ffffff;
+  --color-surface-2: #eef2f6;
+  --color-border: #d9e0e8;
+  --color-border-strong: #b9c4d1;
+  --color-text: #0f1b2d;
+  --color-text-muted: #4a586b;
+  --color-text-faint: #5b6a7d;
+  --color-brand: #0b1f3a;
+  --color-brand-2: #12315c;
+  --color-on-brand: #f5f7fa;
+  --color-accent: #0f766e;
+  --color-accent-hover: #0d5f59;
+  --color-accent-soft: #e0f2ef;
+  --color-accent-text: #0b5f58;
+  --color-focus: #2563eb;
+  --color-success: #15803d;
+  --color-success-soft: #dcfce7;
+  --color-warning: #a16207;
+  --color-warning-soft: #fef3c7;
+  --color-danger: #b91c1c;
+  --color-danger-soft: #fee2e2;
+  --color-info-soft: #dbeafe;
+
+  /* Project accents (used sparingly on media frames) */
+  --accent-teal: #0f766e;
+  --accent-navy: #1e3a8a;
+  --accent-amber: #b45309;
+  --accent-rose: #be123c;
+  --accent-sky: #0369a1;
+
+  --shadow-sm: 0 1px 2px rgba(15, 27, 45, 0.06), 0 1px 3px rgba(15, 27, 45, 0.08);
+  --shadow: 0 6px 20px rgba(15, 27, 45, 0.08), 0 2px 6px rgba(15, 27, 45, 0.06);
+  --shadow-lg: 0 20px 50px rgba(15, 27, 45, 0.14);
+
+  color-scheme: light;
+}
+
+/* Dark palette: applies when the system prefers dark and no explicit light choice is set,
+   or when the visitor explicitly picked dark. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --color-bg: #0b1220;
+    --color-surface: #111a2b;
+    --color-surface-2: #172236;
+    --color-border: #243146;
+    --color-border-strong: #364764;
+    --color-text: #e8edf4;
+    --color-text-muted: #a9b5c6;
+    --color-text-faint: #8391a5;
+    --color-brand: #0b1f3a;
+    --color-brand-2: #12315c;
+    --color-on-brand: #f5f7fa;
+    --color-accent: #2dd4bf;
+    --color-accent-hover: #5eead4;
+    --color-accent-soft: #113b3a;
+    --color-accent-text: #7ee8db;
+    --color-focus: #93c5fd;
+    --color-success: #4ade80;
+    --color-success-soft: #14532d;
+    --color-warning: #fbbf24;
+    --color-warning-soft: #453213;
+    --color-danger: #f87171;
+    --color-danger-soft: #4c1d1d;
+    --color-info-soft: #1e3a5f;
+    --accent-teal: #2dd4bf;
+    --accent-navy: #93c5fd;
+    --accent-amber: #fbbf24;
+    --accent-rose: #fb7185;
+    --accent-sky: #38bdf8;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.55);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --color-bg: #0b1220;
+  --color-surface: #111a2b;
+  --color-surface-2: #172236;
+  --color-border: #243146;
+  --color-border-strong: #364764;
+  --color-text: #e8edf4;
+  --color-text-muted: #a9b5c6;
+  --color-text-faint: #8391a5;
+  --color-brand: #0b1f3a;
+  --color-brand-2: #12315c;
+  --color-on-brand: #f5f7fa;
+  --color-accent: #2dd4bf;
+  --color-accent-hover: #5eead4;
+  --color-accent-soft: #113b3a;
+  --color-accent-text: #7ee8db;
+  --color-focus: #93c5fd;
+  --color-success: #4ade80;
+  --color-success-soft: #14532d;
+  --color-warning: #fbbf24;
+  --color-warning-soft: #453213;
+  --color-danger: #f87171;
+  --color-danger-soft: #4c1d1d;
+  --color-info-soft: #1e3a5f;
+  --accent-teal: #2dd4bf;
+  --accent-navy: #93c5fd;
+  --accent-amber: #fbbf24;
+  --accent-rose: #fb7185;
+  --accent-sky: #38bdf8;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.55);
+  color-scheme: dark;
+}

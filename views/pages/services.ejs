@@ -1,0 +1,62 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<main id="main" tabindex="-1">
+  <header class="page-header">
+    <div class="container">
+      <%- include('../partials/breadcrumbs', { items: [{ name: t('nav.home'), path: '/' }, { name: t('nav.services'), path: '/services' }] }) %>
+      <p class="eyebrow"><%= t('services.eyebrow') %></p>
+      <h1 class="page-header__title"><%= t('services.title') %></h1>
+      <p class="page-header__intro"><%= t('services.intro') %></p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="split split--reverse services-fit">
+      <div>
+        <ul class="fit-list" aria-labelledby="fit-title">
+          <% dict.services.fit.items.forEach(function (item) { %>
+          <li><%- include('../partials/icon', { name: 'check' }) %><span><%= item %></span></li>
+          <% }); %>
+        </ul>
+      </div>
+      <div>
+        <h2 id="fit-title" class="subheading"><%= t('services.fit.title') %></h2>
+        <p class="muted"><%= t('services.ctaText') %></p>
+        <p><a class="button button--primary" href="<%= url('/contact') %>"><%= t('services.cta') %> <%- include('../partials/icon', { name: 'arrow' }) %></a></p>
+      </div>
+    </div>
+
+    <div class="spacer-7"></div>
+
+    <% services.forEach(function (s) { %>
+    <section class="service-detail" id="<%= s.slug %>" aria-labelledby="svc-<%= s.slug %>">
+      <div class="service-detail__head">
+        <span class="service-detail__icon" aria-hidden="true"><%- include('../partials/icon', { name: s.icon }) %></span>
+        <div>
+          <h2 class="service-detail__title" id="svc-<%= s.slug %>"><%= s.title %></h2>
+          <p class="service-detail__short"><%= s.short %></p>
+        </div>
+      </div>
+      <div>
+        <p><%= s.description %></p>
+        <ul class="service-detail__points">
+          <% s.points.forEach(function (p) { %><li><%- include('../partials/icon', { name: 'check' }) %><span><%= p %></span></li><% }); %>
+        </ul>
+        <% if (s.note) { %><p class="service-detail__note"><%= s.note %></p><% } %>
+        <% if (s.relatedProjects.length) { %>
+        <p class="service-detail__related">
+          <span><%= t('services.relatedLabel') %>:</span>
+          <% s.relatedProjects.forEach(function (p) { %><a href="<%= url('/projects/' + p.slug) %>"><%= p.title %></a><% }); %>
+        </p>
+        <% } %>
+      </div>
+    </section>
+    <% }); %>
+  </div>
+
+  <div class="spacer-section"></div>
+  <%- include('../partials/cta-band', { title: t('services.ctaTitle'), text: t('services.ctaText'), label: t('services.cta') }) %>
+</main>
+
+<%- include('../partials/footer') %>

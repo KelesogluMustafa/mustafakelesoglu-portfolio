@@ -1,0 +1,35 @@
+<header class="site-header" data-header>
+  <div class="container site-header__inner">
+    <a class="brand" href="<%= url('/') %>" aria-label="<%= site.name %> – <%= t('nav.home') %>">
+      <span class="brand__mark" aria-hidden="true"><%- include('icon', { name: 'mark' }) %></span>
+      <span class="brand__text">
+        <span class="brand__name"><%= site.name %></span>
+        <span class="brand__role">Web Developer</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" id="site-nav" aria-label="<%= t('nav.primaryLabel') %>" data-nav>
+      <ul class="site-nav__list">
+        <% nav.forEach(function (item) { %>
+        <% var active = currentPath === item.path || (item.path !== '/' && currentPath.startsWith(item.path + '/')) || currentPath === item.path; %>
+        <li>
+          <a class="site-nav__link<%= active ? ' is-active' : '' %>" href="<%= item.href %>"<%= active ? ' aria-current="page"' : '' %>><%= item.label %></a>
+        </li>
+        <% }); %>
+      </ul>
+      <div class="site-nav__tools">
+        <%- include('lang-switch') %>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="<%= t('common.themeToggle') %>" title="<%= t('common.themeToggle') %>">
+          <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true"><%- include('icon', { name: 'sun' }) %></span>
+          <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true"><%- include('icon', { name: 'moon' }) %></span>
+        </button>
+        <a class="button button--primary button--small site-nav__cta" href="<%= url('/contact') %>"><%= t('nav.requestProject') %></a>
+      </div>
+    </nav>
+
+    <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="<%= t('nav.openMenu') %>" data-label-open="<%= t('nav.openMenu') %>" data-label-close="<%= t('nav.closeMenu') %>">
+      <span class="nav-toggle__icon" aria-hidden="true"><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span></span>
+      <span class="nav-toggle__text"><%= t('nav.menu') %></span>
+    </button>
+  </div>
+</header>

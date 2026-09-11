@@ -1,0 +1,127 @@
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-height: 2.75rem;
+  padding: 0.65rem 1.25rem;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) ease,
+    color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    transform var(--dur-fast) var(--ease-out);
+}
+.button:active {
+  transform: translateY(1px);
+}
+.button svg {
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.button:hover svg {
+  transform: translateX(2px);
+}
+
+.button--primary {
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+}
+.button--primary:hover {
+  background: var(--color-brand-2);
+  color: var(--color-on-brand);
+}
+:root[data-theme='dark'] .button--primary {
+  background: var(--color-accent);
+  color: #06201d;
+}
+:root[data-theme='dark'] .button--primary:hover {
+  background: var(--color-accent-hover);
+  color: #06201d;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .button--primary {
+    background: var(--color-accent);
+    color: #06201d;
+  }
+  :root:not([data-theme='light']) .button--primary:hover {
+    background: var(--color-accent-hover);
+    color: #06201d;
+  }
+}
+
+.button--secondary {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border-strong);
+}
+.button--secondary:hover {
+  border-color: var(--color-text);
+  color: var(--color-text);
+}
+
+.button--accent {
+  background: var(--color-accent);
+  color: #fff;
+}
+.button--accent:hover {
+  background: var(--color-accent-hover);
+  color: #fff;
+}
+
+.button--large {
+  min-height: 3.25rem;
+  padding: 0.85rem 1.6rem;
+  font-size: var(--text-base);
+}
+.button--small {
+  min-height: 2.25rem;
+  padding: 0.4rem 0.9rem;
+  font-size: var(--text-xs);
+}
+.button--block {
+  width: 100%;
+}
+.button[disabled],
+.button[aria-disabled='true'] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Segmented control (project filters) */
+.segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+.segmented__btn {
+  border: 0;
+  background: transparent;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  min-height: 2.5rem;
+}
+.segmented__btn:hover {
+  color: var(--color-text);
+}
+.segmented__btn[aria-pressed='true'] {
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+}

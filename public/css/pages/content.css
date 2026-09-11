@@ -1,0 +1,194 @@
+/* ==========================================================================
+   Content pages: about, skills, contact, legal, errors
+   ========================================================================== */
+
+/* About */
+.about-story p {
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-muted);
+}
+.about-story p:first-child {
+  color: var(--color-text);
+  font-weight: 500;
+}
+.about-working {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-7);
+}
+@media (min-width: 48rem) {
+  .about-working {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.about-working__item {
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--color-border-strong);
+}
+.about-working__item h3 {
+  font-size: var(--text-md);
+}
+.about-working__item p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+.about-aside {
+  display: grid;
+  gap: var(--space-5);
+}
+.about-aside__box {
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+.about-aside__title {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-3);
+}
+.about-aside .fact-sheet {
+  border-top: 0;
+}
+.about-aside .fact-sheet__row:first-child {
+  padding-top: 0;
+}
+.about-aside .fact-sheet__row {
+  grid-template-columns: 1fr;
+  gap: 0.1rem;
+}
+.profile-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-2);
+}
+.profile-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 600;
+  text-decoration: none;
+  min-height: 2.25rem;
+  overflow-wrap: anywhere;
+}
+.profile-links a:hover {
+  text-decoration: underline;
+}
+.about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+/* Skills page */
+.skill-approach {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-7);
+}
+@media (min-width: 48rem) {
+  .skill-approach {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.skill-approach__item {
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+.skill-approach__item h3 {
+  font-size: var(--text-md);
+}
+.skill-approach__item p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+/* Contact page */
+.contact-grid {
+  display: grid;
+  gap: var(--space-7);
+  padding-block: var(--section-y);
+}
+@media (min-width: 62rem) {
+  .contact-grid {
+    grid-template-columns: minmax(0, 1.6fr) minmax(16rem, 1fr);
+    gap: var(--space-9);
+    align-items: start;
+  }
+}
+.contact-result {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 40rem;
+}
+
+/* Legal pages */
+.legal-section {
+  margin-bottom: var(--space-6);
+}
+.legal-section h2 {
+  font-size: var(--text-md);
+  margin-bottom: var(--space-2);
+}
+.legal-section p,
+.legal-section li {
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-muted);
+}
+.legal-lines {
+  margin: 0;
+}
+.legal-lines p {
+  margin: 0;
+}
+.legal-updated {
+  font-size: var(--text-sm);
+  color: var(--color-text-faint);
+}
+
+/* Error pages */
+.error-page {
+  padding-block: clamp(4rem, 3rem + 5vw, 8rem);
+  text-align: left;
+}
+.error-page__code {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-accent-text);
+  margin-bottom: var(--space-3);
+}
+.error-page__title {
+  font-size: var(--text-2xl);
+  max-width: 18ch;
+}
+.error-page__text {
+  font-size: var(--text-md);
+  color: var(--color-text-muted);
+  max-width: 44rem;
+  margin-bottom: var(--space-5);
+}
+.error-page__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.error-page__detail {
+  margin-top: var(--space-6);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  overflow-wrap: anywhere;
+}
