@@ -46,7 +46,7 @@ e103206 feat: scaffold Express/EJS app with trilingual routing, content model an
 ```bash
 node -v                       # v22.22.2 (engines: >=20)
 npm start / PORT=3210 node src/server.js
-npm test                      # node --test "tests/**/*.test.js"
+npm test                      # node --test (automatic test discovery)
 npm run lint                  # eslint .
 npm run format:check          # prettier --check
 BASE_URL=http://127.0.0.1:3210 node scripts/screenshots.js <dir>
