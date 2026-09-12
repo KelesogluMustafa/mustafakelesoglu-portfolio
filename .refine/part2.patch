@@ -1,0 +1,116 @@
+   themeColor: { light: '#f5f7fa', dark: '#0b1220' },
+diff --git a/src/locales/de.js b/src/locales/de.js
+index e425ffd..a7e174d 100644
+--- a/src/locales/de.js
++++ b/src/locales/de.js
+@@ -2,15 +2,15 @@
+ 
+ module.exports = {
+   meta: {
+-    siteName: 'Mustafa Keleşoğlu',
+-    titleSuffix: ' · Mustafa Keleşoğlu',
++    siteName: 'Mustafa Kelesoglu',
++    titleSuffix: ' · Mustafa Kelesoglu',
+     identity: 'Web Developer | WordPress, Full-Stack & Security',
+     positioning: 'Webentwickler für Websites und Web-Anwendungen mit Fokus auf Sicherheit.',
+     pages: {
+       home: {
+         title: 'Webentwickler in Dinslaken · WordPress, Full-Stack & Security',
+         description:
+-          'Mustafa Keleşoğlu entwickelt schnelle, responsive Websites und individuelle Web-Anwendungen für Unternehmen, Vereine und digitale Projekte – WordPress, Node.js und sicherheitsbewusste Entwicklung aus Dinslaken, NRW und remote.',
++          'Mustafa Kelesoglu entwickelt schnelle, responsive Websites und individuelle Web-Anwendungen für Unternehmen, Vereine und digitale Projekte – WordPress, Node.js und sicherheitsbewusste Entwicklung aus Dinslaken, NRW und remote.',
+       },
+       projects: {
+         title: 'Projekte & Case Studies',
+@@ -35,7 +35,7 @@ module.exports = {
+       cv: {
+         title: 'Lebenslauf',
+         description:
+-          'Kurzprofil, Ausbildung, Sprachen und Schwerpunkte von Mustafa Keleşoğlu – Lebenslauf als PDF auf Anfrage bzw. nach Freigabe zum Download.',
++          'Kurzprofil, Ausbildung, Sprachen und Schwerpunkte von Mustafa Kelesoglu – Lebenslauf als PDF auf Anfrage bzw. nach Freigabe zum Download.',
+       },
+       contact: {
+         title: 'Projekt anfragen',
+@@ -108,15 +108,14 @@ module.exports = {
+       inDevelopment: 'In Entwicklung · Technische Beta',
+       validation: 'Validierungsphase · Security R&D',
+     },
+-    languageLevels: { native: 'Muttersprache', C1: 'C1 (Beruf)', B2: 'B2' },
+-    languageNames: { de: 'Deutsch', en: 'Englisch', tr: 'Türkisch' },
++    languageNames: { de: 'Deutsch', en: 'Englisch', tr: 'Türkçe' },
+     workMode: 'NRW und remote',
+     locationLine: 'Dinslaken, Nordrhein-Westfalen',
+     responseLanguages: 'Antwort auf Deutsch, Englisch oder Türkisch',
+   },
+ 
+   hero: {
+-    eyebrow: 'Mustafa Keleşoğlu · Web Developer',
++    eyebrow: 'Mustafa Kelesoglu · Web Developer',
+     title: 'Websites & Web-Anwendungen mit Fokus auf Sicherheit.',
+     text: 'Ich entwickle schnelle, responsive Websites und individuelle Web-Anwendungen für Unternehmen, Vereine und digitale Projekte – mit WordPress, Elementor und modernen Full-Stack-Technologien.',
+     context: 'Standort Dinslaken · Projekte in NRW und remote',
+@@ -126,7 +125,7 @@ module.exports = {
+     facts: [
+       { label: 'Standort', value: 'Dinslaken, NRW · remote' },
+       { label: 'Schwerpunkte', value: 'WordPress · Node.js · Security' },
+-      { label: 'Sprachen', value: 'Deutsch · English · Türkçe' },
++      { label: 'Sprachen', value: 'Deutsch · Englisch · Türkçe' },
+       { label: 'Aktuell', value: 'Offen für Website- und Web-App-Projekte' },
+     ],
+   },
+@@ -135,10 +134,10 @@ module.exports = {
+     evidence: {
+       label: 'Nachprüfbar',
+       items: [
+-        { value: '3', label: 'Live-Kundenwebsites', detail: 'WordPress, Elementor, WooCommerce' },
+-        { value: '2', label: 'Eigene Softwareprojekte', detail: 'Full-Stack-Produkt und Security R&D' },
+-        { value: '3', label: 'Arbeitssprachen', detail: 'Deutsch C1 · Englisch B2 · Türkisch' },
+-        { value: 'DE + remote', label: 'Einsatzgebiet', detail: 'Dinslaken, Duisburg, NRW – und überall online' },
++        { label: 'Drei Live-Kundenwebsites', detail: 'WordPress, Elementor, WooCommerce' },
++        { label: 'Zwei eigene Softwareprojekte', detail: 'Full-Stack-Produkt und Security R&D' },
++        { label: 'Drei Arbeitssprachen', detail: 'Deutsch · Englisch · Türkçe' },
++        { label: 'Deutschland und remote', detail: 'Dinslaken, Duisburg, NRW – und überall online' },
+       ],
+     },
+     featured: {
+@@ -194,7 +193,7 @@ module.exports = {
+     about: {
+       eyebrow: 'Über mich',
+       title: 'Webentwickler mit Ingenieurhintergrund',
+-      text: 'Ich bin Mustafa Keleşoğlu, Webentwickler aus Dinslaken. Mein Weg führte über ein Maschinenbau-Studium zur Webentwicklung – analytisches Denken und saubere Dokumentation habe ich mitgenommen. Heute verbinde ich WordPress-Projekte für Kunden, eigene Full-Stack-Produkte mit Node.js und eine sicherheitsbewusste Arbeitsweise.',
++      text: 'Ich bin Mustafa Kelesoglu, Webentwickler aus Dinslaken. Mein Weg führte über ein Maschinenbau-Studium zur Webentwicklung – analytisches Denken und saubere Dokumentation habe ich mitgenommen. Heute verbinde ich WordPress-Projekte für Kunden, eigene Full-Stack-Produkte mit Node.js und eine sicherheitsbewusste Arbeitsweise.',
+       cta: 'Mehr über mich',
+     },
+     skills: {
+@@ -312,7 +311,7 @@ module.exports = {
+   about: {
+     eyebrow: 'Über mich',
+     title: 'Sicherheitsbewusster Webentwickler mit Ingenieurhintergrund',
+-    lead: 'Ich bin Mustafa Keleşoğlu, Webentwickler aus Dinslaken in Nordrhein-Westfalen. Ich baue Websites und Web-Anwendungen, die schnell laden, auf jedem Gerät funktionieren und von Anfang an sicher konfiguriert sind.',
++    lead: 'Ich bin Mustafa Kelesoglu, Webentwickler aus Dinslaken in Nordrhein-Westfalen. Ich baue Websites und Web-Anwendungen, die schnell laden, auf jedem Gerät funktionieren und von Anfang an sicher konfiguriert sind.',
+     story: [
+       'Mein Weg in die Webentwicklung führte über ein abgeschlossenes Maschinenbau-Studium. Die Zentralstelle für ausländisches Bildungswesen (ZAB) hat den Abschluss positiv bewertet und als vergleichbar mit einem deutschen Bachelor eingestuft. Aus dieser Zeit stammen Gewohnheiten, die mir heute täglich helfen: Probleme strukturiert zerlegen, Entscheidungen dokumentieren und Ergebnisse prüfen, bevor sie „fertig“ heißen.',
+       'Praktisch gewachsen bin ich an Kundenprojekten mit WordPress, Elementor und WooCommerce: Unternehmensseiten, eine Restaurant-Website mit Bestellweg, eine Vereinswebsite. Dazu kommen Migrationen, Hosting und Deployment – die unspektakuläre Arbeit, die darüber entscheidet, ob eine Seite zuverlässig läuft.',
+@@ -322,7 +321,7 @@ module.exports = {
+     facts: [
+       { label: 'Standort', value: 'Dinslaken, Nordrhein-Westfalen' },
+       { label: 'Einsatz', value: 'NRW (Duisburg, Ruhrgebiet, Niederrhein) und remote' },
+-      { label: 'Sprachen', value: 'Türkisch (Muttersprache), Deutsch (C1 Beruf), Englisch (B2)' },
++      { label: 'Sprachen', value: 'Deutsch · Englisch · Türkçe' },
+       { label: 'Ausbildung', value: 'Maschinenbau-Abschluss, ZAB-Bewertung vergleichbar mit deutschem Bachelor' },
+       { label: 'Web', value: 'WordPress, Elementor, WooCommerce, Migration, Hosting' },
+       { label: 'Full-Stack', value: 'Node.js, Express, EJS, REST-APIs, MySQL/MariaDB, Git, CI/CD' },
+@@ -483,12 +482,12 @@ module.exports = {
+       sections: [
+         {
+           title: 'Anbieter',
+-          lines: ['Mustafa Keleşoğlu', 'Webentwicklung', '46537 Dinslaken', 'Deutschland'],
++          lines: ['Mustafa Kelesoglu', 'Webentwicklung', '46537 Dinslaken', 'Deutschland'],
+         },
+         { title: 'Kontakt', lines: ['E-Mail: {email}'] },
+         {
+           title: 'Verantwortlich für den Inhalt',
+-          lines: ['Mustafa Keleşoğlu'],
++          lines: ['Mustafa Kelesoglu'],
+         },
+         {
