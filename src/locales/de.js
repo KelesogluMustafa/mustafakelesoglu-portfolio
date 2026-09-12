@@ -461,7 +461,7 @@ module.exports = {
       website: 'Bitte geben Sie eine gültige Web-Adresse an oder lassen Sie das Feld leer.',
       budget: 'Bitte wählen Sie eine gültige Option.',
       deadline: 'Bitte kürzen Sie die Angabe (maximal 100 Zeichen).',
-      message: 'Bitte beschreiben Sie Ihr Vorhaben (20 bis 5000 Zeichen).',
+      message: 'Bitte beschreiben Sie Ihr Vorhaben (Pflichtfeld, maximal 5000 Zeichen).',
       consent: 'Bitte stimmen Sie der Verarbeitung Ihrer Angaben zu.',
       company: 'Bitte kürzen Sie die Angabe (maximal 150 Zeichen).',
       attachmentsCount: 'Bitte wählen Sie höchstens 5 Dateien aus.',

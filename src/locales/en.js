@@ -450,7 +450,7 @@ module.exports = {
       website: 'Please enter a valid web address or leave the field empty.',
       budget: 'Please select a valid option.',
       deadline: 'Please shorten this entry (maximum 100 characters).',
-      message: 'Please describe your project (20 to 5000 characters).',
+      message: 'Please describe your project (required, maximum 5000 characters).',
       consent: 'Please agree to the processing of your details.',
       company: 'Please shorten this entry (maximum 150 characters).',
       attachmentsCount: 'Please select at most 5 files.',

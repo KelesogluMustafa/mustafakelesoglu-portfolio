@@ -128,7 +128,7 @@ var ML = messageLimits;
 
           <div class="field<%= err.message ? ' is-invalid' : '' %>">
             <label class="field__label" for="field-message"><%= F.message %></label>
-            <textarea class="field__textarea" id="field-message" name="message" required minlength="<%= ML.min %>" maxlength="<%= ML.max %>" rows="7" data-validate aria-describedby="hint-message err-message count-message" aria-invalid="<%= err.message ? 'true' : 'false' %>"><%= v.message || '' %></textarea>
+            <textarea class="field__textarea" id="field-message" name="message" required maxlength="<%= ML.max %>" rows="7" data-validate aria-describedby="hint-message err-message count-message" aria-invalid="<%= err.message ? 'true' : 'false' %>"><%= v.message || '' %></textarea>
             <p class="field__hint" id="hint-message"><%= F.messageHint %></p>
             <p class="field__count" id="count-message" data-char-count data-template="<%= F.charsLeft %>" aria-live="polite"></p>
             <p class="field__error" id="err-message"><%= err.message ? E.message : '' %></p>

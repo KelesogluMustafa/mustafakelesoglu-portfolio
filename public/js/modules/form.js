@@ -20,11 +20,11 @@ export function initContactForm() {
       case 'projectType':
         return value !== '';
       case 'message': {
-        // Read the limits from the markup (rendered from the same server-side constant used
-        // for backend validation) instead of duplicating the numbers here.
-        const min = Number.parseInt(el.getAttribute('minlength') || '20', 10);
+        // Read the limit from the markup (rendered from the same server-side constant used
+        // for backend validation) instead of duplicating the number here. Required, no minimum
+        // length: any non-empty value up to the maximum is accepted.
         const max = Number.parseInt(el.getAttribute('maxlength') || '5000', 10);
-        return value.length >= min && value.length <= max;
+        return value.length > 0 && value.length <= max;
       }
       case 'consent':
         return value === 'on';

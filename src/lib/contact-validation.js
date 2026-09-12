@@ -15,7 +15,7 @@ const LIMITS = {
   email: { max: 254 },
   website: { max: 300 },
   deadline: { max: 100 },
-  message: { min: 20, max: 5000 },
+  message: { max: 5000 },
 };
 
 /**
@@ -195,7 +195,7 @@ function validateContact(body = {}) {
   if (values.budget && !BUDGETS.includes(values.budget)) errors.budget = 'budget';
   if (!values.budget) values.budget = 'unknown';
   if (values.deadline.length > LIMITS.deadline.max) errors.deadline = 'deadline';
-  if (values.message.length < LIMITS.message.min || values.message.length > LIMITS.message.max) errors.message = 'message';
+  if (!values.message || values.message.length > LIMITS.message.max) errors.message = 'message';
   if (!values.consent) errors.consent = 'consent';
 
   return { ok: Object.keys(errors).length === 0, values, errors };

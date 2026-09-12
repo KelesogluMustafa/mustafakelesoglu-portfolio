@@ -457,7 +457,7 @@ module.exports = {
       website: 'Lütfen geçerli bir web adresi girin veya alanı boş bırakın.',
       budget: 'Lütfen geçerli bir seçenek seçin.',
       deadline: 'Lütfen bu alanı kısaltın (en fazla 100 karakter).',
-      message: 'Lütfen projenizi anlatın (20 ile 5000 karakter arası).',
+      message: 'Lütfen projenizi anlatın (zorunlu, en fazla 5000 karakter).',
       consent: 'Lütfen bilgilerinizin işlenmesini onaylayın.',
       company: 'Lütfen bu alanı kısaltın (en fazla 150 karakter).',
       attachmentsCount: 'Lütfen en fazla 5 dosya seçin.',

@@ -45,7 +45,7 @@ test('validateContact rejects missing and malformed fields', () => {
     projectType: 'hack',
     website: 'not a url',
     budget: 'x',
-    message: 'short',
+    message: '',
     consent: '',
   });
   assert.equal(r.ok, false);
@@ -267,19 +267,26 @@ describe('optional project attachments (0-5 files, 10 MB combined)', () => {
     }
   });
 
-  test('the project description accepts exactly 5000 characters and rejects 5001, end to end', async () => {
+  test('the project description accepts 1 character and exactly 5000, and rejects empty and 5001, end to end', async () => {
+    const single = await uploadSrv.postForm('/en/contact', validContactFormData({ message: 'x' }));
+    assert.equal(single.status, 200);
+
     const ok = await uploadSrv.postForm('/en/contact', validContactFormData({ message: 'x'.repeat(5000) }));
     assert.equal(ok.status, 200);
 
+    const empty = await uploadSrv.postForm('/en/contact', validContactFormData({ message: '' }));
+    assert.equal(empty.status, 422);
+    assert.match(await empty.text(), /required, maximum 5000 characters/);
+
     const tooLong = await uploadSrv.postForm('/en/contact', validContactFormData({ message: 'x'.repeat(5001) }));
     assert.equal(tooLong.status, 422);
-    assert.match(await tooLong.text(), /20 to 5000 characters/);
+    assert.match(await tooLong.text(), /required, maximum 5000 characters/);
   });
 
   test('the rendered form exposes the 5000-character limit and localized attachment copy', async () => {
     const de = await (await uploadSrv.get('/de/contact')).text();
     assert.match(de, /maxlength="5000"/);
-    assert.match(de, /minlength="20"/);
+    assert.doesNotMatch(de, /minlength=/);
     assert.match(de, /Anhänge/);
     assert.match(de, /Bis zu 5 Dateien · PDF, DOC, DOCX oder TXT · insgesamt max\. 10 MB/);
 
