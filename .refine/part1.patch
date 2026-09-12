@@ -1,0 +1,226 @@
+From 4f40001ebb1ed690335b901b4db120ff4d35434c Mon Sep 17 00:00:00 2001
+From: "Fable (Claude)" <noreply@anthropic.com>
+Date: Sat, 12 Sep 2026 00:26:36 +0000
+Subject: [PATCH] feat: UI/content refinements (Latin name, no language levels,
+ dark default)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- Visible name spelled "Mustafa Kelesoglu" everywhere (UI, metadata,
+  JSON-LD, manifest, regenerated share images)
+- Language listings without C1/B2 levels: Deutsch · Englisch · Türkçe
+- Evidence strip as descriptive cards, no oversized numerals
+- Hero fact-sheet label column fixed so "Schwerpunkte" never breaks
+- Language switcher stays on one row on desktop and mobile
+- Dark mode is the initial theme; toggle to light kept and persisted
+- Tests for the refinements (44 passing)
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L7CFpCTFxknYUWrmiHgkHf
+---
+ docs/DECISIONS.md                |   6 +++++-
+ public/css/components/cards.css  |  29 +++++++++++--------------
+ public/css/components/header.css |  17 +++++++++++++++
+ public/css/layout.css            |   4 ++--
+ public/css/pages/home.css        |   4 ++++
+ public/img/og-default.png        | Bin 165931 -> 165612 bytes
+ public/img/og/authoritylab.png   | Bin 152790 -> 152479 bytes
+ public/img/og/bestfood-chur.png  | Bin 149226 -> 148878 bytes
+ public/img/og/pv-solar.png       | Bin 148672 -> 148380 bytes
+ public/img/og/savefold.png       | Bin 145930 -> 145633 bytes
+ public/img/og/verein-rhein.png   | Bin 144952 -> 144605 bytes
+ public/js/modules/theme.js       |   5 ++---
+ public/site.webmanifest          |   4 ++--
+ scripts/generate-images.js       |   2 +-
+ src/content/site.js              |  11 ++++------
+ src/locales/de.js                |  35 +++++++++++++++----------------
+ src/locales/en.js                |  33 ++++++++++++++---------------
+ src/locales/tr.js                |  33 ++++++++++++++---------------
+ tests/metadata.test.js           |  23 +++++++++++++++++---
+ views/pages/home.ejs             |   3 +--
+ views/partials/head.ejs          |   9 ++++----
+ 21 files changed, 123 insertions(+), 95 deletions(-)
+
+diff --git a/public/css/components/cards.css b/public/css/components/cards.css
+index 5bd31de..1c3148e 100644
+--- a/public/css/components/cards.css
++++ b/public/css/components/cards.css
+@@ -525,7 +525,7 @@
+ .evidence__item {
+   display: flex;
+   flex-direction: column;
+-  gap: 0.15rem;
++  gap: 0.3rem;
+   padding: var(--space-5) var(--space-4);
+   border-right: 1px solid var(--color-border);
+ }
+@@ -540,24 +540,19 @@
+     border-bottom: 1px solid var(--color-border);
+   }
+ }
+-.evidence__value {
+-  font-size: var(--text-xl);
+-  font-weight: 800;
+-  letter-spacing: var(--tracking-tight);
+-  line-height: 1.1;
+-  color: var(--color-brand);
+-}
+-:root[data-theme='dark'] .evidence__value {
+-  color: var(--color-accent);
+-}
+-@media (prefers-color-scheme: dark) {
+-  :root:not([data-theme='light']) .evidence__value {
+-    color: var(--color-accent);
+-  }
+-}
+ .evidence__label {
+   font-weight: 700;
+-  font-size: var(--text-sm);
++  font-size: var(--text-base);
++  line-height: var(--leading-snug);
++}
++.evidence__label::before {
++  content: '';
++  display: block;
++  width: 1.5rem;
++  height: 3px;
++  border-radius: 2px;
++  background: var(--color-accent);
++  margin-bottom: var(--space-3);
+ }
+ .evidence__detail {
+   font-size: var(--text-xs);
+diff --git a/public/css/components/header.css b/public/css/components/header.css
+index aedae04..158cbaa 100644
+--- a/public/css/components/header.css
++++ b/public/css/components/header.css
+@@ -116,11 +116,16 @@
+ }
+ 
+ /* Language switch */
++.lang-switch {
++  flex-shrink: 0;
++}
+ .lang-switch__list {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   display: inline-flex;
++  flex-wrap: nowrap;
++  align-items: stretch;
+   border: 1px solid var(--color-border);
+   border-radius: var(--radius-sm);
+   overflow: hidden;
+@@ -129,6 +134,8 @@
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
++  white-space: nowrap;
++  flex-shrink: 0;
+   min-width: 2.5rem;
+   min-height: 2.25rem;
+   padding: 0 0.5rem;
+@@ -305,6 +312,16 @@ a.lang-switch__item:hover {
+   .site-nav__tools {
+     flex-wrap: wrap;
+     justify-content: space-between;
++    align-items: center;
++  }
++  .site-nav__tools .lang-switch {
++    order: 0;
++  }
++  .site-nav__tools .theme-toggle {
++    order: 1;
++  }
++  .site-nav__tools .site-nav__cta {
++    order: 2;
+   }
+   .site-nav__cta {
+     display: inline-flex;
+diff --git a/public/css/layout.css b/public/css/layout.css
+index ee36b2a..22e046e 100644
+--- a/public/css/layout.css
++++ b/public/css/layout.css
+@@ -102,7 +102,7 @@
+ }
+ .fact-sheet__row {
+   display: grid;
+-  grid-template-columns: minmax(7rem, 0.7fr) minmax(0, 1.3fr);
++  grid-template-columns: minmax(7rem, max-content) minmax(0, 1fr);
+   gap: var(--space-3);
+   padding: var(--space-3) 0;
+   border-bottom: 1px solid var(--color-border);
+@@ -114,7 +114,7 @@
+   text-transform: uppercase;
+   color: var(--color-text-faint);
+   padding-top: 0.15em;
+-  overflow-wrap: anywhere;
++  white-space: nowrap;
+ }
+ .fact-sheet__row dd {
+   font-weight: 600;
+diff --git a/public/css/pages/home.css b/public/css/pages/home.css
+index 26e8d66..83e9a7d 100644
+--- a/public/css/pages/home.css
++++ b/public/css/pages/home.css
+@@ -88,6 +88,10 @@
+ .hero__facts .fact-sheet__row:first-child {
+   padding-top: 0;
+ }
++.hero__facts .fact-sheet__row {
++  grid-template-columns: 8.25rem minmax(0, 1fr);
++  column-gap: var(--space-4);
++}
+ @media (max-width: 30rem) {
+   .hero__facts .fact-sheet__row {
+     grid-template-columns: 1fr;
+diff --git a/public/js/modules/theme.js b/public/js/modules/theme.js
+index c229e45..a4b6426 100644
+--- a/public/js/modules/theme.js
++++ b/public/js/modules/theme.js
+@@ -1,4 +1,4 @@
+-// Theme preference: system by default, explicit light/dark stored locally in the browser only.
++// Theme preference: dark by default, explicit light/dark stored locally in the browser only.
+ const KEY = 'theme';
+ 
+ function read() {
+@@ -20,8 +20,7 @@ function write(value) {
+ 
+ function current() {
+   const attr = document.documentElement.getAttribute('data-theme');
+-  if (attr === 'light' || attr === 'dark') return attr;
+-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
++  return attr === 'light' ? 'light' : 'dark';
+ }
+ 
+ export function initTheme() {
+diff --git a/src/content/site.js b/src/content/site.js
+index efcc12e..45e18c1 100644
+--- a/src/content/site.js
++++ b/src/content/site.js
+@@ -7,9 +7,9 @@ const config = require('../config');
+  * Only verified profile facts from docs/PORTFOLIO_MASTER_BRIEF.md belong here.
+  */
+ module.exports = {
+-  name: 'Mustafa Keleşoğlu',
++  name: 'Mustafa Kelesoglu',
+   givenName: 'Mustafa',
+-  familyName: 'Keleşoğlu',
++  familyName: 'Kelesoglu',
+   domain: 'mustafakelesoglu.de',
+   siteUrl: config.siteUrl,
+   location: {
+@@ -22,11 +22,8 @@ module.exports = {
+   email: config.contact.toAddress,
+   github: config.social.github,
+   linkedin: config.social.linkedin,
+-  languages: [
+-    { code: 'tr', level: 'native' },
+-    { code: 'de', level: 'C1' },
+-    { code: 'en', level: 'B2' },
+-  ],
++  // Proficiency levels are intentionally not published; order is display order.
++  languages: [{ code: 'de' }, { code: 'en' }, { code: 'tr' }],
+   // Owner-approved portrait is not available yet; the hero stays text-led.
+   portrait: null,
