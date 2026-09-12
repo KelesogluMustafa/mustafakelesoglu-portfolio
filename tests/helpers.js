@@ -25,6 +25,16 @@ async function startServer() {
         body: new URLSearchParams(body).toString(),
         ...init,
       }),
+    // Real multipart/form-data submission (the shape the browser form actually sends once it
+    // carries a file input). `fetch` sets the Content-Type header itself, boundary included,
+    // when the body is a FormData instance — do not override it.
+    postForm: (path, formData, init = {}) =>
+      fetch(base + path, {
+        method: 'POST',
+        redirect: 'manual',
+        body: formData,
+        ...init,
+      }),
     close: () => new Promise((resolve) => server.close(resolve)),
   };
 }
@@ -46,4 +56,17 @@ function validContactBody(overrides = {}) {
   };
 }
 
-module.exports = { startServer, validContactBody };
+/** Builds a real multipart/form-data FormData for the contact form, optionally with files. */
+function validContactFormData(overrides = {}, files = []) {
+  const body = validContactBody(overrides);
+  const formData = new FormData();
+  for (const [key, value] of Object.entries(body)) {
+    formData.append(key, value);
+  }
+  for (const file of files) {
+    formData.append('attachments', file);
+  }
+  return formData;
+}
+
+module.exports = { startServer, validContactBody, validContactFormData };

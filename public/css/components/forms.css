@@ -23,6 +23,9 @@
 .form__row {
   display: grid;
   gap: var(--space-5);
+  /* Two fields sharing a row must never stretch to match each other's height: one may carry
+     a hint or error line the other doesn't, and both should still start flush at the top. */
+  align-items: start;
 }
 @media (min-width: 40rem) {
   .form__row--2 {
@@ -33,6 +36,9 @@
 .field {
   display: grid;
   gap: 0.4rem;
+  /* Defensive: keep label → control → helper/error stacked from the top even if a sibling
+     field in the same .form__row makes this one taller than its own content needs. */
+  align-content: start;
 }
 .field__label {
   font-weight: 700;
@@ -111,6 +117,85 @@
   color: var(--color-text-faint);
   text-align: right;
   margin: 0;
+}
+
+/* Attachments: optional multi-file picker, kept as plain as the rest of the form. */
+.field--attachments .field__file {
+  width: auto;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.7rem;
+  border: 1.5px dashed var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  max-width: 100%;
+}
+.field--attachments .field__file:hover {
+  border-color: var(--color-text-faint);
+}
+.field--attachments .field__file:focus-visible {
+  outline: none;
+  border-color: var(--color-focus);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-focus) 30%, transparent);
+}
+.field--attachments.is-invalid .field__file {
+  border-color: var(--color-danger);
+}
+
+.attachment-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+.attachment-list__item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+}
+.attachment-list__name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+.attachment-list__size {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  white-space: nowrap;
+}
+.attachment-list__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.attachment-list__remove:hover {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.attachment-summary {
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
 }
 
 /* Checkbox */

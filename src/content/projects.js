@@ -5,7 +5,7 @@
  *
  * Rules (from docs/PORTFOLIO_MASTER_BRIEF.md):
  * - Only verifiable facts. No user counts, revenue, scores or invented outcomes.
- * - SaveFold is "In Development / Technical Beta".
+ * - SaveFold is "Live" (staging.savefold.site) and under active continued development.
  * - AuthorityLab is "Validation Phase / Security R&D".
  * - Client sites are described from public, read-only inspection.
  *
@@ -22,9 +22,9 @@ const projects = [
     featured: true,
     order: 1,
     year: null,
-    liveUrl: null,
+    liveUrl: 'https://staging.savefold.site/',
     repoUrl: null,
-    statusKey: 'inDevelopment',
+    statusKey: 'live',
     tech: ['Node.js', 'Express', 'EJS', 'CSS', 'JavaScript', 'MySQL/MariaDB', 'REST API', 'PWA', 'GitHub', 'Hostinger Node.js'],
     media: { desktop: 'savefold-desktop.png', mobile: 'savefold-mobile.png' },
     accent: 'teal',
@@ -33,7 +33,7 @@ const projects = [
         title: 'SaveFold',
         tagline: 'Links und Inhalte aus dem Web sammeln, ordnen und wiederfinden.',
         summary:
-          'SaveFold ist eine Web-Anwendung, mit der nützliche Links und geteilte Inhalte aus Websites, YouTube, X/Twitter, Instagram und anderen Quellen gespeichert, kategorisiert, durchsucht und verwaltet werden. Es ist mein zentrales Full-Stack-Produktprojekt und befindet sich in der technischen Beta.',
+          'SaveFold ist eine Web-Anwendung, mit der nützliche Links und geteilte Inhalte aus Websites, YouTube, X/Twitter, Instagram und anderen Quellen gespeichert, kategorisiert, durchsucht und verwaltet werden. Es ist mein zentrales Full-Stack-Produktprojekt: eine veröffentlichte und nutzbare Anwendung, die live ist und mit neuen Funktionen, Verbesserungen und neuen Versionen aktiv weiterentwickelt wird.',
         problem:
           'Interessante Inhalte landen verstreut in Browser-Lesezeichen, Chat-Nachrichten und Social-Media-Apps. Später wiederfinden ist mühsam, und die meisten Werkzeuge sind entweder zu einfach oder an eine einzelne Plattform gebunden. Gebraucht wurde ein eigener, plattformunabhängiger Ort, an dem Links mit Kategorien, Notizen und Aufgaben zusammenlaufen.',
         role: 'Konzept, Datenmodell, Backend, Frontend, Sicherheit, Tests und Deployment-Workflow – als eigenes Produktprojekt vollständig selbst umgesetzt.',
@@ -55,8 +55,8 @@ const projects = [
           'Automatisierte Tests für Kernabläufe',
           'Versionierter Deployment-Workflow von GitHub zur Hostinger-Node.js-Umgebung',
         ],
-        outcomes: ['Lauffähige technische Beta mit den oben genannten Kernfunktionen', 'Reproduzierbarer Build- und Deployment-Prozess'],
-        outcomesNote: 'Nutzerzahlen oder Marktdaten werden bewusst nicht angegeben, weil das Produkt noch nicht öffentlich gestartet ist.',
+        outcomes: ['Live und produktiv nutzbar mit den oben genannten Kernfunktionen', 'Reproduzierbarer Build- und Deployment-Prozess'],
+        outcomesNote: 'Nutzerzahlen oder Marktdaten werden hier bewusst nicht angegeben.',
         ctaTitle: 'Ähnliche Web-Anwendung geplant?',
         ctaText:
           'Ich entwickle individuelle Web-Anwendungen und MVPs mit sauberem Datenmodell, sicherer Authentifizierung und nachvollziehbarem Deployment.',
@@ -65,7 +65,7 @@ const projects = [
         title: 'SaveFold',
         tagline: 'Collect, organise and find links and content from across the web.',
         summary:
-          'SaveFold is a web application for saving, categorising, searching and managing useful links and shared content from websites, YouTube, X/Twitter, Instagram and other sources. It is my main full-stack product project and is currently in technical beta.',
+          'SaveFold is a web application for saving, categorising, searching and managing useful links and shared content from websites, YouTube, X/Twitter, Instagram and other sources. It is my main full-stack product project: a released and usable application that is live and continues to be actively developed with new features, improvements and new releases.',
         problem:
           'Interesting content ends up scattered across browser bookmarks, chat messages and social media apps. Finding it again later is tedious, and most tools are either too basic or tied to a single platform. What was needed was a self-owned, platform-independent place where links, categories, notes and tasks come together.',
         role: 'Concept, data model, backend, frontend, security, tests and deployment workflow, all implemented by me as a personal product project.',
@@ -87,8 +87,8 @@ const projects = [
           'Automated tests for core flows',
           'Versioned deployment workflow from GitHub to the Hostinger Node.js environment',
         ],
-        outcomes: ['Working technical beta with the core features listed above', 'Reproducible build and deployment process'],
-        outcomesNote: 'User numbers or market figures are deliberately not stated because the product has not launched publicly yet.',
+        outcomes: ['Live and in productive use with the core features listed above', 'Reproducible build and deployment process'],
+        outcomesNote: 'User numbers or market figures are deliberately not stated here.',
         ctaTitle: 'Planning a similar web application?',
         ctaText:
           'I build custom web applications and MVPs with a clean data model, secure authentication and a deployment process you can follow.',
@@ -97,7 +97,7 @@ const projects = [
         title: 'SaveFold',
         tagline: 'Web’den gelen bağlantı ve içerikleri toplayın, düzenleyin, yeniden bulun.',
         summary:
-          'SaveFold; web siteleri, YouTube, X/Twitter, Instagram ve diğer kaynaklardan gelen faydalı bağlantı ve içerikleri kaydetmek, kategorilendirmek, aramak ve yönetmek için geliştirdiğim bir web uygulamasıdır. Ana full-stack ürün projem olup şu anda teknik beta aşamasındadır.',
+          'SaveFold; web siteleri, YouTube, X/Twitter, Instagram ve diğer kaynaklardan gelen faydalı bağlantı ve içerikleri kaydetmek, kategorilendirmek, aramak ve yönetmek için geliştirdiğim bir web uygulamasıdır. Ana full-stack ürün projem: yayınlanmış ve kullanılabilir durumda, canlı ve yeni özellikler, iyileştirmeler ve yeni sürümlerle aktif olarak geliştirilmeye devam eden bir uygulama.',
         problem:
           'İlginç içerikler tarayıcı yer imlerine, sohbet mesajlarına ve sosyal medya uygulamalarına dağılıyor. Sonradan bulmak zahmetli; mevcut araçlar ya çok basit ya da tek bir platforma bağlı. Bağlantıların, kategorilerin, notların ve görevlerin bir arada durduğu, platformdan bağımsız ve kullanıcının kendine ait bir alan gerekiyordu.',
         role: 'Konsept, veri modeli, backend, frontend, güvenlik, testler ve deployment akışı; kişisel ürün projesi olarak tamamen kendim geliştirdim.',
@@ -119,9 +119,8 @@ const projects = [
           'Temel akışlar için otomatik testler',
           'GitHub’dan Hostinger Node.js ortamına sürümlü deployment akışı',
         ],
-        outcomes: ['Yukarıdaki temel özelliklerle çalışan teknik beta', 'Tekrarlanabilir build ve deployment süreci'],
-        outcomesNote:
-          'Ürün henüz herkese açık olarak yayınlanmadığı için kullanıcı sayısı veya pazar verisi bilinçli olarak verilmemiştir.',
+        outcomes: ['Yukarıdaki temel özelliklerle canlı ve üretimde kullanılıyor', 'Tekrarlanabilir build ve deployment süreci'],
+        outcomesNote: 'Kullanıcı sayısı veya pazar verisi burada bilinçli olarak verilmemiştir.',
         ctaTitle: 'Benzer bir web uygulaması mı planlıyorsunuz?',
         ctaText:
           'Temiz veri modeli, güvenli kimlik doğrulama ve izlenebilir deployment süreciyle özel web uygulamaları ve MVP’ler geliştiriyorum.',
