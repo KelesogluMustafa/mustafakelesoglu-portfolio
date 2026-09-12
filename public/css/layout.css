@@ -102,7 +102,7 @@
 }
 .fact-sheet__row {
   display: grid;
-  grid-template-columns: minmax(7rem, 0.7fr) minmax(0, 1.3fr);
+  grid-template-columns: minmax(7rem, max-content) minmax(0, 1fr);
   gap: var(--space-3);
   padding: var(--space-3) 0;
   border-bottom: 1px solid var(--color-border);
@@ -114,7 +114,7 @@
   text-transform: uppercase;
   color: var(--color-text-faint);
   padding-top: 0.15em;
-  overflow-wrap: anywhere;
+  white-space: nowrap;
 }
 .fact-sheet__row dd {
   font-weight: 600;

@@ -7,9 +7,9 @@ const config = require('../config');
  * Only verified profile facts from docs/PORTFOLIO_MASTER_BRIEF.md belong here.
  */
 module.exports = {
-  name: 'Mustafa Keleşoğlu',
+  name: 'Mustafa Kelesoglu',
   givenName: 'Mustafa',
-  familyName: 'Keleşoğlu',
+  familyName: 'Kelesoglu',
   domain: 'mustafakelesoglu.de',
   siteUrl: config.siteUrl,
   location: {
@@ -22,11 +22,8 @@ module.exports = {
   email: config.contact.toAddress,
   github: config.social.github,
   linkedin: config.social.linkedin,
-  languages: [
-    { code: 'tr', level: 'native' },
-    { code: 'de', level: 'C1' },
-    { code: 'en', level: 'B2' },
-  ],
+  // Proficiency levels are intentionally not published; order is display order.
+  languages: [{ code: 'de' }, { code: 'en' }, { code: 'tr' }],
   // Owner-approved portrait is not available yet; the hero stays text-led.
   portrait: null,
   themeColor: { light: '#f5f7fa', dark: '#0b1220' },

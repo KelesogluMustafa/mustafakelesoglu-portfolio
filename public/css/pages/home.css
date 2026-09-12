@@ -88,6 +88,10 @@
 .hero__facts .fact-sheet__row:first-child {
   padding-top: 0;
 }
+.hero__facts .fact-sheet__row {
+  grid-template-columns: 8.25rem minmax(0, 1fr);
+  column-gap: var(--space-4);
+}
 @media (max-width: 30rem) {
   .hero__facts .fact-sheet__row {
     grid-template-columns: 1fr;
