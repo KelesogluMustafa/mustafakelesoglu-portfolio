@@ -28,3 +28,5 @@ jobs:
           git add -A
           git commit -m 'fix: remove project description minimum length'
           git push origin HEAD:main
+
+# trigger
