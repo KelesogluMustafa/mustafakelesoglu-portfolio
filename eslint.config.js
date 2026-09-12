@@ -45,6 +45,9 @@ const nodeGlobals = {
   setInterval: 'readonly',
   clearInterval: 'readonly',
   fetch: 'readonly',
+  FormData: 'readonly',
+  File: 'readonly',
+  Blob: 'readonly',
   URL: 'readonly',
   URLSearchParams: 'readonly',
 };
@@ -56,6 +59,7 @@ const browserGlobals = {
   history: 'readonly',
   navigator: 'readonly',
   IntersectionObserver: 'readonly',
+  DataTransfer: 'readonly',
   setTimeout: 'readonly',
   clearTimeout: 'readonly',
   URL: 'readonly',

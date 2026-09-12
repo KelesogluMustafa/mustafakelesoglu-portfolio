@@ -19,8 +19,13 @@ export function initContactForm() {
         return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value) && value.length <= 254;
       case 'projectType':
         return value !== '';
-      case 'message':
-        return value.length >= 20 && value.length <= 3000;
+      case 'message': {
+        // Read the limits from the markup (rendered from the same server-side constant used
+        // for backend validation) instead of duplicating the numbers here.
+        const min = Number.parseInt(el.getAttribute('minlength') || '20', 10);
+        const max = Number.parseInt(el.getAttribute('maxlength') || '5000', 10);
+        return value.length >= min && value.length <= max;
+      }
       case 'consent':
         return value === 'on';
       case 'company':
@@ -55,7 +60,7 @@ export function initContactForm() {
   const counter = form.querySelector('[data-char-count]');
   if (message && counter) {
     const tpl = counter.dataset.template || '{count}';
-    const max = Number.parseInt(message.getAttribute('maxlength') || '3000', 10);
+    const max = Number.parseInt(message.getAttribute('maxlength') || '5000', 10);
     const update = () => {
       counter.textContent = tpl.replace('{count}', String(Math.max(0, max - message.value.length)));
     };

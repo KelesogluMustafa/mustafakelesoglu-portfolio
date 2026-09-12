@@ -6,8 +6,14 @@ var E = dict.contact.errors;
 var v = values || {};
 var err = errors || {};
 var errorKeys = Object.keys(err);
-var fieldOrder = ['name', 'email', 'company', 'projectType', 'website', 'budget', 'deadline', 'message', 'consent'];
-var jsMessages = JSON.stringify({ name: E.name, email: E.email, company: E.company, projectType: E.projectType, website: E.website, budget: E.budget, deadline: E.deadline, message: E.message, consent: E.consent });
+var fieldOrder = ['name', 'email', 'company', 'projectType', 'website', 'budget', 'deadline', 'message', 'attachments', 'consent'];
+var jsMessages = JSON.stringify({
+  name: E.name, email: E.email, company: E.company, projectType: E.projectType, website: E.website,
+  budget: E.budget, deadline: E.deadline, message: E.message, consent: E.consent,
+  attachmentsCount: E.attachmentsCount, attachmentsSize: E.attachmentsSize, attachmentsType: E.attachmentsType,
+});
+var AL = attachmentLimits;
+var ML = messageLimits;
 %>
 
 <main id="main" tabindex="-1">
@@ -43,7 +49,7 @@ var jsMessages = JSON.stringify({ name: E.name, email: E.email, company: E.compa
       </div>
       <% } else { %>
 
-      <form class="form" method="post" action="<%= url('/contact') %>" novalidate data-contact-form data-messages="<%= jsMessages %>">
+      <form class="form" method="post" action="<%= url('/contact') %>" enctype="multipart/form-data" novalidate data-contact-form data-messages="<%= jsMessages %>">
         <% if (globalError) { %>
         <div class="form__summary notice--danger" role="alert" tabindex="-1">
           <strong><%= E[globalError] || E.generic %></strong>
@@ -122,10 +128,35 @@ var jsMessages = JSON.stringify({ name: E.name, email: E.email, company: E.compa
 
           <div class="field<%= err.message ? ' is-invalid' : '' %>">
             <label class="field__label" for="field-message"><%= F.message %></label>
-            <textarea class="field__textarea" id="field-message" name="message" required minlength="20" maxlength="3000" rows="7" data-validate aria-describedby="hint-message err-message count-message" aria-invalid="<%= err.message ? 'true' : 'false' %>"><%= v.message || '' %></textarea>
+            <textarea class="field__textarea" id="field-message" name="message" required minlength="<%= ML.min %>" maxlength="<%= ML.max %>" rows="7" data-validate aria-describedby="hint-message err-message count-message" aria-invalid="<%= err.message ? 'true' : 'false' %>"><%= v.message || '' %></textarea>
             <p class="field__hint" id="hint-message"><%= F.messageHint %></p>
             <p class="field__count" id="count-message" data-char-count data-template="<%= F.charsLeft %>" aria-live="polite"></p>
             <p class="field__error" id="err-message"><%= err.message ? E.message : '' %></p>
+          </div>
+
+          <div class="field field--attachments<%= err.attachments ? ' is-invalid' : '' %>">
+            <label class="field__label" for="field-attachments"><%= F.attachments %> <span class="field__optional">(<%= F.optional %>)</span></label>
+            <p class="field__hint" id="hint-attachments"><%= F.attachmentsHint %></p>
+            <input
+              class="field__file"
+              type="file"
+              id="field-attachments"
+              name="attachments"
+              multiple
+              accept=".pdf,.doc,.docx,.txt,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain"
+              data-attachments-input
+              data-max-files="<%= AL.maxFiles %>"
+              data-max-total-bytes="<%= AL.maxTotalBytes %>"
+              data-allowed-extensions="<%= AL.allowedExtensions.join(',') %>"
+              data-count-template="<%= F.attachmentsCountLabel %>"
+              data-total-template="<%= F.attachmentsTotalLabel %>"
+              data-remove-template="<%= F.attachmentsRemove %>"
+              aria-describedby="hint-attachments err-attachments attachments-summary"
+              aria-invalid="<%= err.attachments ? 'true' : 'false' %>"
+            >
+            <ul class="attachment-list" data-attachment-list hidden></ul>
+            <p class="attachment-summary" id="attachments-summary" data-attachment-summary aria-live="polite" hidden></p>
+            <p class="field__error" id="err-attachments" aria-live="polite"><%= err.attachments ? E[err.attachments] : '' %></p>
           </div>
 
           <div class="field field--check<%= err.consent ? ' is-invalid' : '' %>">

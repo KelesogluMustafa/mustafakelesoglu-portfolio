@@ -31,6 +31,18 @@ function getSmtpTransporter() {
   return smtpTransporter;
 }
 
+/**
+ * Maps validated attachment records to Nodemailer's attachment shape. Exported separately
+ * so the multi-file wiring can be unit-tested without a real SMTP transport.
+ */
+function toNodemailerAttachments(files) {
+  return files.map((file) => ({
+    filename: file.filename,
+    content: file.buffer,
+    contentType: file.mimetype,
+  }));
+}
+
 function composeText(locale, values) {
   return [
     `Portfolio contact request (${locale})`,
@@ -55,7 +67,7 @@ function composeText(locale, values) {
  * data, and reports `delivered: false`. SMTP is implemented but stays disabled until
  * CONTACT_TRANSPORT=smtp and the mailbox credentials are configured in the host.
  */
-async function deliver({ locale, values }) {
+async function deliver({ locale, values, attachments = [] }) {
   const transport = config.contact.transport;
 
   if (transport === 'log') {
@@ -66,18 +78,27 @@ async function deliver({ locale, values }) {
       messageLength: values.message.length,
       hasCompany: Boolean(values.company),
       hasWebsite: Boolean(values.website),
+      attachmentCount: attachments.length,
+      attachmentBytes: attachments.reduce((sum, f) => sum + f.buffer.length, 0),
     });
     return { delivered: false, transport, to: config.contact.toAddress };
   }
 
   if (transport === 'smtp') {
-    const info = await getSmtpTransporter().sendMail({
+    const mail = {
       from: config.contact.smtp.from,
       to: config.contact.toAddress,
       replyTo: { name: values.name, address: values.email },
       subject: `[Portfolio] ${values.projectType}`,
       text: composeText(locale, values),
-    });
+    };
+    // Nodemailer's `attachments` key is only added when there is something to attach —
+    // an empty array is harmless, but omitting it keeps the no-file path identical to the
+    // request shape used before attachments existed.
+    if (attachments.length > 0) {
+      mail.attachments = toNodemailerAttachments(attachments);
+    }
+    const info = await getSmtpTransporter().sendMail(mail);
     const delivered = Array.isArray(info.accepted) ? info.accepted.length > 0 : Boolean(info.messageId);
     if (!delivered) {
       const err = new Error('SMTP provider did not accept the contact request');
@@ -93,4 +114,4 @@ async function deliver({ locale, values }) {
   throw err;
 }
 
-module.exports = { deliver, composeText, assertSmtpConfig };
+module.exports = { deliver, composeText, assertSmtpConfig, toNodemailerAttachments };

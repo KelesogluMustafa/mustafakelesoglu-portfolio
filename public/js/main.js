@@ -4,6 +4,7 @@ import { initTheme } from './modules/theme.js';
 import { initReveal } from './modules/reveal.js';
 import { initFilters } from './modules/filters.js';
 import { initContactForm } from './modules/form.js';
+import { initAttachments } from './modules/attachments.js';
 import { initSaveFoldPreview } from './modules/savefold-preview.js';
 import { initAuthorityLabDemo } from './modules/authoritylab-demo.js';
 
@@ -14,5 +15,6 @@ initNav();
 initReveal();
 initFilters();
 initContactForm();
+initAttachments();
 initSaveFoldPreview();
 initAuthorityLabDemo();

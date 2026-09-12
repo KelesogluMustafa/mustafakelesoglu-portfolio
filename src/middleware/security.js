@@ -44,7 +44,10 @@ function cspNonce(req, res, next) {
 function contactRateLimiter() {
   return rateLimit({
     windowMs: config.contact.rateLimitWindowMs,
-    limit: config.contact.rateLimitMax,
+    // A function (re-read on every request) rather than a captured number: the route table
+    // is built once per process and reused by every app instance, so a fixed number taken
+    // here would freeze in whatever the limit was at first import.
+    limit: () => config.contact.rateLimitMax,
     standardHeaders: 'draft-7',
     legacyHeaders: false,
     // Rendered by the contact route so the message is localised.
