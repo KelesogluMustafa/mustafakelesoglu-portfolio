@@ -1,1 +1,122 @@
-placeholder
+From 4dadb1d749e8c9e0fa899cc3f0eaae836fb6284c Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sat, 12 Sep 2026 14:03:31 +0000
+Subject: [PATCH] fix: remove leftover 20-character minimum on the project
+ description
+
+The description field was accidentally still enforcing a 20-character
+minimum from before the 5000-character limit was introduced. It stays
+required but now accepts 1-5000 characters:
+
+- Drop the HTML minlength attribute from the textarea.
+- Drop the frontend minimum-length check in form.js (still requires
+  a non-empty value, no lower bound).
+- Drop the backend minimum in contact-validation.js; validateContact
+  now rejects only an empty message or one over 5000 characters.
+- Update the DE/EN/TR validation message to no longer mention a
+  "20 to 5000" range.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L7CFpCTFxknYUWrmiHgkHf
+---
+ public/js/modules/form.js     |  8 ++++----
+ src/lib/contact-validation.js |  4 ++--
+ src/locales/de.js             |  2 +-
+ src/locales/en.js             |  2 +-
+ src/locales/tr.js             |  2 +-
+ tests/contact.test.js         | 15 +++++++++++----
+ views/pages/contact.ejs       |  2 +-
+ 7 files changed, 21 insertions(+), 14 deletions(-)
+
+diff --git a/public/js/modules/form.js b/public/js/modules/form.js
+index a81f090..a7c8b59 100644
+--- a/public/js/modules/form.js
++++ b/public/js/modules/form.js
+@@ -20,11 +20,11 @@ export function initContactForm() {
+       case 'projectType':
+         return value !== '';
+       case 'message': {
+-        // Read the limits from the markup (rendered from the same server-side constant used
+-        // for backend validation) instead of duplicating the numbers here.
+-        const min = Number.parseInt(el.getAttribute('minlength') || '20', 10);
++        // Read the limit from the markup (rendered from the same server-side constant used
++        // for backend validation) instead of duplicating the number here. Required, no minimum
++        // length: any non-empty value up to the maximum is accepted.
+         const max = Number.parseInt(el.getAttribute('maxlength') || '5000', 10);
+-        return value.length >= min && value.length <= max;
++        return value.length > 0 && value.length <= max;
+       }
+       case 'consent':
+         return value === 'on';
+diff --git a/src/lib/contact-validation.js b/src/lib/contact-validation.js
+index de326f8..4ca816c 100644
+--- a/src/lib/contact-validation.js
++++ b/src/lib/contact-validation.js
+@@ -15,7 +15,7 @@ const LIMITS = {
+   email: { max: 254 },
+   website: { max: 300 },
+   deadline: { max: 100 },
+-  message: { min: 20, max: 5000 },
++  message: { max: 5000 },
+ };
+@@ -195,7 +195,7 @@ function validateContact(body = {}) {
+-  if (values.message.length < LIMITS.message.min || values.message.length > LIMITS.message.max) errors.message = 'message';
++  if (!values.message || values.message.length > LIMITS.message.max) errors.message = 'message';
+diff --git a/src/locales/de.js b/src/locales/de.js
+index cddb63c..e8fb5bb 100644
+--- a/src/locales/de.js
++++ b/src/locales/de.js
+@@ -461,7 +461,7 @@ module.exports = {
+-      message: 'Bitte beschreiben Sie Ihr Vorhaben (20 bis 5000 Zeichen).',
++      message: 'Bitte beschreiben Sie Ihr Vorhaben (Pflichtfeld, maximal 5000 Zeichen).',
+diff --git a/src/locales/en.js b/src/locales/en.js
+index 60fc23f..6f423af 100644
+--- a/src/locales/en.js
++++ b/src/locales/en.js
+@@ -450,7 +450,7 @@ module.exports = {
+-      message: 'Please describe your project (20 to 5000 characters).',
++      message: 'Please describe your project (required, maximum 5000 characters).',
+diff --git a/src/locales/tr.js b/src/locales/tr.js
+index b6909f0..9033ca0 100644
+--- a/src/locales/tr.js
++++ b/src/locales/tr.js
+@@ -457,7 +457,7 @@ module.exports = {
+-      message: 'Lütfen projenizi anlatın (20 ile 5000 karakter arası).',
++      message: 'Lütfen projenizi anlatın (zorunlu, en fazla 5000 karakter).',
+diff --git a/tests/contact.test.js b/tests/contact.test.js
+index 43d5193..d3cf063 100644
+--- a/tests/contact.test.js
++++ b/tests/contact.test.js
+@@ -45,7 +45,7 @@ test('validateContact rejects missing and malformed fields', () => {
+-    message: 'short',
++    message: '',
+@@ -267,19 +267,26 @@ describe('optional project attachments (0-5 files, 10 MB combined)', () => {
+-  test('the project description accepts exactly 5000 characters and rejects 5001, end to end', async () => {
++  test('the project description accepts 1 character and exactly 5000, and rejects empty and 5001, end to end', async () => {
++    const single = await uploadSrv.postForm('/en/contact', validContactFormData({ message: 'x' }));
++    assert.equal(single.status, 200);
++
+     const ok = await uploadSrv.postForm('/en/contact', validContactFormData({ message: 'x'.repeat(5000) }));
+     assert.equal(ok.status, 200);
++
++    const empty = await uploadSrv.postForm('/en/contact', validContactFormData({ message: '' }));
++    assert.equal(empty.status, 422);
++    assert.match(await empty.text(), /required, maximum 5000 characters/);
+ 
+     const tooLong = await uploadSrv.postForm('/en/contact', validContactFormData({ message: 'x'.repeat(5001) }));
+     assert.equal(tooLong.status, 422);
+-    assert.match(await tooLong.text(), /20 to 5000 characters/);
++    assert.match(await tooLong.text(), /required, maximum 5000 characters/);
+   });
+@@ -288,7 +295,7 @@ describe('optional project attachments (0-5 files, 10 MB combined)', () => {
+-    assert.match(de, /minlength="20"/);
++    assert.doesNotMatch(de, /minlength=/);
+diff --git a/views/pages/contact.ejs b/views/pages/contact.ejs
+index 1c54520..5554bf9 100644
+--- a/views/pages/contact.ejs
++++ b/views/pages/contact.ejs
+@@ -128,7 +128,7 @@ var ML = messageLimits;
+-            <textarea class="field__textarea" id="field-message" name="message" required minlength="<%= ML.min %>" maxlength="<%= ML.max %>" rows="7" data-validate aria-describedby="hint-message err-message count-message" aria-invalid="<%= err.message ? 'true' : 'false' %>"><%= v.message || '' %></textarea>
++            <textarea class="field__textarea" id="field-message" name="message" required maxlength="<%= ML.max %>" rows="7" data-validate aria-describedby="hint-message err-message count-message" aria-invalid="<%= err.message ? 'true' : 'false' %>"><%= v.message || '' %></textarea>
+-- 
+2.43.0
