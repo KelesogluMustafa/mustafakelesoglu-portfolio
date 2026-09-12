@@ -39,7 +39,6 @@
       <ul class="evidence__list">
         <% dict.home.evidence.items.forEach(function (item) { %>
         <li class="evidence__item">
-          <span class="evidence__value"><%= item.value %></span>
           <span class="evidence__label"><%= item.label %></span>
           <span class="evidence__detail"><%= item.detail %></span>
         </li>
@@ -132,7 +131,7 @@
       </div>
       <dl class="about-teaser__facts fact-sheet fact-sheet--compact">
         <div class="fact-sheet__row"><dt><%= t('common.location') %></dt><dd><%= t('common.locationLine') %></dd></div>
-        <div class="fact-sheet__row"><dt><%= t('common.languages') %></dt><dd><%= site.languages.map(function (l) { return t('common.languageNames.' + l.code) + ' (' + t('common.languageLevels.' + l.level) + ')'; }).join(', ') %></dd></div>
+        <div class="fact-sheet__row"><dt><%= t('common.languages') %></dt><dd><%= site.languages.map(function (l) { return t('common.languageNames.' + l.code); }).join(' · ') %></dd></div>
         <div class="fact-sheet__row"><dt><%= t('common.availability') %></dt><dd><%= t('common.workMode') %></dd></div>
         <div class="fact-sheet__row"><dt><%= t('common.github') %></dt><dd><a href="<%= site.github %>" rel="me noopener" target="_blank"><%= site.github.replace(/^https?:\/\//, '') %></a></dd></div>
       </dl>

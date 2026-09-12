@@ -1,4 +1,4 @@
-// Theme preference: system by default, explicit light/dark stored locally in the browser only.
+// Theme preference: dark by default, explicit light/dark stored locally in the browser only.
 const KEY = 'theme';
 
 function read() {
@@ -20,8 +20,7 @@ function write(value) {
 
 function current() {
   const attr = document.documentElement.getAttribute('data-theme');
-  if (attr === 'light' || attr === 'dark') return attr;
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  return attr === 'light' ? 'light' : 'dark';
 }
 
 export function initTheme() {

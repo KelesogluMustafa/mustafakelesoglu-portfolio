@@ -2,15 +2,15 @@
 
 module.exports = {
   meta: {
-    siteName: 'Mustafa Keleşoğlu',
-    titleSuffix: ' · Mustafa Keleşoğlu',
+    siteName: 'Mustafa Kelesoglu',
+    titleSuffix: ' · Mustafa Kelesoglu',
     identity: 'Web Developer | WordPress, Full-Stack & Security',
     positioning: 'Güvenlik odaklı web siteleri ve web uygulamaları geliştiren web geliştirici.',
     pages: {
       home: {
         title: 'Almanya, Dinslaken’de Web Geliştirici · WordPress, Full-Stack & Güvenlik',
         description:
-          'Mustafa Keleşoğlu şirketler, dernekler ve dijital projeler için hızlı, responsive web siteleri ve özel web uygulamaları geliştiriyor. WordPress, Node.js ve güvenlik odaklı geliştirme; Dinslaken, NRW, Almanya ve uzaktan.',
+          'Mustafa Kelesoglu şirketler, dernekler ve dijital projeler için hızlı, responsive web siteleri ve özel web uygulamaları geliştiriyor. WordPress, Node.js ve güvenlik odaklı geliştirme; Dinslaken, NRW, Almanya ve uzaktan.',
       },
       projects: {
         title: 'Projeler & Vaka Çalışmaları',
@@ -35,7 +35,7 @@ module.exports = {
       cv: {
         title: 'Özgeçmiş',
         description:
-          'Mustafa Keleşoğlu’nun kısa profili, eğitimi, dilleri ve odak alanları. PDF özgeçmiş istek üzerine veya onay sonrası indirilebilir.',
+          'Mustafa Kelesoglu’nun kısa profili, eğitimi, dilleri ve odak alanları. PDF özgeçmiş istek üzerine veya onay sonrası indirilebilir.',
       },
       contact: {
         title: 'Proje talebi',
@@ -108,7 +108,6 @@ module.exports = {
       inDevelopment: 'Geliştirme aşamasında · Teknik beta',
       validation: 'Doğrulama aşaması · Güvenlik Ar-Ge',
     },
-    languageLevels: { native: 'Ana dil', C1: 'C1 (mesleki)', B2: 'B2' },
     languageNames: { de: 'Almanca', en: 'İngilizce', tr: 'Türkçe' },
     workMode: 'NRW ve uzaktan',
     locationLine: 'Dinslaken, Kuzey Ren-Vestfalya, Almanya',
@@ -116,7 +115,7 @@ module.exports = {
   },
 
   hero: {
-    eyebrow: 'Mustafa Keleşoğlu · Web Developer',
+    eyebrow: 'Mustafa Kelesoglu · Web Developer',
     title: 'Güvenlik odaklı web siteleri ve web uygulamaları.',
     text: 'Şirketler, dernekler ve dijital projeler için WordPress, Elementor ve modern full-stack teknolojileriyle hızlı, responsive web siteleri ve özel web uygulamaları geliştiriyorum.',
     context: 'Almanya, Dinslaken · NRW’de ve uzaktan projeler',
@@ -126,7 +125,7 @@ module.exports = {
     facts: [
       { label: 'Konum', value: 'Dinslaken, Almanya · uzaktan' },
       { label: 'Odak', value: 'WordPress · Node.js · Güvenlik' },
-      { label: 'Diller', value: 'Türkçe · Deutsch · English' },
+      { label: 'Diller', value: 'Almanca · İngilizce · Türkçe' },
       { label: 'Şu anda', value: 'Web sitesi ve web uygulaması projelerine açık' },
     ],
   },
@@ -135,10 +134,10 @@ module.exports = {
     evidence: {
       label: 'Doğrulanabilir',
       items: [
-        { value: '3', label: 'Yayındaki müşteri sitesi', detail: 'WordPress, Elementor, WooCommerce' },
-        { value: '2', label: 'Kişisel yazılım projesi', detail: 'Full-stack ürün ve güvenlik Ar-Ge' },
-        { value: '3', label: 'Çalışma dili', detail: 'Almanca C1 · İngilizce B2 · Türkçe ana dil' },
-        { value: 'DE + uzaktan', label: 'Hizmet alanı', detail: 'Dinslaken, Duisburg, NRW ve çevrim içi her yer' },
+        { label: 'Üç yayındaki müşteri sitesi', detail: 'WordPress, Elementor, WooCommerce' },
+        { label: 'İki kişisel yazılım projesi', detail: 'Full-stack ürün ve güvenlik Ar-Ge' },
+        { label: 'Üç çalışma dili', detail: 'Almanca · İngilizce · Türkçe' },
+        { label: 'Almanya ve uzaktan', detail: 'Dinslaken, Duisburg, NRW ve çevrim içi her yer' },
       ],
     },
     featured: {
@@ -191,7 +190,7 @@ module.exports = {
     about: {
       eyebrow: 'Hakkımda',
       title: 'Mühendislik altyapılı web geliştirici',
-      text: 'Ben Mustafa Keleşoğlu, Almanya’nın Dinslaken şehrinde yaşayan bir web geliştiriciyim. Yolum makine mühendisliği eğitiminden web geliştirmeye uzandı; analitik düşünceyi ve düzenli dokümantasyonu yanımda getirdim. Bugün müşteriler için WordPress projelerini, Node.js ile kişisel full-stack ürünleri ve güvenlik odaklı bir çalışma biçimini bir araya getiriyorum.',
+      text: 'Ben Mustafa Kelesoglu, Almanya’nın Dinslaken şehrinde yaşayan bir web geliştiriciyim. Yolum makine mühendisliği eğitiminden web geliştirmeye uzandı; analitik düşünceyi ve düzenli dokümantasyonu yanımda getirdim. Bugün müşteriler için WordPress projelerini, Node.js ile kişisel full-stack ürünleri ve güvenlik odaklı bir çalışma biçimini bir araya getiriyorum.',
       cta: 'Hakkımda daha fazla',
     },
     skills: {
@@ -306,7 +305,7 @@ module.exports = {
   about: {
     eyebrow: 'Hakkımda',
     title: 'Mühendislik altyapılı, güvenlik odaklı web geliştirici',
-    lead: 'Ben Mustafa Keleşoğlu, Almanya’nın Kuzey Ren-Vestfalya eyaletindeki Dinslaken’de yaşayan bir web geliştiriciyim. Hızlı yüklenen, her cihazda çalışan ve baştan güvenli yapılandırılan web siteleri ve web uygulamaları kuruyorum.',
+    lead: 'Ben Mustafa Kelesoglu, Almanya’nın Kuzey Ren-Vestfalya eyaletindeki Dinslaken’de yaşayan bir web geliştiriciyim. Hızlı yüklenen, her cihazda çalışan ve baştan güvenli yapılandırılan web siteleri ve web uygulamaları kuruyorum.',
     story: [
       'Web geliştirmeye giden yolum tamamlanmış bir makine mühendisliği eğitimiyle başladı. Almanya’nın yabancı eğitim denklik kurumu ZAB, diplomayı olumlu değerlendirdi ve Alman lisans (Bachelor) derecesiyle karşılaştırılabilir buldu. O dönemden bugün her gün işime yarayan alışkanlıklar kaldı: problemleri yapılandırılmış biçimde parçalamak, kararları belgelemek ve “bitti” demeden önce sonuçları kontrol etmek.',
       'Pratikte WordPress, Elementor ve WooCommerce ile müşteri projelerinde büyüdüm: kurumsal siteler, sipariş akışına sahip bir restoran sitesi, bir dernek sitesi. Buna taşıma, hosting ve deployment ekleniyor; bir sitenin güvenilir çalışıp çalışmayacağını belirleyen o gösterişsiz işler.',
@@ -316,7 +315,7 @@ module.exports = {
     facts: [
       { label: 'Konum', value: 'Dinslaken, Kuzey Ren-Vestfalya, Almanya' },
       { label: 'Çalışma alanı', value: 'NRW (Duisburg, Ruhr bölgesi, Aşağı Ren) ve uzaktan' },
-      { label: 'Diller', value: 'Türkçe (ana dil), Almanca (C1 mesleki), İngilizce (B2)' },
+      { label: 'Diller', value: 'Almanca · İngilizce · Türkçe' },
       { label: 'Eğitim', value: 'Makine mühendisliği diploması, Alman lisans derecesine denk ZAB değerlendirmesi' },
       { label: 'Web', value: 'WordPress, Elementor, WooCommerce, taşıma, hosting' },
       { label: 'Full-stack', value: 'Node.js, Express, EJS, REST API, MySQL/MariaDB, Git, CI/CD' },
@@ -478,10 +477,10 @@ module.exports = {
       sections: [
         {
           title: 'Sağlayıcı',
-          lines: ['Mustafa Keleşoğlu', 'Web geliştirme', '46537 Dinslaken', 'Almanya'],
+          lines: ['Mustafa Kelesoglu', 'Web geliştirme', '46537 Dinslaken', 'Almanya'],
         },
         { title: 'İletişim', lines: ['E-posta: {email}'] },
-        { title: 'İçerikten sorumlu', lines: ['Mustafa Keleşoğlu'] },
+        { title: 'İçerikten sorumlu', lines: ['Mustafa Kelesoglu'] },
         {
           title: 'İçerik sorumluluğu',
           lines: [
@@ -512,7 +511,7 @@ module.exports = {
       sections: [
         {
           title: '1. Veri sorumlusu',
-          paragraphs: ['Bu web sitesindeki veri işlemeden sorumlu kişi Mustafa Keleşoğlu, Dinslaken, Almanya’dır. İletişim: {email}.'],
+          paragraphs: ['Bu web sitesindeki veri işlemeden sorumlu kişi Mustafa Kelesoglu, Dinslaken, Almanya’dır. İletişim: {email}.'],
         },
         {
           title: '2. Hosting ve sunucu log dosyaları',
