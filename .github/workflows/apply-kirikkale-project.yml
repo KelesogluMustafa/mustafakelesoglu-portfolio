@@ -148,3 +148,5 @@ jobs:
           git add src/content/projects.js docs/ASSET_CHECKLIST.md
           git commit -m "feat: add Kirikkale Taksicin project"
           git push
+
+# Triggered after workflow registration.
