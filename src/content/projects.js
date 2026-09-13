@@ -9,7 +9,7 @@ const newProject = {
   slug: 'kirikkale-taksicin',
   group: 'client',
   kind: 'client',
-  featured: false,
+  featured: true,
   order: 6,
   year: null,
   liveUrl: 'https://kirikkaletaksicin.com/',
