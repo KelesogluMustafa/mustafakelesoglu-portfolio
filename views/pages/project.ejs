@@ -14,6 +14,8 @@
           <div class="project-hero__actions">
             <% if (project.liveUrl) { %>
             <a class="button button--primary" href="<%= project.liveUrl %>" target="_blank" rel="noopener"><%= t('common.liveSite') %> <%- include('../partials/icon', { name: 'external' }) %><span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a>
+            <% } else if (project.previewUrl) { %>
+            <a class="button button--primary" href="<%= project.previewUrl %>" target="_blank" rel="noopener"><%= t('common.previewSite') %> <%- include('../partials/icon', { name: 'external' }) %><span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a>
             <% } %>
             <a class="button button--secondary" href="<%= url('/contact') %>"><%= t('nav.requestProject') %></a>
           </div>
@@ -176,6 +178,8 @@
         <p><span class="status status--<%= project.statusKey %>"><%= t('common.statusLabels.' + project.statusKey) %></span></p>
         <% if (project.liveUrl) { %>
         <p class="mt-3"><a class="link-arrow" href="<%= project.liveUrl %>" target="_blank" rel="noopener"><%= project.liveUrl.replace(/^https?:\/\//, '').replace(/\/$/, '') %> <%- include('../partials/icon', { name: 'external' }) %><span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a></p>
+        <% } else if (project.previewUrl) { %>
+        <p class="mt-3"><a class="link-arrow" href="<%= project.previewUrl %>" target="_blank" rel="noopener"><%= t('common.previewSite') %>: <%= project.previewUrl.replace(/^https?:\/\//, '').replace(/\/$/, '') %> <%- include('../partials/icon', { name: 'external' }) %><span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a></p>
         <% } %>
       </div>
 

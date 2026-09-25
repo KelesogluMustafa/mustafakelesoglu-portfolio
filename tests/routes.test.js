@@ -94,3 +94,18 @@ test('health endpoint responds', async () => {
   assert.equal(res.status, 200);
   assert.deepEqual(await res.json(), { ok: true });
 });
+
+test('LeseDeutsch follows SaveFold on the homepage and links its test version, not a live site', async () => {
+  const home = await (await srv.get('/de/')).text();
+  const savefold = home.indexOf('/de/projects/savefold');
+  const lesedeutsch = home.indexOf('/de/projects/lesedeutsch');
+  assert.ok(savefold !== -1 && lesedeutsch > savefold);
+  assert.ok(lesedeutsch < home.indexOf('/de/projects/authoritylab'));
+  for (const locale of LOCALES) {
+    const res = await srv.get(`/${locale}/projects/lesedeutsch`);
+    assert.equal(res.status, 200);
+    const html = await res.text();
+    assert.ok(html.includes('href="https://staging.lesedeutsch.de/"'));
+    assert.match(html, /status--inDevelopment/);
+  }
+});

@@ -82,6 +82,7 @@ module.exports = {
     viewAllProjects: 'View all projects',
     viewServices: 'All services',
     liveSite: 'Open live website',
+    previewSite: 'Open test version',
     externalLink: 'opens in a new tab',
     github: 'GitHub',
     linkedin: 'LinkedIn',

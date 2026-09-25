@@ -23,6 +23,8 @@ var href = url('/projects/' + project.slug);
       <a class="link-arrow" href="<%= href %>"><%= t('common.viewProject') %> <%- include('icon', { name: 'arrow' }) %></a>
       <% if (project.liveUrl) { %>
       <a class="link-plain" href="<%= project.liveUrl %>" target="_blank" rel="noopener"><%= t('common.liveSite') %> <%- include('icon', { name: 'external' }) %><span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a>
+      <% } else if (project.previewUrl) { %>
+      <a class="link-plain" href="<%= project.previewUrl %>" target="_blank" rel="noopener"><%= t('common.previewSite') %> <%- include('icon', { name: 'external' }) %><span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a>
       <% } %>
     </p>
   </div>
