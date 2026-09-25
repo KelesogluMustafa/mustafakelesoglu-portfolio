@@ -11,7 +11,7 @@ var statusLabel = t('common.statusLabels.' + project.statusKey);
 <div class="media-frame media-frame--<%= v %> media-frame--<%= project.accent %>">
   <div class="media-frame__chrome" aria-hidden="true">
     <span class="media-frame__dot"></span><span class="media-frame__dot"></span><span class="media-frame__dot"></span>
-    <span class="media-frame__url"><%= project.liveUrl ? project.liveUrl.replace(/^https?:\/\//, '').replace(/\/$/, '') : project.title + ' · ' + statusLabel %></span>
+    <span class="media-frame__url"><% var frameUrl = project.liveUrl || project.previewUrl; %><%= frameUrl ? frameUrl.replace(/^https?:\/\//, '').replace(/\/$/, '') : project.title + ' · ' + statusLabel %></span>
   </div>
   <% if (hasMedia) { %>
   <img class="media-frame__img" src="/img/projects/<%= project.media.desktop %>" alt="<%= project.title %> – <%= t('projects.mediaDesktop') %>" width="1280" height="800" loading="lazy" decoding="async">
