@@ -10,7 +10,7 @@ const newProject = {
   group: 'client',
   kind: 'client',
   featured: true,
-  order: 7,
+  order: 8,
   year: null,
   liveUrl: 'https://kirikkaletaksicin.com/',
   repoUrl: null,
