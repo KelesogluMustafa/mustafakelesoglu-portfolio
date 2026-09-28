@@ -55,11 +55,11 @@ const groups = [
   },
   {
     key: 'security',
-    items: ['Secure Coding', 'Access Control', 'CSP / Security Headers', 'Validation', 'Logging', 'SOC / SIEM Fundamentals'],
+    items: ['Secure Coding', 'Access Control', 'CSP / Security Headers', 'Validation', 'Logging'],
     i18n: {
-      de: { title: 'Sicherheit', text: 'Sichere Entwicklungsmuster und Grundlagen aus SOC, SIEM, Log-Analyse und Systemsicherheit.' },
-      en: { title: 'Security', text: 'Secure development patterns and fundamentals from SOC, SIEM, log analysis and system security.' },
-      tr: { title: 'Güvenlik', text: 'Güvenli geliştirme desenleri ile SOC, SIEM, log analizi ve sistem güvenliği temelleri.' },
+      de: { title: 'Sicherheit', text: 'Sichere Entwicklungsmuster: Zugriffskontrolle, Sicherheits-Header, Validierung und Logging.' },
+      en: { title: 'Security', text: 'Secure development patterns: access control, security headers, validation and logging.' },
+      tr: { title: 'Güvenlik', text: 'Güvenli geliştirme desenleri: erişim kontrolü, güvenlik başlıkları, doğrulama ve loglama.' },
     },
   },
   {

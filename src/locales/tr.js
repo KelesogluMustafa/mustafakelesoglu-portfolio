@@ -173,7 +173,7 @@ module.exports = {
     security: {
       eyebrow: 'Fark',
       title: 'Sonradan yamalanmaz, baştan güvenli geliştirilir',
-      text: 'Web’e yalnızca tasarım tarafından değil, sistem tarafından da geliyorum: SOC, SIEM, log analizi ve sistem güvenliği sürekli pratiğimin parçası. Bu, web sitelerini ve uygulamaları nasıl kurduğumu değiştiriyor.',
+      text: 'Güvenlik benim için sona eklenen bir adım değil, geliştirmenin bir parçası; SaveFold ve AuthorityLab gibi kendi ürünlerimde de, müşteri sitelerinde de.',
       points: [
         { title: 'Güvenli giriş', text: '“Her şey için tek admin” yerine parola hashleme, oturum koruması ve roller.' },
         {
@@ -310,7 +310,7 @@ module.exports = {
     story: [
       'Web geliştirmeye giden yolum tamamlanmış bir makine mühendisliği eğitimiyle başladı. Almanya’nın yabancı eğitim denklik kurumu ZAB, diplomayı olumlu değerlendirdi ve Alman lisans (Bachelor) derecesiyle karşılaştırılabilir buldu. O dönemden bugün her gün işime yarayan alışkanlıklar kaldı: problemleri yapılandırılmış biçimde parçalamak, kararları belgelemek ve “bitti” demeden önce sonuçları kontrol etmek.',
       'Pratikte WordPress, Elementor ve WooCommerce ile müşteri projelerinde büyüdüm: kurumsal siteler, sipariş akışına sahip bir restoran sitesi, bir dernek sitesi. Buna taşıma, hosting ve deployment ekleniyor; bir sitenin güvenilir çalışıp çalışmayacağını belirleyen o gösterişsiz işler.',
-      'Müşteri işlerinin yanında Node.js, Express ve EJS ile kendi yazılımlarımı geliştiriyorum: full-stack ürün olarak SaveFold ve güvenlik araştırma projesi olarak AuthorityLab. Burada güvenlik bir ekstra değil. SOC, SIEM, log analizi ve sistem güvenliğiyle uğraşıyorum ve bu bilgi kurduğum her uygulamaya yansıyor.',
+      'Müşteri işlerinin yanında Node.js, Express ve EJS ile kendi yazılımlarımı geliştiriyorum: full-stack ürün olarak SaveFold ve güvenlik araştırma projesi olarak AuthorityLab. Burada güvenlik bir ekstra değil. Güvenli giriş, girdi doğrulama, güvenlik başlıkları ve özenli loglama kurduğum her uygulamanın parçası.',
     ],
     factsTitle: 'Bir bakışta',
     facts: [
@@ -320,7 +320,7 @@ module.exports = {
       { label: 'Eğitim', value: 'Makine mühendisliği diploması, Alman lisans derecesine denk ZAB değerlendirmesi' },
       { label: 'Web', value: 'WordPress, Elementor, WooCommerce, taşıma, hosting' },
       { label: 'Full-stack', value: 'Node.js, Express, EJS, REST API, MySQL/MariaDB, Git, CI/CD' },
-      { label: 'Güvenlik', value: 'Güvenli geliştirme, SOC/SIEM temelleri, log analizi' },
+      { label: 'Güvenlik', value: 'Güvenli geliştirme, erişim kontrolü, güvenlik başlıkları, doğrulama' },
     ],
     workingTitle: 'Nasıl çalışırım',
     working: [
@@ -388,10 +388,6 @@ module.exports = {
     ],
     education: [
       { title: 'Makine mühendisliği (lisans)', text: 'ZAB değerlendirmesi: Alman lisans derecesiyle karşılaştırılabilir.' },
-      {
-        title: 'BT güvenliği alanında sürekli eğitim',
-        text: 'SOC, SIEM, log analizi ve sistem güvenliğinde öğrenme ve uygulama deneyimi.',
-      },
     ],
     note: 'Diplomalar, sertifikalar ve ZAB değerlendirmesi istek üzerine sunulur, çevrim içi yayınlanmaz.',
   },

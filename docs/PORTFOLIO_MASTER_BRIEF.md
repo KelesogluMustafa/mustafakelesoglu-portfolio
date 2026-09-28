@@ -46,7 +46,7 @@ Use these facts carefully and without exaggeration:
 - German: C1 Beruf
 - English: B2
 - Mechanical Engineering degree with a positive ZAB degree evaluation comparable to a German Bachelor degree
-- Cybersecurity learning and practical exposure includes SOC, SIEM, log analysis, and system security
+- Security focus is secure web development (access control, validation, security headers, logging). Owner correction 2026-09-29: do not claim SOC, SIEM, log-analysis or system-security experience or training.
 - Web experience includes WordPress, Elementor, WooCommerce, responsive sites, forms, migration, hosting, and deployment
 - Full-stack experience includes Node.js, Express, EJS, JavaScript, REST APIs, authentication, MySQL/MariaDB, Git, GitHub, CI/CD, and Hostinger
 
@@ -302,7 +302,7 @@ Avoid percentages and skill bars. Group skills by practical use:
 - CMS: WordPress, Elementor, WooCommerce, migration
 - Backend/API: Node.js, Express, EJS, REST APIs, authentication
 - Data: MySQL, MariaDB
-- Security: secure coding, access control, CSP/security headers, validation, logging, SOC/SIEM fundamentals
+- Security: secure coding, access control, CSP/security headers, validation, logging
 - Delivery: Git, GitHub, CI/CD, Hostinger
 - Engineering background: analytical problem solving and technical project work
 

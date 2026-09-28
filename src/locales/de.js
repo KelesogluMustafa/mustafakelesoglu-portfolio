@@ -173,7 +173,7 @@ module.exports = {
     security: {
       eyebrow: 'Der Unterschied',
       title: 'Sicherheitsbewusst entwickelt – nicht nachträglich abgesichert',
-      text: 'Ich komme nicht nur von der Gestaltung, sondern auch von der Systemseite: SOC, SIEM, Log-Analyse und Systemsicherheit gehören zu meiner Lernpraxis. Das verändert, wie ich Websites und Anwendungen baue.',
+      text: 'Sicherheit ist bei mir kein nachträglicher Schritt, sondern Teil der Entwicklung – bei eigenen Produkten wie SaveFold und AuthorityLab genauso wie bei Kundenwebsites.',
       points: [
         { title: 'Sichere Anmeldung', text: 'Passwort-Hashing, Session-Schutz und Rollen statt „ein Admin für alles“.' },
         {
@@ -316,7 +316,7 @@ module.exports = {
     story: [
       'Mein Weg in die Webentwicklung führte über ein abgeschlossenes Maschinenbau-Studium. Die Zentralstelle für ausländisches Bildungswesen (ZAB) hat den Abschluss positiv bewertet und als vergleichbar mit einem deutschen Bachelor eingestuft. Aus dieser Zeit stammen Gewohnheiten, die mir heute täglich helfen: Probleme strukturiert zerlegen, Entscheidungen dokumentieren und Ergebnisse prüfen, bevor sie „fertig“ heißen.',
       'Praktisch gewachsen bin ich an Kundenprojekten mit WordPress, Elementor und WooCommerce: Unternehmensseiten, eine Restaurant-Website mit Bestellweg, eine Vereinswebsite. Dazu kommen Migrationen, Hosting und Deployment – die unspektakuläre Arbeit, die darüber entscheidet, ob eine Seite zuverlässig läuft.',
-      'Parallel entwickle ich eigene Software mit Node.js, Express und EJS: SaveFold als Full-Stack-Produkt und AuthorityLab als Sicherheitsforschungsprojekt. Sicherheit ist dabei kein Extra. Ich beschäftige mich mit SOC, SIEM, Log-Analyse und Systemsicherheit, und dieses Wissen fließt in jede Anwendung ein, die ich baue.',
+      'Parallel entwickle ich eigene Software mit Node.js, Express und EJS: SaveFold als Full-Stack-Produkt und AuthorityLab als Sicherheitsforschungsprojekt. Sicherheit ist dabei kein Extra. Sichere Anmeldung, Eingabevalidierung, Sicherheits-Header und sorgfältiges Logging gehören in jede Anwendung, die ich baue.',
     ],
     factsTitle: 'Auf einen Blick',
     facts: [
@@ -326,7 +326,7 @@ module.exports = {
       { label: 'Ausbildung', value: 'Maschinenbau-Abschluss, ZAB-Bewertung vergleichbar mit deutschem Bachelor' },
       { label: 'Web', value: 'WordPress, Elementor, WooCommerce, Migration, Hosting' },
       { label: 'Full-Stack', value: 'Node.js, Express, EJS, REST-APIs, MySQL/MariaDB, Git, CI/CD' },
-      { label: 'Sicherheit', value: 'Sichere Entwicklung, SOC/SIEM-Grundlagen, Log-Analyse' },
+      { label: 'Sicherheit', value: 'Sichere Entwicklung, Zugriffskontrolle, Sicherheits-Header, Validierung' },
     ],
     workingTitle: 'Wie ich arbeite',
     working: [
@@ -394,7 +394,6 @@ module.exports = {
     ],
     education: [
       { title: 'Studium Maschinenbau (Abschluss)', text: 'ZAB-Bewertung: vergleichbar mit einem deutschen Bachelor-Abschluss.' },
-      { title: 'Weiterbildung IT-Sicherheit', text: 'Lern- und Praxiserfahrung in SOC, SIEM, Log-Analyse und Systemsicherheit.' },
     ],
     note: 'Zeugnisse, Zertifikate und die ZAB-Bewertung werden auf Anfrage vorgelegt und nicht öffentlich veröffentlicht.',
   },

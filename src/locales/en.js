@@ -170,7 +170,7 @@ module.exports = {
     security: {
       eyebrow: 'The difference',
       title: 'Built security-minded, not patched afterwards',
-      text: 'I come at the web not only from design but also from the systems side: SOC, SIEM, log analysis and system security are part of my ongoing practice. That changes how I build websites and applications.',
+      text: 'For me, security is not a step added at the end but part of development, in my own products such as SaveFold and AuthorityLab as well as in client websites.',
       points: [
         { title: 'Secure sign-in', text: 'Password hashing, session protection and roles instead of "one admin for everything".' },
         {
@@ -307,7 +307,7 @@ module.exports = {
     story: [
       'My path into web development began with a completed degree in mechanical engineering. The German Central Office for Foreign Education (ZAB) evaluated the degree positively and rated it as comparable to a German bachelor’s degree. From that time I kept habits that help me every day: breaking problems down in a structured way, documenting decisions and checking results before calling them done.',
       'I grew in practice through client projects with WordPress, Elementor and WooCommerce: company sites, a restaurant website with an ordering path, an association website. Add to that migrations, hosting and deployment, the unglamorous work that decides whether a site runs reliably.',
-      'Alongside client work I develop my own software with Node.js, Express and EJS: SaveFold as a full-stack product and AuthorityLab as a security research project. Security is not an extra here. I work with SOC, SIEM, log analysis and system security, and that knowledge goes into every application I build.',
+      'Alongside client work I develop my own software with Node.js, Express and EJS: SaveFold as a full-stack product and AuthorityLab as a security research project. Security is not an extra here. Secure sign-in, input validation, security headers and careful logging are part of every application I build.',
     ],
     factsTitle: 'At a glance',
     facts: [
@@ -317,7 +317,7 @@ module.exports = {
       { label: 'Education', value: 'Mechanical engineering degree, ZAB evaluation comparable to a German bachelor’s degree' },
       { label: 'Web', value: 'WordPress, Elementor, WooCommerce, migration, hosting' },
       { label: 'Full-stack', value: 'Node.js, Express, EJS, REST APIs, MySQL/MariaDB, Git, CI/CD' },
-      { label: 'Security', value: 'Secure development, SOC/SIEM fundamentals, log analysis' },
+      { label: 'Security', value: 'Secure development, access control, security headers, validation' },
     ],
     workingTitle: 'How I work',
     working: [
@@ -381,10 +381,6 @@ module.exports = {
     ],
     education: [
       { title: 'Degree in mechanical engineering', text: 'ZAB evaluation: comparable to a German bachelor’s degree.' },
-      {
-        title: 'Continuing education in IT security',
-        text: 'Learning and hands-on experience in SOC, SIEM, log analysis and system security.',
-      },
     ],
     note: 'Certificates, transcripts and the ZAB evaluation are provided on request and are not published online.',
   },
