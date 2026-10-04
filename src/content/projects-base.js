@@ -361,6 +361,7 @@ const projects = [
     order: 4,
     year: null,
     liveUrl: null,
+    previewUrl: 'https://studio.mustafakelesoglu.de/',
     repoUrl: null,
     statusKey: 'inDevelopment',
     tech: ['TypeScript', 'React', 'Vite', 'NestJS', 'Prisma', 'MySQL', 'Zod', 'Playwright'],
@@ -394,7 +395,7 @@ const projects = [
           'Kein offenes Registrieren, Rollenprüfung an einer zentralen Stelle auf dem Server',
         ],
         outcomes: ['Lokal lauffähig mit den oben genannten Bereichen und automatisierten Tests (Unit, API, End-to-End)', 'Bisher nur mit Testdaten und simulierten Diensten geprüft; noch nicht deployt und ohne Anbindung an echte externe Dienste'],
-        outcomesNote: 'Privates Werkzeug, kein öffentliches Produkt – daher gibt es keinen öffentlichen Link.',
+        outcomesNote: 'Privates Werkzeug hinter einem Login, kein öffentliches Produkt. Die Adresse studio.mustafakelesoglu.de wird mit dem Deployment aktiv.',
         ctaTitle: 'Internes Tool oder Admin-Panel geplant?',
         ctaText:
           'Ich entwickle interne Web-Anwendungen mit sauberer Mandantentrennung, Rollen und nachvollziehbaren Freigabeabläufen.',
@@ -426,7 +427,7 @@ const projects = [
           'No open registration, role checks enforced in one central place on the server',
         ],
         outcomes: ['Runs locally with the areas listed above and automated tests (unit, API, end-to-end)', 'So far verified only with test data and simulated services; not deployed yet and not connected to real external services'],
-        outcomesNote: 'A private tool, not a public product, so there is no public link.',
+        outcomesNote: 'A private tool behind a login, not a public product. The address studio.mustafakelesoglu.de becomes active with the deployment.',
         ctaTitle: 'Planning an internal tool or admin panel?',
         ctaText:
           'I build internal web applications with clean tenant separation, roles and approval flows you can follow.',
@@ -458,7 +459,7 @@ const projects = [
           'Açık kayıt yok; rol kontrolleri sunucuda tek bir merkezde uygulanıyor',
         ],
         outcomes: ['Yukarıdaki bölümler ve otomatik testlerle (birim, API, uçtan uca) yerelde çalışıyor', 'Şimdiye kadar yalnızca test verisi ve simüle servislerle doğrulandı; henüz yayına alınmadı ve gerçek dış servislere bağlanmadı'],
-        outcomesNote: 'Özel bir araç, herkese açık bir ürün değil; bu yüzden herkese açık bir bağlantı yok.',
+        outcomesNote: 'Giriş arkasında çalışan özel bir araç, herkese açık bir ürün değil. studio.mustafakelesoglu.de adresi yayına alındığında aktif olacak.',
         ctaTitle: 'Bir iç araç ya da yönetim paneli mi planlıyorsunuz?',
         ctaText:
           'Temiz kiracı ayrımı, roller ve izlenebilir onay akışlarıyla iç web uygulamaları geliştiriyorum.',
