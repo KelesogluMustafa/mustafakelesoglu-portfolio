@@ -32,7 +32,7 @@
         <h2 class="site-footer__title"><%= t('footer.projectsTitle') %></h2>
         <ul>
           <% footerProjects.forEach(function (p) { %>
-          <li><a href="<%= url('/projects/' + p.slug) %>"><%= p.title %></a></li>
+          <li><a href="<%= url(p.pageUrl || '/projects/' + p.slug) %>"><%= p.title %></a></li>
           <% }); %>
         </ul>
       </nav>

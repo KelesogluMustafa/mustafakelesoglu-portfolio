@@ -1,7 +1,7 @@
 <%
 /* Project entry for lists. `layout` = "feature" (alternating rows) or "compact". */
 var lay = typeof layout !== 'undefined' ? layout : 'feature';
-var href = url('/projects/' + project.slug);
+var href = url(project.pageUrl || '/projects/' + project.slug);
 %>
 <article class="project-row project-row--<%= lay %>" data-project data-group="<%= project.group %>">
   <div class="project-row__media">

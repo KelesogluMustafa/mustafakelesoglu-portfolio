@@ -21,7 +21,7 @@ function localeMiddleware(req, res, next) {
   res.locals.url = (path = '/') => i18n.localePath(locale, path);
   res.locals.site = site;
   res.locals.nav = buildNav(locale, dict);
-  res.locals.footerProjects = projects.allLocalized(locale).map((p) => ({ slug: p.slug, title: p.title }));
+  res.locals.footerProjects = projects.allLocalized(locale).map((p) => ({ slug: p.slug, title: p.title, pageUrl: p.pageUrl || null }));
   res.locals.currentPath = req.path;
   res.set('Content-Language', locale);
   next();

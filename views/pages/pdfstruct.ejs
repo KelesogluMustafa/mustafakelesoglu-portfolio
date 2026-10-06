@@ -1,0 +1,136 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<% var P = pdfstruct; var L = P.links; %>
+
+<main id="main" tabindex="-1">
+  <header class="page-header ps-hero">
+    <div class="container">
+      <%- include('../partials/breadcrumbs', { items: [{ name: t('nav.home'), path: '/' }, { name: t('nav.projects'), path: '/projects' }, { name: 'PDFStruct', path: '/pdfstruct' }] }) %>
+      <p class="eyebrow"><%= P.eyebrow %></p>
+      <h1 class="page-header__title">PDFStruct</h1>
+      <p class="ps-hero__subtitle"><%= P.subtitle %></p>
+      <p class="page-header__intro"><%= P.intro %></p>
+      <div class="ps-hero__actions">
+        <a class="button button--primary button--large" href="<%= L.latest %>" target="_blank" rel="noopener"><%= P.download %> <%- include('../partials/icon', { name: 'external' }) %><span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a>
+        <a class="button button--secondary button--large" href="<%= L.repo %>" target="_blank" rel="noopener"><%= P.source %> <%- include('../partials/icon', { name: 'external' }) %><span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a>
+      </div>
+      <p class="ps-hero__meta">
+        <span><%= P.versionLabel %>: <strong><%= P.version %></strong></span>
+        <a href="<%= L.release %>" target="_blank" rel="noopener"><%= P.releaseNotes %><span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a>
+        <a href="<%= L.license %>" target="_blank" rel="noopener"><%= P.licenseLabel %><span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a>
+      </p>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="ps-section" aria-labelledby="ps-easy">
+      <div class="split ps-easy">
+        <div>
+          <h2 id="ps-easy" class="subheading"><%= P.easy.title %></h2>
+          <p class="muted"><%= P.easy.text %></p>
+          <pre class="ps-code"><code>pdfstruct</code></pre>
+          <ol class="process ps-steps">
+            <% P.easy.steps.forEach(function (step, i) { %>
+            <li class="process__step"><span class="process__num"><%= i + 1 %></span><span class="process__text"><%= step %></span></li>
+            <% }); %>
+          </ol>
+        </div>
+        <div>
+          <h3 class="ps-small-title"><%= P.easy.keysTitle %></h3>
+          <dl class="ps-keys">
+            <% P.easy.keys.forEach(function (k) { %>
+            <div><dt><kbd><%= k[0] %></kbd></dt><dd><%= k[1] %></dd></div>
+            <% }); %>
+          </dl>
+          <h3 class="ps-small-title"><%= P.easy.fileTitle %></h3>
+          <p class="muted"><%= P.easy.fileText %></p>
+          <pre class="ps-code"><code>pdfstruct document.pdf</code></pre>
+          <h3 class="ps-small-title"><%= P.easy.advancedTitle %></h3>
+          <p class="muted"><%= P.easy.advancedText %></p>
+          <pre class="ps-code"><code>pdfstruct document.pdf --format xlsx
+pdfxlsx document.pdf</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="ps-section" aria-labelledby="ps-features">
+      <h2 id="ps-features" class="subheading"><%= P.features.title %></h2>
+      <ul class="fit-list ps-features">
+        <% P.features.items.forEach(function (item) { %>
+        <li><%- include('../partials/icon', { name: 'check' }) %><span><%= item %></span></li>
+        <% }); %>
+      </ul>
+    </section>
+
+    <section class="ps-section" aria-labelledby="ps-formats">
+      <h2 id="ps-formats" class="subheading"><%= P.formats.title %></h2>
+      <p class="muted"><%= P.formats.text %></p>
+      <ul class="tag-list ps-formats" aria-label="<%= P.formats.title %>">
+        <% P.formatList.forEach(function (f) { %><li><%= f %></li><% }); %>
+      </ul>
+    </section>
+
+    <section class="ps-section" aria-labelledby="ps-how">
+      <h2 id="ps-how" class="subheading"><%= P.how.title %></h2>
+      <ol class="ps-flow">
+        <% P.how.steps.forEach(function (s, i) { %>
+        <li class="ps-flow__step">
+          <span class="ps-flow__num" aria-hidden="true"><%= i + 1 %></span>
+          <span class="ps-flow__body"><strong><%= s[0] %></strong><span><%= s[1] %></span></span>
+        </li>
+        <% }); %>
+      </ol>
+    </section>
+
+    <div class="split ps-two">
+      <section class="ps-section ps-box" aria-labelledby="ps-privacy">
+        <h2 id="ps-privacy" class="subheading"><%= P.privacy.title %></h2>
+        <p class="lead"><%= P.privacy.lead %></p>
+        <ul class="ps-list">
+          <% P.privacy.items.forEach(function (item) { %><li>PDFStruct <%= item %></li><% }); %>
+        </ul>
+        <p class="muted text-sm"><%= P.privacy.note %></p>
+      </section>
+
+      <section class="ps-section ps-box" aria-labelledby="ps-platforms">
+        <h2 id="ps-platforms" class="subheading"><%= P.platforms.title %></h2>
+        <p><%= P.platforms.text %></p>
+        <ul class="fit-list">
+          <% P.platforms.items.forEach(function (item) { %>
+          <li><%- include('../partials/icon', { name: 'check' }) %><span><%= item %></span></li>
+          <% }); %>
+        </ul>
+        <p class="muted text-sm"><%= P.platforms.note %></p>
+      </section>
+    </div>
+
+    <section class="ps-section" aria-labelledby="ps-free">
+      <h2 id="ps-free" class="subheading"><%= P.free.title %></h2>
+      <p class="lead"><%= P.free.lead %></p>
+      <ul class="fit-list ps-features">
+        <% P.free.items.forEach(function (item) { %>
+        <li><%- include('../partials/icon', { name: 'check' }) %><span><%= item %></span></li>
+        <% }); %>
+      </ul>
+      <p class="muted text-sm"><%= P.free.note %></p>
+    </section>
+
+    <section class="ps-section ps-release" aria-labelledby="ps-release">
+      <h2 id="ps-release" class="subheading"><%= P.release.title %></h2>
+      <dl class="fact-sheet fact-sheet--compact">
+        <div class="fact-sheet__row"><dt><%= P.versionLabel %></dt><dd><%= P.version %></dd></div>
+        <div class="fact-sheet__row"><dt><%= P.releaseNotes %></dt><dd><a href="<%= L.release %>" target="_blank" rel="noopener">github.com/KelesogluMustafa/pdfstruct/releases<span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a></dd></div>
+        <div class="fact-sheet__row"><dt><%= P.checksums %></dt><dd><a href="<%= L.checksums %>" target="_blank" rel="noopener">SHA256SUMS.txt<span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a></dd></div>
+        <div class="fact-sheet__row"><dt><%= P.licenseLabel %></dt><dd><a href="<%= L.license %>" target="_blank" rel="noopener">LICENSE<span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a></dd></div>
+      </dl>
+      <div class="ps-hero__actions">
+        <a class="button button--primary" href="<%= L.latest %>" target="_blank" rel="noopener"><%= P.download %> <%- include('../partials/icon', { name: 'external' }) %><span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a>
+        <a class="button button--secondary" href="<%= L.repo %>" target="_blank" rel="noopener"><%= P.source %> <%- include('../partials/icon', { name: 'external' }) %><span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a>
+      </div>
+    </section>
+
+    <p class="ps-back"><a class="link-arrow link-arrow--back" href="<%= url('/projects') %>"><%= t('common.backToProjects') %> <span class="icon-flip"><%- include('../partials/icon', { name: 'arrow' }) %></span></a></p>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

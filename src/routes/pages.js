@@ -2,6 +2,7 @@
 
 const express = require('express');
 const projects = require('../content/projects');
+const pdfstruct = require('../content/pdfstruct');
 const services = require('../content/services');
 const skills = require('../content/skills');
 const { buildMeta, personSchema, projectSchema, breadcrumbSchema } = require('../lib/seo');
@@ -61,10 +62,50 @@ router.get('/projects', (req, res) => {
   });
 });
 
+router.get('/pdfstruct', (req, res) => {
+  const locale = res.locals.locale;
+  const dict = res.locals.dict;
+  const content = pdfstruct.localized(locale);
+  const project = projects.localized(projects.bySlug('pdfstruct'), locale);
+  page(res, 'pages/pdfstruct', {
+    pagePath: '/pdfstruct',
+    bodyClass: 'page-pdfstruct',
+    title: content.meta.title,
+    description: content.meta.description,
+    image: '/img/og/pdfstruct.png',
+    structuredData: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        name: 'PDFStruct',
+        description: content.meta.description,
+        applicationCategory: 'UtilitiesApplication',
+        operatingSystem: 'Windows, Linux, macOS',
+        softwareVersion: pdfstruct.version.replace(/^v/, ''),
+        license: 'https://opensource.org/licenses/MIT',
+        isAccessibleForFree: true,
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+        url: `${require('../content/site').siteUrl}${res.locals.url('/pdfstruct')}`,
+        downloadUrl: pdfstruct.links.latest,
+        codeRepository: pdfstruct.links.repo,
+        author: { '@type': 'Person', name: require('../content/site').name },
+        inLanguage: locale,
+      },
+      breadcrumbSchema(locale, [
+        { name: dict.nav.home, path: '/' },
+        { name: dict.nav.projects, path: '/projects' },
+        { name: 'PDFStruct', path: '/pdfstruct' },
+      ]),
+    ],
+    extra: { pdfstruct: content, project },
+  });
+});
+
 router.get('/projects/:slug', (req, res, next) => {
   const locale = res.locals.locale;
   const raw = projects.bySlug(req.params.slug);
   if (!raw) return next();
+  if (raw.pageUrl) return res.redirect(301, res.locals.url(raw.pageUrl));
   const project = projects.localized(raw, locale);
   const all = projects.allLocalized(locale);
   const index = all.findIndex((p) => p.slug === project.slug);

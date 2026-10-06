@@ -25,6 +25,7 @@ const CSS_FILES = [
   '/css/pages/home.css',
   '/css/pages/project.css',
   '/css/pages/content.css',
+  '/css/pages/pdfstruct.css',
 ];
 
 const hashes = new Map();

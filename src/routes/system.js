@@ -7,10 +7,15 @@ const { LOCALES, localePath, negotiateLocale, DEFAULT_LOCALE } = require('../i18
 
 const router = express.Router();
 
-const STATIC_PATHS = ['/', '/projects', '/services', '/about', '/skills', '/contact', '/imprint', '/privacy'];
+const STATIC_PATHS = ['/', '/projects', '/services', '/about', '/skills', '/contact', '/imprint', '/privacy', '/pdfstruct'];
 
 function allPaths() {
-  return [...STATIC_PATHS, ...projects.slugs.map((slug) => `/projects/${slug}`)];
+  // Projects with their own landing page (pageUrl) are listed under that path, not /projects/<slug>.
+  const generic = projects
+    .all()
+    .filter((p) => !p.pageUrl)
+    .map((p) => `/projects/${p.slug}`);
+  return [...STATIC_PATHS, ...generic];
 }
 
 /** Root redirect: server-side, honours Accept-Language, defaults to German. */
@@ -18,6 +23,13 @@ router.get('/', (req, res) => {
   const locale = negotiateLocale(req.get('accept-language')) || DEFAULT_LOCALE;
   res.set('Vary', 'Accept-Language');
   res.redirect(302, localePath(locale, '/'));
+});
+
+/** Locale-free short link used on GitHub and elsewhere: /pdfstruct -> /<locale>/pdfstruct */
+router.get('/pdfstruct', (req, res) => {
+  const locale = negotiateLocale(req.get('accept-language')) || DEFAULT_LOCALE;
+  res.set('Vary', 'Accept-Language');
+  res.redirect(302, localePath(locale, '/pdfstruct'));
 });
 
 /** Trailing slashes on inner pages -> canonical form without slash (locale roots keep theirs). */

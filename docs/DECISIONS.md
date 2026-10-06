@@ -101,3 +101,15 @@ Visible name spelled `Mustafa Kelesoglu` (Latin only) across UI, metadata, JSON-
 ## SOC/SIEM claims removed (2026-09-29)
 
 The owner stated that SOC, SIEM, log analysis and system security are not part of his own background. The claim came from the master brief and appeared on the homepage ("Der Unterschied"), the About story and facts, the CV education list ("Weiterbildung IT-Sicherheit") and the Security skill group, in all three languages. All occurrences were removed or rewritten to describe only secure web development practice, and the master brief was corrected so the claim is not reintroduced.
+
+## PDFStruct landing page (2026-10-06)
+
+PDFStruct (github.com/KelesogluMustafa/pdfstruct, v0.1.0) gets its own page at `/pdfstruct`
+(`/de|en|tr/pdfstruct`, plus a locale-free `/pdfstruct` redirect for links from GitHub) instead
+of the generic project template, because it is a downloadable tool rather than a case study:
+hero with download/source buttons, easy usage, features, formats, how it works, privacy,
+verified platforms and release facts. The catalogue entry carries `pageUrl`, so cards link to
+the landing page and `/projects/pdfstruct` redirects there; the sitemap lists only `/pdfstruct`.
+Downloads, source, checksums and release notes stay on GitHub; the site hosts only this page,
+one CSS module and the share image. The download button points at `releases/latest` so later
+versions need no site change. No donation links until a real one exists.

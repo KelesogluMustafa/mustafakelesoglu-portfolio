@@ -22,26 +22,53 @@ const newProject = {
     de: {
       title: 'Kırıkkale Taksicin',
       tagline: 'Buchungs- und Kontaktseite für einen Taxidienst in Kırıkkale, Türkei.',
-      summary: 'Website für „Kırıkkale Merhaba Taksi“ (Taxifahrer Ahmet Torlak): Fahrgäste erreichen den Fahrer direkt per WhatsApp mit Standortfreigabe, per Telefon oder über ein Formular zur Vorausbuchung der Fahrt. Der Dienst ist rund um die Uhr erreichbar und deckt das Kırıkkale-Stadtzentrum ab.',
-      problem: 'Ein einzelner Taxifahrer braucht einen einfachen, sofort nutzbaren Weg, wie Fahrgäste ihn erreichen und eine Fahrt anfragen können, ohne eine App zu installieren oder eine Vermittlungszentrale anzurufen – besonders dann, wenn der eigene Standort direkt geteilt werden soll.',
+      summary:
+        'Website für „Kırıkkale Merhaba Taksi“ (Taxifahrer Ahmet Torlak): Fahrgäste erreichen den Fahrer direkt per WhatsApp mit Standortfreigabe, per Telefon oder über ein Formular zur Vorausbuchung der Fahrt. Der Dienst ist rund um die Uhr erreichbar und deckt das Kırıkkale-Stadtzentrum ab.',
+      problem:
+        'Ein einzelner Taxifahrer braucht einen einfachen, sofort nutzbaren Weg, wie Fahrgäste ihn erreichen und eine Fahrt anfragen können, ohne eine App zu installieren oder eine Vermittlungszentrale anzurufen – besonders dann, wenn der eigene Standort direkt geteilt werden soll.',
       role: 'Konzeption und Umsetzung der Website, einschließlich WhatsApp-Kontaktweg mit Standortfreigabe, Telefonkontakt und Formular zur Fahrtanfrage, sowie responsive Umsetzung und Veröffentlichung.',
-      solution: 'Eine schlanke, einsprachige (türkische) Website mit einem direkten WhatsApp-Link zum Teilen des eigenen Standorts, einer sichtbar platzierten Telefonnummer für den sofortigen Anruf und einem Formular, über das Name, Abhol- und Zieladresse, Datum, Uhrzeit, Personenzahl und eine Notiz für eine vorausgeplante Fahrt übermittelt werden.',
-      features: ['WhatsApp-Kontakt mit Standortfreigabe', 'Direkter Telefonkontakt', 'Formular zur Vorausbuchung einer Fahrt (Adresse, Datum, Uhrzeit, Personenzahl, Notiz)', '7/24 Erreichbarkeit', 'Adressangabe des Taxistands in Kırıkkale'],
-      security: ['HTTPS-Verbindung auf der veröffentlichten Website', 'Keine Zahlungsabwicklung oder Speicherung sensibler Daten auf der Website', 'Kontaktaufnahme läuft über WhatsApp und Telefon statt über ein eigenes Konto- oder Zahlungssystem'],
+      solution:
+        'Eine schlanke, einsprachige (türkische) Website mit einem direkten WhatsApp-Link zum Teilen des eigenen Standorts, einer sichtbar platzierten Telefonnummer für den sofortigen Anruf und einem Formular, über das Name, Abhol- und Zieladresse, Datum, Uhrzeit, Personenzahl und eine Notiz für eine vorausgeplante Fahrt übermittelt werden.',
+      features: [
+        'WhatsApp-Kontakt mit Standortfreigabe',
+        'Direkter Telefonkontakt',
+        'Formular zur Vorausbuchung einer Fahrt (Adresse, Datum, Uhrzeit, Personenzahl, Notiz)',
+        '7/24 Erreichbarkeit',
+        'Adressangabe des Taxistands in Kırıkkale',
+      ],
+      security: [
+        'HTTPS-Verbindung auf der veröffentlichten Website',
+        'Keine Zahlungsabwicklung oder Speicherung sensibler Daten auf der Website',
+        'Kontaktaufnahme läuft über WhatsApp und Telefon statt über ein eigenes Konto- oder Zahlungssystem',
+      ],
       outcomes: ['Website ist live und wird für Fahrtanfragen und Kontakt genutzt'],
       outcomesNote: null,
       ctaTitle: 'Website für ein lokales Dienstleistungsunternehmen?',
-      ctaText: 'Ich setze einfache, schnelle Kontakt- und Buchungswege um, die auch für kleine, lokale Dienstleister ohne technisches Team funktionieren.',
+      ctaText:
+        'Ich setze einfache, schnelle Kontakt- und Buchungswege um, die auch für kleine, lokale Dienstleister ohne technisches Team funktionieren.',
     },
     en: {
       title: 'Kırıkkale Taksicin',
       tagline: 'Booking and contact page for a taxi service in Kırıkkale, Turkey.',
-      summary: 'Website for "Kırıkkale Merhaba Taksi" (driver Ahmet Torlak): passengers can reach the driver directly via WhatsApp with location sharing, by phone, or through a form to book a ride in advance. The service is available around the clock and covers the Kırıkkale city centre.',
-      problem: 'A single taxi driver needs a simple, immediately usable way for passengers to reach him and request a ride without installing an app or calling a dispatch centre, especially when the passenger wants to share their own location directly.',
+      summary:
+        'Website for "Kırıkkale Merhaba Taksi" (driver Ahmet Torlak): passengers can reach the driver directly via WhatsApp with location sharing, by phone, or through a form to book a ride in advance. The service is available around the clock and covers the Kırıkkale city centre.',
+      problem:
+        'A single taxi driver needs a simple, immediately usable way for passengers to reach him and request a ride without installing an app or calling a dispatch centre, especially when the passenger wants to share their own location directly.',
       role: 'Concept and implementation of the website, including the WhatsApp contact path with location sharing, phone contact and a ride-request form, plus responsive implementation and publishing.',
-      solution: "A lean, single-language (Turkish) website with a direct WhatsApp link for sharing the passenger's own location, a clearly placed phone number for an immediate call, and a form that submits name, pickup and destination address, date, time, passenger count and a note for a ride planned in advance.",
-      features: ['WhatsApp contact with location sharing', 'Direct phone contact', 'Advance ride-booking form (address, date, time, passenger count, note)', '24/7 availability', 'Address of the taxi stand in Kırıkkale'],
-      security: ['HTTPS connection on the published website', 'No payment processing or storage of sensitive data on the website', 'Contact happens via WhatsApp and phone instead of a dedicated account or payment system'],
+      solution:
+        "A lean, single-language (Turkish) website with a direct WhatsApp link for sharing the passenger's own location, a clearly placed phone number for an immediate call, and a form that submits name, pickup and destination address, date, time, passenger count and a note for a ride planned in advance.",
+      features: [
+        'WhatsApp contact with location sharing',
+        'Direct phone contact',
+        'Advance ride-booking form (address, date, time, passenger count, note)',
+        '24/7 availability',
+        'Address of the taxi stand in Kırıkkale',
+      ],
+      security: [
+        'HTTPS connection on the published website',
+        'No payment processing or storage of sensitive data on the website',
+        'Contact happens via WhatsApp and phone instead of a dedicated account or payment system',
+      ],
       outcomes: ['Website is live and used for ride requests and contact'],
       outcomesNote: null,
       ctaTitle: 'A website for a local service business?',
@@ -50,37 +77,177 @@ const newProject = {
     tr: {
       title: 'Kırıkkale Taksicin',
       tagline: 'Kırıkkale’de bir taksi hizmeti için rezervasyon ve iletişim sayfası.',
-      summary: '"Kırıkkale Merhaba Taksi" (şoför Ahmet Torlak) için web sitesi: yolcular şoföre doğrudan WhatsApp üzerinden konum paylaşarak, telefonla veya önceden yolculuk planlamak için bir form üzerinden ulaşabiliyor. Hizmet 7/24 erişilebilir ve Kırıkkale şehir merkezini kapsıyor.',
-      problem: 'Tek bir taksi şoförünün, yolcuların bir uygulama kurmadan veya bir çağrı merkezini aramadan kendisine ulaşıp yolculuk talep edebileceği basit ve hemen kullanılabilir bir yola ihtiyacı vardı; özellikle yolcunun kendi konumunu doğrudan paylaşmak istediği durumlarda.',
+      summary:
+        '"Kırıkkale Merhaba Taksi" (şoför Ahmet Torlak) için web sitesi: yolcular şoföre doğrudan WhatsApp üzerinden konum paylaşarak, telefonla veya önceden yolculuk planlamak için bir form üzerinden ulaşabiliyor. Hizmet 7/24 erişilebilir ve Kırıkkale şehir merkezini kapsıyor.',
+      problem:
+        'Tek bir taksi şoförünün, yolcuların bir uygulama kurmadan veya bir çağrı merkezini aramadan kendisine ulaşıp yolculuk talep edebileceği basit ve hemen kullanılabilir bir yola ihtiyacı vardı; özellikle yolcunun kendi konumunu doğrudan paylaşmak istediği durumlarda.',
       role: 'Web sitesinin konsept ve uygulaması; konum paylaşımlı WhatsApp iletişim yolu, telefon iletişimi ve yolculuk talep formu dahil, responsive uygulama ve yayına alma.',
-      solution: 'Yolcunun kendi konumunu paylaşabileceği doğrudan bir WhatsApp bağlantısı, hemen arama için görünür şekilde yerleştirilmiş bir telefon numarası ve ad soyad, alınacak/gidilecek adres, tarih, saat, yolcu sayısı ve not bilgilerini ileten, önceden yolculuk planlamaya yönelik bir forma sahip; sade ve tek dilli (Türkçe) bir web sitesi.',
-      features: ['Konum paylaşımlı WhatsApp iletişimi', 'Doğrudan telefon iletişimi', 'Önceden yolculuk rezervasyon formu (adres, tarih, saat, yolcu sayısı, not)', '7/24 erişilebilirlik', 'Kırıkkale’deki taksi durağının adres bilgisi'],
-      security: ['Yayınlanan sitede HTTPS bağlantısı', 'Sitede ödeme işlemi veya hassas veri saklama yok', 'İletişim, kendi hesap veya ödeme sistemi yerine WhatsApp ve telefon üzerinden yürütülüyor'],
+      solution:
+        'Yolcunun kendi konumunu paylaşabileceği doğrudan bir WhatsApp bağlantısı, hemen arama için görünür şekilde yerleştirilmiş bir telefon numarası ve ad soyad, alınacak/gidilecek adres, tarih, saat, yolcu sayısı ve not bilgilerini ileten, önceden yolculuk planlamaya yönelik bir forma sahip; sade ve tek dilli (Türkçe) bir web sitesi.',
+      features: [
+        'Konum paylaşımlı WhatsApp iletişimi',
+        'Doğrudan telefon iletişimi',
+        'Önceden yolculuk rezervasyon formu (adres, tarih, saat, yolcu sayısı, not)',
+        '7/24 erişilebilirlik',
+        'Kırıkkale’deki taksi durağının adres bilgisi',
+      ],
+      security: [
+        'Yayınlanan sitede HTTPS bağlantısı',
+        'Sitede ödeme işlemi veya hassas veri saklama yok',
+        'İletişim, kendi hesap veya ödeme sistemi yerine WhatsApp ve telefon üzerinden yürütülüyor',
+      ],
       outcomes: ['Site yayında ve yolculuk talepleri ile iletişim için kullanılıyor'],
       outcomesNote: null,
       ctaTitle: 'Yerel bir hizmet işletmesi için web sitesi mi?',
-      ctaText: 'Teknik ekibi olmayan küçük, yerel hizmet sağlayıcılar için de çalışan basit ve hızlı iletişim ve rezervasyon yolları kuruyorum.',
+      ctaText:
+        'Teknik ekibi olmayan küçük, yerel hizmet sağlayıcılar için de çalışan basit ve hızlı iletişim ve rezervasyon yolları kuruyorum.',
     },
   },
 };
 
+// PDFStruct: public open-source tool with its own landing page (/pdfstruct) instead of the
+// generic project page; downloads and source stay on GitHub.
+const pdfstructProject = {
+  slug: 'pdfstruct',
+  group: 'product',
+  kind: 'personal',
+  featured: true,
+  order: 4.5,
+  year: 2026,
+  liveUrl: null,
+  previewUrl: null,
+  repoUrl: 'https://github.com/KelesogluMustafa/pdfstruct',
+  pageUrl: '/pdfstruct',
+  statusKey: 'live',
+  tech: ['Python', 'PaddleOCR', 'pypdfium2', 'CLI', 'GitHub Actions', 'MIT'],
+  media: { desktop: 'pdfstruct-desktop.png', mobile: 'pdfstruct-mobile.png' },
+  accent: 'teal',
+  i18n: {
+    de: {
+      title: 'PDFStruct',
+      tagline: 'Free & Open Source — PDF extraction • OCR • Multi-format conversion',
+      summary:
+        'PDFStruct ist ein kostenloses Open-Source-Kommandozeilenwerkzeug, das PDFs lokal verarbeitet: nativer Text wird direkt gelesen, gescannte Seiten laufen automatisch über OCR, und das Ergebnis wird als JSON, HTML, TXT, Markdown, CSV, XLSX, DOCX, JSONL oder SQLite ausgegeben. Ein interaktives Terminal-Menü wählt PDFs und Formate; für Skripte gibt es Aliase ohne Rückfragen. Version 0.1.0 ist auf GitHub veröffentlicht.',
+      problem:
+        'PDFs mit Text und gescannte PDFs brauchen unterschiedliche Werkzeuge, und die meisten Konverter laden Dateien in die Cloud oder verlangen ein Konto. Gebraucht wurde ein Werkzeug, das selbst entscheidet, wann OCR nötig ist, alles lokal verarbeitet und die Daten in weiterverwendbaren Formaten liefert.',
+      role: 'Konzept, Python-Paket, OCR-Integration, Exporte, Tests, plattformübergreifende CI und Release – als eigenes Open-Source-Projekt umgesetzt.',
+      solution:
+        'Ein Python-Paket mit einem Kern für Extraktion und Export: pypdfium2 liest die Textebene und bewertet ihre Qualität pro Seite; fällt sie durch, übernimmt PaddleOCR auf der CPU im selben Prozess, nur bei Bedarf geladen. Jedes PDF wird einmal gelesen, alle Formate entstehen aus demselben Roh-JSON. Die Befehle laufen unter Windows, Linux und macOS; GitHub Actions prüft Tests, Build und OCR auf allen drei Systemen.',
+      features: [
+        'Automatische Entscheidung zwischen nativem Text und OCR, Seite für Seite',
+        'Interaktives Terminal-Menü: mehrere PDFs, mehrere Formate, eine Ausführung',
+        'Neun Ausgabeformate aus denselben strukturierten Daten',
+        'Datei-, Ordner- und Stapelverarbeitung; unveränderte PDFs werden übersprungen',
+        'Skriptfähige Aliase (pdfjson, pdfxlsx, …) ohne Menü',
+      ],
+      security: [
+        'Verarbeitung ausschließlich lokal; keine Uploads, kein Konto, keine Telemetrie',
+        'OCR-Modelle werden einmal aus der offiziellen Quelle geladen und lokal gecacht',
+        'Keine Modelle, Caches oder Nutzerdaten im Paket oder im Repository',
+      ],
+      outcomes: [
+        'Version 0.1.0 auf GitHub veröffentlicht (Wheel, Quellpaket, SHA256-Prüfsummen)',
+        'Tests, native Extraktion und CPU-OCR auf Windows x86_64, Linux x86_64 und macOS Apple Silicon per GitHub Actions bestanden',
+      ],
+      outcomesNote: 'Noch nicht auf PyPI; Installation aus dem GitHub-Release.',
+      ctaTitle: 'Dokumentenverarbeitung oder Automatisierung geplant?',
+      ctaText:
+        'Ich baue Werkzeuge, die Dokumente zuverlässig in strukturierte Daten verwandeln – lokal, nachvollziehbar und ohne Vendor-Lock-in.',
+    },
+    en: {
+      title: 'PDFStruct',
+      tagline: 'Free & Open Source — PDF extraction • OCR • Multi-format conversion',
+      summary:
+        'PDFStruct is a free, open-source command-line tool that processes PDFs locally: native text is read directly, scanned pages go through OCR automatically, and the result is exported as JSON, HTML, TXT, Markdown, CSV, XLSX, DOCX, JSONL or SQLite. An interactive terminal menu picks PDFs and formats; aliases without prompts serve scripts. Version 0.1.0 is published on GitHub.',
+      problem:
+        'PDFs with a text layer and scanned PDFs need different tools, and most converters upload files to the cloud or require an account. What was needed was a tool that decides on its own when OCR is necessary, processes everything locally and delivers reusable formats.',
+      role: 'Concept, Python package, OCR integration, exports, tests, cross-platform CI and release, implemented as a personal open-source project.',
+      solution:
+        'A Python package with one core for extraction and export: pypdfium2 reads the text layer and scores its quality per page; when it fails, PaddleOCR takes over on the CPU in the same process, loaded only when needed. Each PDF is read once and every format is produced from the same raw JSON. The commands run on Windows, Linux and macOS; GitHub Actions checks tests, build and OCR on all three.',
+      features: [
+        'Automatic choice between native text and OCR, page by page',
+        'Interactive terminal menu: several PDFs, several formats, one run',
+        'Nine output formats from the same structured data',
+        'File, folder and batch processing; unchanged PDFs are skipped',
+        'Scriptable aliases (pdfjson, pdfxlsx, …) without a menu',
+      ],
+      security: [
+        'Processing is local only; no uploads, no account, no telemetry',
+        'OCR models are downloaded once from the official source and cached locally',
+        'No models, caches or user data inside the package or the repository',
+      ],
+      outcomes: [
+        'Version 0.1.0 published on GitHub (wheel, source archive, SHA256 checksums)',
+        'Tests, native extraction and CPU OCR passed on Windows x86_64, Linux x86_64 and macOS Apple Silicon via GitHub Actions',
+      ],
+      outcomesNote: 'Not on PyPI yet; install from the GitHub release.',
+      ctaTitle: 'Planning document processing or automation?',
+      ctaText: 'I build tools that turn documents into structured data reliably, locally, transparently and without vendor lock-in.',
+    },
+    tr: {
+      title: 'PDFStruct',
+      tagline: 'Free & Open Source — PDF extraction • OCR • Multi-format conversion',
+      summary:
+        'PDFStruct, PDF’leri bilgisayarda yerel olarak işleyen ücretsiz ve açık kaynak bir komut satırı aracıdır: yerel metin doğrudan okunur, taranmış sayfalar otomatik olarak OCR’dan geçer ve sonuç JSON, HTML, TXT, Markdown, CSV, XLSX, DOCX, JSONL veya SQLite olarak verilir. Etkileşimli terminal menüsü PDF’leri ve formatları seçtirir; betikler için sorusuz kısayollar vardır. 0.1.0 sürümü GitHub’da yayında.',
+      problem:
+        'Metin katmanı olan PDF’ler ile taranmış PDF’ler farklı araçlar ister; çoğu dönüştürücü dosyaları buluta yükler veya hesap ister. OCR’ın ne zaman gerektiğine kendisi karar veren, her şeyi yerel işleyen ve yeniden kullanılabilir formatlar üreten bir araç gerekiyordu.',
+      role: 'Konsept, Python paketi, OCR entegrasyonu, dışa aktarımlar, testler, çok platformlu CI ve yayın; kişisel açık kaynak projesi olarak gerçekleştirildi.',
+      solution:
+        'Çıkarım ve dışa aktarım için tek çekirdekli bir Python paketi: pypdfium2 metin katmanını okur ve sayfa başına kalitesini puanlar; yetersiz kalırsa PaddleOCR aynı süreçte, yalnız gerektiğinde yüklenerek CPU’da devreye girer. Her PDF bir kez okunur, tüm formatlar aynı ham JSON’dan üretilir. Komutlar Windows, Linux ve macOS’ta çalışır; GitHub Actions üç sistemde test, derleme ve OCR’ı denetler.',
+      features: [
+        'Sayfa sayfa yerel metin ile OCR arasında otomatik seçim',
+        'Etkileşimli terminal menüsü: birden çok PDF, birden çok format, tek çalıştırma',
+        'Aynı yapılandırılmış veriden dokuz çıktı formatı',
+        'Dosya, klasör ve toplu işleme; değişmeyen PDF’ler atlanır',
+        'Menüsüz, betiklenebilir kısayollar (pdfjson, pdfxlsx, …)',
+      ],
+      security: [
+        'İşleme yalnız yerel; yükleme yok, hesap yok, telemetri yok',
+        'OCR modelleri resmi kaynaktan bir kez indirilir ve yerel önbellekte tutulur',
+        'Pakette ve depoda model, önbellek veya kullanıcı verisi yok',
+      ],
+      outcomes: [
+        '0.1.0 sürümü GitHub’da yayımlandı (wheel, kaynak arşivi, SHA256 özetleri)',
+        'Testler, yerel çıkarım ve CPU OCR, GitHub Actions ile Windows x86_64, Linux x86_64 ve macOS Apple Silicon’da geçti',
+      ],
+      outcomesNote: 'Henüz PyPI’da değil; kurulum GitHub sürümünden.',
+      ctaTitle: 'Belge işleme veya otomasyon mu planlıyorsunuz?',
+      ctaText:
+        'Belgeleri güvenilir biçimde yapılandırılmış veriye çeviren araçlar geliştiriyorum: yerel, şeffaf ve tedarikçiye bağımlılık olmadan.',
+    },
+  },
+};
+
+const extraProjects = [newProject, pdfstructProject];
+
 const MEDIA_DIR = path.join(__dirname, '..', '..', 'public', 'img', 'projects');
-function localizeNew(locale) {
-  const copy = newProject.i18n[locale] || newProject.i18n.de;
+function localizeNew(locale, project = newProject) {
+  const copy = project.i18n[locale] || project.i18n.de;
   return {
-    ...newProject,
+    ...project,
     ...copy,
     i18n: undefined,
     mediaAvailable: {
-      desktop: fs.existsSync(path.join(MEDIA_DIR, newProject.media.desktop)),
-      mobile: fs.existsSync(path.join(MEDIA_DIR, newProject.media.mobile)),
+      desktop: fs.existsSync(path.join(MEDIA_DIR, project.media.desktop)),
+      mobile: fs.existsSync(path.join(MEDIA_DIR, project.media.mobile)),
     },
   };
 }
 
-function all() { return [...base.all(), newProject].sort((a, b) => a.order - b.order); }
-function bySlug(slug) { return slug === newProject.slug ? newProject : base.bySlug(slug); }
-function localized(project, locale) { return project.slug === newProject.slug ? localizeNew(locale) : base.localized(project, locale); }
-function allLocalized(locale) { return all().map((project) => localized(project, locale)); }
+function extra(slug) {
+  return extraProjects.find((p) => p.slug === slug) || null;
+}
+function all() {
+  return [...base.all(), ...extraProjects].sort((a, b) => a.order - b.order);
+}
+function bySlug(slug) {
+  return extra(slug) || base.bySlug(slug);
+}
+function localized(project, locale) {
+  return extra(project.slug) ? localizeNew(locale, extra(project.slug)) : base.localized(project, locale);
+}
+function allLocalized(locale) {
+  return all().map((project) => localized(project, locale));
+}
 
-module.exports = { all, bySlug, localized, allLocalized, slugs: [...base.slugs, newProject.slug] };
+module.exports = { all, bySlug, localized, allLocalized, slugs: [...base.slugs, ...extraProjects.map((p) => p.slug)] };
