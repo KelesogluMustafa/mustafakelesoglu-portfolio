@@ -72,24 +72,32 @@ router.get('/pdfstruct', (req, res) => {
     bodyClass: 'page-pdfstruct',
     title: content.meta.title,
     description: content.meta.description,
-    image: '/img/og/pdfstruct.png',
+    image: pdfstruct.images.og,
     structuredData: [
       {
+        // Only verified facts: no platform list, price offer, rating or performance claim.
         '@context': 'https://schema.org',
         '@type': 'SoftwareApplication',
         name: 'PDFStruct',
         description: content.meta.description,
         applicationCategory: 'UtilitiesApplication',
-        operatingSystem: 'Windows, Linux, macOS',
         softwareVersion: pdfstruct.version.replace(/^v/, ''),
         license: 'https://opensource.org/licenses/MIT',
         isAccessibleForFree: true,
-        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
         url: `${require('../content/site').siteUrl}${res.locals.url('/pdfstruct')}`,
         downloadUrl: pdfstruct.links.latest,
         codeRepository: pdfstruct.links.repo,
         author: { '@type': 'Person', name: require('../content/site').name },
         inLanguage: locale,
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: content.faq.items.map((item) => ({
+          '@type': 'Question',
+          name: item.q,
+          acceptedAnswer: { '@type': 'Answer', text: item.a },
+        })),
       },
       breadcrumbSchema(locale, [
         { name: dict.nav.home, path: '/' },

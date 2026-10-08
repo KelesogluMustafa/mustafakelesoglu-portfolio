@@ -127,7 +127,7 @@ const pdfstructProject = {
       title: 'PDFStruct',
       tagline: 'Free & Open Source — PDF extraction • OCR • Multi-format conversion',
       summary:
-        'PDFStruct ist ein kostenloses Open-Source-Kommandozeilenwerkzeug, das PDFs lokal verarbeitet: nativer Text wird direkt gelesen, gescannte Seiten laufen automatisch über OCR, und das Ergebnis wird als JSON, HTML, TXT, Markdown, CSV, XLSX, DOCX, JSONL oder SQLite ausgegeben. Ein interaktives Terminal-Menü wählt PDFs und Formate; für Skripte gibt es Aliase ohne Rückfragen. Version 0.1.0 ist auf GitHub veröffentlicht.',
+        'PDFStruct ist ein kostenloses Open-Source-Werkzeug, das Dokumente auf dem eigenen Rechner umwandelt: PDF, DOCX, Text und Bilder werden einmal gelesen, bei Bedarf per OCR, und als JSON, HTML, TXT, Markdown, CSV, XLSX, DOCX, JSONL, SQLite oder PDF ausgegeben. Nutzbar als Desktop-Fenster, in der Kommandozeile oder mit Claude über einen lokalen MCP-Server, der kurze Ergebnisse statt des ganzen Dokuments zurückgibt. Die aktuelle Version steht auf GitHub.',
       problem:
         'PDFs mit Text und gescannte PDFs brauchen unterschiedliche Werkzeuge, und die meisten Konverter laden Dateien in die Cloud oder verlangen ein Konto. Gebraucht wurde ein Werkzeug, das selbst entscheidet, wann OCR nötig ist, alles lokal verarbeitet und die Daten in weiterverwendbaren Formaten liefert.',
       role: 'Konzept, Python-Paket, OCR-Integration, Exporte, Tests, plattformübergreifende CI und Release – als eigenes Open-Source-Projekt umgesetzt.',
@@ -146,7 +146,7 @@ const pdfstructProject = {
         'Keine Modelle, Caches oder Nutzerdaten im Paket oder im Repository',
       ],
       outcomes: [
-        'Version 0.1.0 auf GitHub veröffentlicht (Wheel, Quellpaket, SHA256-Prüfsummen)',
+        'Auf GitHub veröffentlicht (Wheel, Quellpaket, Windows-Setup, SHA256-Prüfsummen)',
         'Tests, native Extraktion und CPU-OCR auf Windows x86_64, Linux x86_64 und macOS Apple Silicon per GitHub Actions bestanden',
       ],
       outcomesNote: 'Noch nicht auf PyPI; Installation aus dem GitHub-Release.',
@@ -158,7 +158,7 @@ const pdfstructProject = {
       title: 'PDFStruct',
       tagline: 'Free & Open Source — PDF extraction • OCR • Multi-format conversion',
       summary:
-        'PDFStruct is a free, open-source command-line tool that processes PDFs locally: native text is read directly, scanned pages go through OCR automatically, and the result is exported as JSON, HTML, TXT, Markdown, CSV, XLSX, DOCX, JSONL or SQLite. An interactive terminal menu picks PDFs and formats; aliases without prompts serve scripts. Version 0.1.0 is published on GitHub.',
+        'PDFStruct is a free, open-source tool that converts documents on your own computer: PDF, DOCX, text and images are read once, with OCR when needed, and exported as JSON, HTML, TXT, Markdown, CSV, XLSX, DOCX, JSONL, SQLite or PDF. It runs as a desktop window, on the command line, or with Claude through a local MCP server that returns short results instead of the whole document. The current release is on GitHub.',
       problem:
         'PDFs with a text layer and scanned PDFs need different tools, and most converters upload files to the cloud or require an account. What was needed was a tool that decides on its own when OCR is necessary, processes everything locally and delivers reusable formats.',
       role: 'Concept, Python package, OCR integration, exports, tests, cross-platform CI and release, implemented as a personal open-source project.',
@@ -177,7 +177,7 @@ const pdfstructProject = {
         'No models, caches or user data inside the package or the repository',
       ],
       outcomes: [
-        'Version 0.1.0 published on GitHub (wheel, source archive, SHA256 checksums)',
+        'Published on GitHub (wheel, source archive, Windows setup, SHA256 checksums)',
         'Tests, native extraction and CPU OCR passed on Windows x86_64, Linux x86_64 and macOS Apple Silicon via GitHub Actions',
       ],
       outcomesNote: 'Not on PyPI yet; install from the GitHub release.',
@@ -188,7 +188,7 @@ const pdfstructProject = {
       title: 'PDFStruct',
       tagline: 'Free & Open Source — PDF extraction • OCR • Multi-format conversion',
       summary:
-        'PDFStruct, PDF’leri bilgisayarda yerel olarak işleyen ücretsiz ve açık kaynak bir komut satırı aracıdır: yerel metin doğrudan okunur, taranmış sayfalar otomatik olarak OCR’dan geçer ve sonuç JSON, HTML, TXT, Markdown, CSV, XLSX, DOCX, JSONL veya SQLite olarak verilir. Etkileşimli terminal menüsü PDF’leri ve formatları seçtirir; betikler için sorusuz kısayollar vardır. 0.1.0 sürümü GitHub’da yayında.',
+        'PDFStruct, belgeleri kendi bilgisayarında dönüştüren ücretsiz ve açık kaynak bir araçtır: PDF, DOCX, metin ve görseller bir kez okunur, gerektiğinde OCR kullanılır ve sonuç JSON, HTML, TXT, Markdown, CSV, XLSX, DOCX, JSONL, SQLite veya PDF olarak verilir. Masaüstü penceresi, komut satırı ya da Claude ile kullanılır; yerel MCP sunucusu Claude’a belgenin tamamı yerine kısa sonuçlar döndürür. Güncel sürüm GitHub’da.',
       problem:
         'Metin katmanı olan PDF’ler ile taranmış PDF’ler farklı araçlar ister; çoğu dönüştürücü dosyaları buluta yükler veya hesap ister. OCR’ın ne zaman gerektiğine kendisi karar veren, her şeyi yerel işleyen ve yeniden kullanılabilir formatlar üreten bir araç gerekiyordu.',
       role: 'Konsept, Python paketi, OCR entegrasyonu, dışa aktarımlar, testler, çok platformlu CI ve yayın; kişisel açık kaynak projesi olarak gerçekleştirildi.',
@@ -207,7 +207,7 @@ const pdfstructProject = {
         'Pakette ve depoda model, önbellek veya kullanıcı verisi yok',
       ],
       outcomes: [
-        '0.1.0 sürümü GitHub’da yayımlandı (wheel, kaynak arşivi, SHA256 özetleri)',
+        'GitHub’da yayımlandı (wheel, kaynak arşivi, Windows kurulumu, SHA256 özetleri)',
         'Testler, yerel çıkarım ve CPU OCR, GitHub Actions ile Windows x86_64, Linux x86_64 ve macOS Apple Silicon’da geçti',
       ],
       outcomesNote: 'Henüz PyPI’da değil; kurulum GitHub sürümünden.',

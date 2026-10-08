@@ -41,6 +41,11 @@ const config = {
     github: process.env.SOCIAL_GITHUB || 'https://github.com/KelesogluMustafa',
     linkedin: process.env.SOCIAL_LINKEDIN || '',
   },
+  pdfstruct: {
+    // Voluntary donation page for /pdfstruct. Empty until the owner sets one; the page then
+    // shows a "coming soon" state instead of a link. Only https URLs are accepted.
+    donationUrl: /^https:\/\/\S+$/.test(process.env.PDFSTRUCT_DONATION_URL || '') ? process.env.PDFSTRUCT_DONATION_URL : '',
+  },
 };
 
 module.exports = config;
