@@ -10,7 +10,7 @@
  */
 var H = dict.hero;
 var heroCards = [
-  { key: 'savefold', href: '/projects/savefold', base: '/img/savefold/card', widths: [640, 1000], width: 1440, height: 810 },
+  { key: 'savefold', href: '/projects/savefold', base: '/img/savefold/card', widths: [640, 1000, 1440], width: 1440, height: 810 },
   { key: 'runnermanager', href: '/runnermanager', base: '/img/runnermanager/dashboard', widths: [480, 728], width: 728, height: 422 },
   { key: 'pdfstruct', href: '/pdfstruct', base: '/img/pdfstruct/hero', widths: [640, 1100], width: 1672, height: 941 },
   { key: 'researchstruct', href: '/researchstruct', base: '/img/researchstruct/hero', widths: [640, 1100], width: 1672, height: 941 },
@@ -33,7 +33,7 @@ var heroCards = [
       <% heroCards.forEach(function (card, i) { var copy = H.cards[card.key]; %>
       <li class="dhero__item">
         <a class="dhero__card" href="<%= url(card.href) %>">
-          <img class="dhero__card-img" src="<%= card.base %>-<%= card.widths[0] %>.webp" srcset="<%= card.widths.map(function (w) { return card.base + '-' + w + '.webp ' + w + 'w'; }).join(', ') %>" sizes="(min-width: 62rem) 18rem, (min-width: 48rem) 22rem, 45vw" alt="<%= copy.alt %>" width="<%= card.width %>" height="<%= card.height %>"<%- i === 0 ? ' fetchpriority="high"' : '' %> decoding="async">
+          <img class="dhero__card-img" src="<%= card.base %>-<%= card.widths[0] %>.webp" srcset="<%= card.widths.map(function (w) { return card.base + '-' + w + '.webp ' + w + 'w'; }).join(', ') %>" sizes="(min-width: 62rem) 21rem, (min-width: 48rem) 22rem, 45vw" alt="<%= copy.alt %>" width="<%= card.width %>" height="<%= card.height %>"<%- i === 0 ? ' fetchpriority="high"' : '' %> decoding="async">
           <span class="dhero__card-label">
             <span class="dhero__card-text"><strong><%= copy.title %></strong><span><%= copy.caption %></span></span>
             <span class="dhero__card-cta"><span class="visually-hidden"><%= H.cardCta %></span><%- include('icon', { name: 'arrow' }) %></span>
