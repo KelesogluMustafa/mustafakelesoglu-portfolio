@@ -1,0 +1,43 @@
+<%
+/*
+ * Developer hero: headline, lead and two CTAs on the left; two layered project cards on the
+ * right. Adapted from a 21st.dev "hero-section" (React + Framer Motion) to this site's
+ * EJS + CSS stack: the entrance animation is CSS keyframes (see home.css, .dhero), honours
+ * prefers-reduced-motion, and the grid background lives in CSS because of the style-src CSP.
+ * Card images are real project artwork from /public/img; both cards link to internal pages.
+ */
+var H = dict.hero;
+%>
+<section class="dhero" aria-labelledby="hero-title">
+  <div class="dhero__grid" aria-hidden="true"></div>
+  <div class="container dhero__inner">
+    <div class="dhero__copy">
+      <p class="eyebrow dhero__eyebrow"><%= H.eyebrow %></p>
+      <h1 class="dhero__title" id="hero-title"><%= H.headline %></h1>
+      <p class="dhero__lead"><%= H.lead %></p>
+      <div class="dhero__actions">
+        <a class="button button--primary button--large" href="<%= url('/projects') %>"><%= H.ctaProjects %> <%- include('icon', { name: 'arrow' }) %></a>
+        <a class="button button--secondary button--large" href="<%= url('/contact') %>"><%= H.ctaContact %></a>
+      </div>
+    </div>
+
+    <div class="dhero__cards">
+      <a class="dhero__card dhero__card--back" href="<%= url('/projects/savefold') %>">
+        <img class="dhero__card-img" src="/img/savefold/card-1000.webp" srcset="/img/savefold/card-640.webp 640w, /img/savefold/card-1000.webp 1000w, /img/savefold/card-1440.webp 1440w" sizes="(min-width: 62rem) 30rem, 90vw" alt="<%= H.cardBack.alt %>" width="1440" height="810" decoding="async">
+        <span class="dhero__card-label">
+          <img class="dhero__card-logo" src="/img/savefold/logo-96.png" alt="" width="96" height="96" decoding="async">
+          <span class="dhero__card-text"><strong><%= H.cardBack.title %></strong><span><%= H.cardBack.caption %></span></span>
+          <span class="dhero__card-cta"><%= H.cardCta %> <%- include('icon', { name: 'arrow' }) %></span>
+        </span>
+      </a>
+      <a class="dhero__card dhero__card--front" href="<%= url('/pdfstruct') %>">
+        <img class="dhero__card-img" src="/img/pdfstruct/hero-1100.webp" srcset="/img/pdfstruct/hero-640.webp 640w, /img/pdfstruct/hero-1100.webp 1100w" sizes="(min-width: 62rem) 30rem, 90vw" alt="<%= H.cardFront.alt %>" width="1672" height="941" fetchpriority="high" decoding="async">
+        <span class="dhero__card-label">
+          <img class="dhero__card-logo dhero__card-logo--wide" src="/img/pdfstruct/logo-on-dark-360.webp" alt="" width="360" height="120" decoding="async">
+          <span class="dhero__card-text"><strong><%= H.cardFront.title %></strong><span><%= H.cardFront.caption %></span></span>
+          <span class="dhero__card-cta"><%= H.cardCta %> <%- include('icon', { name: 'arrow' }) %></span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>

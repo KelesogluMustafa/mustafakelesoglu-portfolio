@@ -118,6 +118,13 @@ module.exports = {
   hero: {
     eyebrow: 'Mustafa Kelesoglu · Web Developer',
     title: 'Websites & Web-Anwendungen mit Fokus auf Sicherheit.',
+    headline: 'Ich entwickle sicherheits­orientierte Websites und Web-Anwendungen.',
+    lead: 'Full-Stack-Web-Anwendungen, WordPress, PWAs und sichere digitale Produkte.',
+    ctaProjects: 'Projekte ansehen',
+    ctaContact: 'Kontakt aufnehmen',
+    cardFront: { title: 'PDFStruct', alt: 'PDFStruct: Open-Source-Tool, das Dokumente auf dem eigenen Rechner umwandelt, Vorschaubild', caption: 'Dokumente lokal umwandeln' },
+    cardBack: { title: 'SaveFold', alt: 'Oberfläche der SaveFold-App: gespeicherte Links, Themen und Suche auf Smartphone und Desktop', caption: 'Links speichern, wiederfinden' },
+    cardCta: 'Projekt ansehen',
     text: 'Ich entwickle schnelle, responsive Websites und individuelle Web-Anwendungen für Unternehmen, Vereine und digitale Projekte – mit WordPress, Elementor und modernen Full-Stack-Technologien.',
     context: 'Standort Dinslaken · Projekte in NRW und remote',
     primary: 'Projekte ansehen',

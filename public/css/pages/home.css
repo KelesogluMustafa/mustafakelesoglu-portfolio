@@ -98,3 +98,256 @@
     gap: 0.15rem;
   }
 }
+
+/* ==========================================================================
+   Home page: developer hero (.dhero)
+   Headline + two CTAs on the left, two layered project cards on the right.
+   Entrance: staggered fade/slide via CSS keyframes; disabled under reduced motion.
+   ========================================================================== */
+
+.dhero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(3rem, 2rem + 4vw, 6rem) clamp(3rem, 2rem + 3vw, 5rem);
+}
+/* Grid background + fade, in CSS because of the style-src CSP. */
+.dhero__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--color-border) 1px, transparent 1px), linear-gradient(to right, var(--color-border) 1px, transparent 1px);
+  background-size: 3rem 3rem;
+  opacity: 0.55;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 70%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 70%, transparent);
+  pointer-events: none;
+}
+.dhero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle 30rem at 85% 30%, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent 100%);
+  pointer-events: none;
+}
+.dhero__inner {
+  position: relative;
+  display: grid;
+  gap: clamp(2.5rem, 2rem + 2vw, 4rem);
+  align-items: center;
+}
+@media (min-width: 62rem) {
+  .dhero__inner {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: clamp(3rem, 2rem + 4vw, 6rem);
+    min-height: min(70vh, 44rem);
+  }
+}
+
+.dhero__eyebrow {
+  margin-bottom: var(--space-4);
+}
+.dhero__title {
+  font-size: clamp(2.2rem, 1.5rem + 3vw, 4.1rem);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  max-width: 18ch;
+  margin-bottom: var(--space-5);
+  text-wrap: balance;
+  hyphens: manual;
+  overflow-wrap: anywhere;
+}
+.dhero__lead {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-muted);
+  max-width: 34rem;
+  margin-bottom: var(--space-6);
+}
+.dhero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-4);
+}
+@media (max-width: 30rem) {
+  .dhero__actions .button {
+    width: 100%;
+  }
+}
+
+/* Cards */
+.dhero__cards {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 22rem;
+}
+@media (min-width: 48rem) {
+  .dhero__cards {
+    min-height: 30rem;
+  }
+}
+.dhero__card {
+  position: absolute;
+  width: min(100%, 26rem);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--color-text);
+  transform: rotate(var(--dhero-rotate)) translate(var(--dhero-shift), var(--dhero-lift, 0));
+  transition:
+    transform var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out);
+}
+.dhero__card-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top;
+}
+.dhero__card-label {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+}
+.dhero__card-logo {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 7px;
+}
+.dhero__card-logo--wide {
+  width: auto;
+  height: 1.4rem;
+  border-radius: 0;
+}
+:root[data-theme='light'] .dhero__card-logo--wide {
+  /* The transparent PDFStruct wordmark has white "PDF" letters; invert them on light surfaces. */
+  filter: invert(1) hue-rotate(180deg);
+}
+.dhero__card-text {
+  display: grid;
+  min-width: 0;
+  line-height: 1.25;
+}
+.dhero__card-text span {
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+}
+.dhero__card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+  font-weight: 700;
+  color: var(--color-accent-text);
+}
+.dhero__card-cta svg {
+  width: 1rem;
+  height: 1rem;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.dhero__card:hover .dhero__card-cta svg,
+.dhero__card:focus-visible .dhero__card-cta svg {
+  transform: translateX(3px);
+}
+@media (max-width: 30rem) {
+  .dhero__card-cta {
+    display: none;
+  }
+}
+.dhero__card--back {
+  --dhero-rotate: -7deg;
+  --dhero-shift: 24%;
+  --dhero-lift: -16%;
+  z-index: 1;
+  opacity: 0.96;
+}
+.dhero__card--front {
+  --dhero-rotate: 4deg;
+  --dhero-shift: -14%;
+  --dhero-lift: 10%;
+  z-index: 2;
+}
+.dhero__card:hover,
+.dhero__card:focus-visible {
+  transform: rotate(var(--dhero-rotate)) translate(var(--dhero-shift), calc(var(--dhero-lift, 0%) - 0.6rem));
+  z-index: 3;
+}
+.dhero__card:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+@media (max-width: 47.99rem) {
+  .dhero__cards {
+    min-height: 17rem;
+    padding-inline: 0.5rem;
+  }
+  .dhero__card {
+    width: min(78%, 22rem);
+  }
+  .dhero__card--back {
+    --dhero-rotate: -5deg;
+    --dhero-shift: 13%;
+    --dhero-lift: -14%;
+  }
+  .dhero__card--front {
+    --dhero-rotate: 4deg;
+    --dhero-shift: -11%;
+    --dhero-lift: 10%;
+  }
+}
+
+/* Entrance animation (replaces Framer Motion stagger). Only with JS, only without reduced motion. */
+@keyframes dhero-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes dhero-card-in {
+  from {
+    opacity: 0;
+    transform: rotate(var(--dhero-rotate)) translate(calc(var(--dhero-shift) + 3rem), var(--dhero-lift, 0));
+  }
+  to {
+    opacity: var(--dhero-opacity, 1);
+    transform: rotate(var(--dhero-rotate)) translate(var(--dhero-shift), var(--dhero-lift, 0));
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .js .dhero__eyebrow,
+  .js .dhero__title,
+  .js .dhero__lead,
+  .js .dhero__actions {
+    animation: dhero-up 0.55s var(--ease-out) both;
+  }
+  .js .dhero__title {
+    animation-delay: 0.12s;
+  }
+  .js .dhero__lead {
+    animation-delay: 0.24s;
+  }
+  .js .dhero__actions {
+    animation-delay: 0.36s;
+  }
+  .js .dhero__card--back {
+    --dhero-opacity: 0.96;
+    animation: dhero-card-in 0.7s var(--ease-out) 0.3s both;
+  }
+  .js .dhero__card--front {
+    animation: dhero-card-in 0.7s var(--ease-out) 0.55s both;
+  }
+}

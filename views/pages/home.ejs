@@ -3,35 +3,10 @@
 
 <main id="main" tabindex="-1">
 
-  <!-- 1. Hero: text-led, no portrait yet -->
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="container hero__inner">
-      <div class="hero__copy">
-        <p class="eyebrow hero__eyebrow"><%= t('hero.eyebrow') %></p>
-        <h1 class="hero__title" id="hero-title"><%= t('hero.title') %></h1>
-        <p class="hero__text"><%= t('hero.text') %></p>
-        <p class="hero__context"><%- include('../partials/icon', { name: 'pin' }) %> <%= t('hero.context') %></p>
-        <div class="hero__actions">
-          <a class="button button--primary button--large" href="<%= url('/projects') %>"><%= t('hero.primary') %> <%- include('../partials/icon', { name: 'arrow' }) %></a>
-          <a class="button button--secondary button--large" href="<%= url('/contact') %>"><%= t('hero.secondary') %></a>
-        </div>
-      </div>
-      <aside class="hero__facts" aria-label="<%= t('about.factsTitle') %>">
-        <dl class="fact-sheet">
-          <% dict.hero.facts.forEach(function (f) { %>
-          <div class="fact-sheet__row">
-            <dt><%= f.label %></dt>
-            <dd><%= f.value %></dd>
-          </div>
-          <% }); %>
-        </dl>
-        <p class="fact-sheet__foot">
-          <span class="status status--live"><%= t('common.statusLabels.live') %></span>
-          <span>pvsolargmbh.com · bestfoodchur.ch · vereinrhein.ch</span>
-        </p>
-      </aside>
-    </div>
-  </section>
+  <!-- 1. Hero: two-layer project cards (developer-hero partial) -->
+  <%- include('../partials/developer-hero') %>
+
+  <%# The previous text-led hero (with the facts box) is in git history: git show f7ae711:views/pages/home.ejs %>
 
   <!-- 2. Evidence strip: only true, countable facts -->
   <section class="evidence" aria-label="<%= t('home.evidence.label') %>">
