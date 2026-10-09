@@ -1,11 +1,17 @@
 <%
 /* Project entry for lists. `layout` = "feature" (alternating rows) or "compact". */
 var lay = typeof layout !== 'undefined' ? layout : 'feature';
-var href = url(project.pageUrl || '/projects/' + project.slug);
+/* Three kinds of target: a case study (/projects/<slug>), a product page (pageUrl) or, for
+   link-only projects, the public repository (externalUrl, opens in a new tab). */
+var external = project.externalUrl || null;
+var href = external || url(project.pageUrl || '/projects/' + project.slug);
+var linkAttrs = external ? ' target="_blank" rel="noopener noreferrer"' : '';
+var linkLabel = external ? t('common.viewOnGithub') : project.pageUrl ? t('common.viewPage') : t('common.viewProject');
+var extHint = external ? '<span class="visually-hidden"> (' + t('common.externalLink') + ')</span>' : '';
 %>
 <article class="project-row project-row--<%= lay %>" data-project data-group="<%= project.group %>">
   <div class="project-row__media">
-    <a href="<%= href %>" tabindex="-1" aria-hidden="true"><%- include('project-media', { project: project, variant: 'card' }) %></a>
+    <a href="<%= href %>"<%- linkAttrs %> tabindex="-1" aria-hidden="true"><%- include('project-media', { project: project, variant: 'card' }) %></a>
   </div>
   <div class="project-row__body">
     <p class="project-row__meta">
@@ -13,14 +19,14 @@ var href = url(project.pageUrl || '/projects/' + project.slug);
       <span class="project-row__kind"><%= project.kind === 'client' ? t('projects.kindClient') : t('projects.kindPersonal') %></span>
       <% if (project.year) { %><span class="project-row__year"><%= project.year %></span><% } %>
     </p>
-    <h3 class="project-row__title"><a href="<%= href %>"><%= project.title %></a></h3>
+    <h3 class="project-row__title"><a href="<%= href %>"<%- linkAttrs %>><%= project.title %><%- extHint %></a></h3>
     <p class="project-row__tagline"><%= project.tagline %></p>
     <% if (lay === 'feature') { %><p class="project-row__summary"><%= project.summary %></p><% } %>
     <ul class="tag-list" aria-label="<%= t('common.technology') %>">
       <% project.tech.slice(0, lay === 'feature' ? 6 : 4).forEach(function (tech) { %><li><%= tech %></li><% }); %>
     </ul>
     <p class="project-row__actions">
-      <a class="link-arrow" href="<%= href %>"><%= t('common.viewProject') %> <%- include('icon', { name: 'arrow' }) %></a>
+      <a class="link-arrow" href="<%= href %>"<%- linkAttrs %>><%= linkLabel %> <%- include('icon', { name: external ? 'external' : 'arrow' }) %><%- extHint %></a>
       <% if (project.liveUrl) { %>
       <a class="link-plain" href="<%= project.liveUrl %>" target="_blank" rel="noopener"><%= t('common.liveSite') %> <%- include('icon', { name: 'external' }) %><span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a>
       <% } else if (project.previewUrl) { %>

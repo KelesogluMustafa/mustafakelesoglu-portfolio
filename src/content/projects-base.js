@@ -26,7 +26,12 @@ const projects = [
     repoUrl: null,
     statusKey: 'live',
     tech: ['Node.js', 'Express', 'EJS', 'CSS', 'JavaScript', 'MySQL/MariaDB', 'REST API', 'PWA', 'GitHub', 'Hostinger Node.js'],
-    media: { desktop: 'savefold-desktop.png', mobile: 'savefold-mobile.png' },
+    media: {
+      desktop: 'savefold-desktop.png',
+      mobile: 'savefold-mobile.png',
+      // Real app screenshot, shown on list cards only (the detail page keeps its own preview).
+      card: { base: '/img/savefold/card', widths: [640, 1000, 1440], width: 1440, height: 810 },
+    },
     accent: 'teal',
     i18n: {
       de: {

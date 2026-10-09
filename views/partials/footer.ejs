@@ -32,7 +32,11 @@
         <h2 class="site-footer__title"><%= t('footer.projectsTitle') %></h2>
         <ul>
           <% footerProjects.forEach(function (p) { %>
+          <% if (p.externalUrl) { %>
+          <li><a href="<%= p.externalUrl %>" target="_blank" rel="noopener noreferrer"><%= p.title %><span class="visually-hidden"> (<%= t('common.externalLink') %>)</span></a></li>
+          <% } else { %>
           <li><a href="<%= url(p.pageUrl || '/projects/' + p.slug) %>"><%= p.title %></a></li>
+          <% } %>
           <% }); %>
         </ul>
       </nav>

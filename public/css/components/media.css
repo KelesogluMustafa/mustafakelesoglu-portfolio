@@ -73,6 +73,14 @@
   object-position: top;
 }
 
+/* Product artwork and app screenshots are shown whole, not cropped to the frame. */
+.media-frame__img--art {
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  background: var(--color-surface-2);
+}
+
 .media-frame__spec {
   aspect-ratio: 16 / 10;
   display: flex;

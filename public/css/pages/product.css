@@ -1,0 +1,148 @@
+/* ==========================================================================
+   Short product pages (/runnermanager, /researchstruct)
+   Built from the PDFStruct page components (.ps-*). This file sets the page accent they
+   need and adds what those pages do not have: connected step cards, a pending-download
+   button and a two-column check list.
+   ========================================================================== */
+
+.page-product {
+  --ps-teal: #19d3c5;
+  --ps-blue: #2f7bff;
+  --ps-gradient: linear-gradient(100deg, var(--ps-teal), var(--ps-blue));
+  --ps-glow: rgba(47, 123, 255, 0.16);
+  --ps-glow-2: rgba(25, 211, 197, 0.12);
+  --ps-frame: #07122a;
+}
+:root[data-theme='light'] .page-product {
+  --ps-glow: rgba(47, 123, 255, 0.1);
+  --ps-glow-2: rgba(25, 211, 197, 0.1);
+}
+
+.page-product .ps-hero__title {
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+.pl-hero__note {
+  margin-top: var(--space-4);
+}
+
+/* Call to action that has no public target yet: visibly inactive, never a dead link. */
+.pl-pending[disabled] {
+  cursor: not-allowed;
+  opacity: 1;
+  border-style: dashed;
+  border-color: var(--color-border-strong);
+  background: transparent;
+  color: var(--color-text-muted);
+}
+.pl-pending[disabled]:hover {
+  transform: none;
+}
+
+/* Four feature cards sit two by two instead of three plus one. */
+@media (min-width: 40rem) {
+  .pl-cards--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 72rem) {
+  .pl-cards--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Connected step cards. Stacked with a vertical rail on small screens, one row with a
+   horizontal rail from 62rem. */
+.pl-flow {
+  position: relative;
+  display: grid;
+  gap: var(--space-4);
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.pl-flow__step {
+  position: relative;
+  min-width: 0;
+  padding: var(--space-5) var(--space-5) var(--space-5) calc(var(--space-5) + 3.25rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+.pl-flow__num {
+  position: absolute;
+  top: var(--space-5);
+  left: var(--space-5);
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: var(--ps-gradient);
+  color: #04101f;
+  font-weight: 800;
+  font-size: var(--text-sm);
+}
+/* Rail between consecutive steps. */
+.pl-flow__step + .pl-flow__step::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--space-5) + 1.125rem - 1px);
+  top: calc(-1 * var(--space-4) - 1px);
+  width: 2px;
+  height: var(--space-4);
+  background: var(--color-border-strong);
+}
+.pl-flow__title {
+  margin: 0.2rem 0 var(--space-2);
+  font-size: var(--text-md);
+  line-height: var(--leading-snug);
+  overflow-wrap: anywhere;
+}
+.pl-flow__text {
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+}
+@media (min-width: 62rem) {
+  .pl-flow {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+  .pl-flow__step {
+    padding: var(--space-6) var(--space-5) var(--space-5);
+  }
+  .pl-flow__num {
+    position: static;
+    margin-bottom: var(--space-4);
+  }
+  .pl-flow__step + .pl-flow__step::before {
+    left: calc(-1 * var(--space-5) - 1px);
+    top: calc(var(--space-6) + 1.125rem - 1px);
+    width: var(--space-5);
+    height: 2px;
+  }
+}
+
+.pl-panel__list {
+  margin-bottom: var(--space-2);
+}
+@media (min-width: 40rem) {
+  .pl-panel__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+}
+
+/* App screenshots are small crops: never scale them past their own pixels. */
+.page-product--runnermanager .ps-figure {
+  max-width: 31rem;
+}
+@media (min-width: 62rem) {
+  .page-product--runnermanager .ps-split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 31rem);
+  }
+  .page-product--runnermanager .ps-split--reverse {
+    grid-template-columns: minmax(0, 31rem) minmax(0, 1fr);
+  }
+}

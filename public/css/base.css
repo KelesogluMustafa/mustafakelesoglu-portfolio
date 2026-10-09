@@ -243,7 +243,9 @@ hr {
 .status--live {
   color: var(--color-success);
 }
-.status--inDevelopment {
+.status--inDevelopment,
+.status--unreleased,
+.status--preRelease {
   color: var(--color-warning);
 }
 .status--validation {

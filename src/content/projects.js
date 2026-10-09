@@ -1,7 +1,12 @@
 'use strict';
 
-// Preserves the existing project catalogue and extends it with Kırıkkale Taksicin.
+// Preserves the existing project catalogue and extends it with Kırıkkale Taksicin, PDFStruct and
+// the developer tools in projects-products.js.
+//
+// Order on the home page and the projects list: SaveFold (1), RunnerManager (1.2), PDFStruct (1.4),
+// ResearchStruct (1.6), VisualStruct (1.8), then the earlier entries in their existing order.
 const base = require('./projects-base');
+const productProjects = require('./projects-products');
 const fs = require('fs');
 const path = require('path');
 
@@ -112,7 +117,7 @@ const pdfstructProject = {
   group: 'product',
   kind: 'personal',
   featured: true,
-  order: 4.5,
+  order: 1.4,
   year: 2026,
   liveUrl: null,
   previewUrl: null,
@@ -120,7 +125,11 @@ const pdfstructProject = {
   pageUrl: '/pdfstruct',
   statusKey: 'live',
   tech: ['Python', 'PaddleOCR', 'pypdfium2', 'CLI', 'GitHub Actions', 'MIT'],
-  media: { desktop: 'pdfstruct-desktop.png', mobile: 'pdfstruct-mobile.png' },
+  media: {
+    desktop: 'pdfstruct-desktop.png',
+    mobile: 'pdfstruct-mobile.png',
+    card: { base: '/img/pdfstruct/hero', widths: [640, 1100], width: 1672, height: 941 },
+  },
   accent: 'teal',
   i18n: {
     de: {
@@ -218,7 +227,7 @@ const pdfstructProject = {
   },
 };
 
-const extraProjects = [newProject, pdfstructProject];
+const extraProjects = [newProject, pdfstructProject, ...productProjects];
 
 const MEDIA_DIR = path.join(__dirname, '..', '..', 'public', 'img', 'projects');
 function localizeNew(locale, project = newProject) {

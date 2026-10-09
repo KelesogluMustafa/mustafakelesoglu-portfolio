@@ -1,0 +1,135 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%
+/*
+ * Short product landing page, shared by /runnermanager and /researchstruct (content/products.js).
+ * Reuses the PDFStruct page components (.ps-*); the connected step cards (.pl-flow) are adapted
+ * from the 21st.dev "How It Works" pattern to plain CSS.
+ */
+var P = product; var I = P.images;
+var ext = '<span class="visually-hidden"> (' + t('common.externalLink') + ')</span>';
+function srcset(img) { return img.widths.map(function (w) { return img.base + '-' + w + '.webp ' + w + 'w'; }).join(', '); }
+function largest(img) { return img.base + '-' + img.widths[img.widths.length - 1] + '.webp'; }
+%>
+
+<main id="main" tabindex="-1" class="ps pl">
+  <header class="ps-hero">
+    <div class="container">
+      <%- include('../partials/breadcrumbs', { items: [{ name: t('nav.home'), path: '/' }, { name: t('nav.projects'), path: '/projects' }, { name: P.name, path: P.path }] }) %>
+      <div class="ps-hero__grid">
+        <div class="ps-hero__copy">
+          <p class="ps-badge"><%= P.hero.eyebrow %></p>
+          <h1 class="ps-hero__title"><%= P.hero.title %></h1>
+          <p class="ps-hero__text"><%= P.hero.text %></p>
+          <div class="ps-actions">
+            <% if (P.primaryUrl) { %>
+            <a class="button button--primary button--large" href="<%= P.primaryUrl %>" target="_blank" rel="noopener noreferrer"><%- include('../partials/icon', { name: P.primaryIcon }) %> <%= P.hero.primary %><%- ext %></a>
+            <% } else { %>
+            <button class="button button--secondary button--large pl-pending" type="button" disabled><%- include('../partials/icon', { name: P.primaryIcon }) %> <%= P.hero.primary %> · <%= P.hero.pending %></button>
+            <% } %>
+            <a class="button button--secondary button--large" href="<%= P.secondaryHref %>"><%= P.hero.secondary %> <%- include('../partials/icon', { name: 'arrow' }) %></a>
+          </div>
+          <p class="ps-note pl-hero__note"><%= P.hero.note %></p>
+        </div>
+        <figure class="ps-hero__figure">
+          <img src="<%= largest(I.hero) %>" srcset="<%= srcset(I.hero) %>" sizes="(min-width: 62rem) 46vw, 100vw" width="<%= I.hero.width %>" height="<%= I.hero.height %>" alt="<%= P.hero.imageAlt %>" fetchpriority="high" decoding="async">
+        </figure>
+      </div>
+    </div>
+  </header>
+
+  <section class="ps-proof" aria-label="<%= P.name %>">
+    <div class="container">
+      <ul class="ps-proof__list">
+        <% P.hero.points.forEach(function (item) { %>
+        <li><%- include('../partials/icon', { name: 'check' }) %><span><%= item %></span></li>
+        <% }); %>
+      </ul>
+    </div>
+  </section>
+
+  <section class="ps-section" aria-labelledby="pl-features">
+    <div class="container">
+      <h2 id="pl-features" class="ps-title"><%= P.features.title %></h2>
+      <ul class="ps-cards pl-cards pl-cards--<%= P.features.cards.length %>">
+        <% P.features.cards.forEach(function (card, i) { %>
+        <li class="ps-card">
+          <span class="ps-card__icon" aria-hidden="true"><%- include('../partials/icon', { name: P.icons[i] }) %></span>
+          <h3 class="ps-card__title"><%= card.title %></h3>
+          <p class="ps-card__text"><%= card.text %></p>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+  </section>
+
+  <section class="ps-section ps-section--tinted" id="how" aria-labelledby="pl-how">
+    <div class="container">
+      <h2 id="pl-how" class="ps-title"><%= P.how.title %></h2>
+      <ol class="pl-flow">
+        <% P.how.steps.forEach(function (step, i) { %>
+        <li class="pl-flow__step">
+          <span class="pl-flow__num" aria-hidden="true"><%= i + 1 %></span>
+          <h3 class="pl-flow__title"><%= step.title %></h3>
+          <p class="pl-flow__text"><%= step.text %></p>
+        </li>
+        <% }); %>
+      </ol>
+    </div>
+  </section>
+
+  <% P.splits.forEach(function (split, i) { var img = I[split.image]; %>
+  <section class="ps-section<%= i % 2 ? ' ps-section--tinted' : '' %>" aria-labelledby="pl-split-<%= i %>">
+    <div class="container ps-split<%= i % 2 ? ' ps-split--reverse' : '' %>">
+      <% if (i % 2) { %>
+      <figure class="ps-figure"><img src="<%= largest(img) %>" srcset="<%= srcset(img) %>" sizes="(min-width: 62rem) 26rem, (min-width: 30rem) 24rem, 100vw" width="<%= img.width %>" height="<%= img.height %>" alt="<%= split.imageAlt %>" loading="lazy" decoding="async"></figure>
+      <% } %>
+      <div>
+        <h2 id="pl-split-<%= i %>" class="ps-title"><%= split.title %></h2>
+        <p class="ps-lead"><%= split.text %></p>
+        <ul class="ps-checks">
+          <% split.items.forEach(function (item) { %>
+          <li><%- include('../partials/icon', { name: 'check' }) %><span><%= item %></span></li>
+          <% }); %>
+        </ul>
+      </div>
+      <% if (!(i % 2)) { %>
+      <figure class="ps-figure"><img src="<%= largest(img) %>" srcset="<%= srcset(img) %>" sizes="(min-width: 62rem) 26rem, (min-width: 30rem) 24rem, 100vw" width="<%= img.width %>" height="<%= img.height %>" alt="<%= split.imageAlt %>" loading="lazy" decoding="async"></figure>
+      <% } %>
+    </div>
+  </section>
+  <% }); %>
+
+  <section class="ps-section<%= P.splits.length % 2 ? ' ps-section--tinted' : '' %>" aria-labelledby="pl-panel">
+    <div class="container container--narrow">
+      <div class="ps-panel pl-panel">
+        <h2 id="pl-panel" class="ps-title ps-title--small"><%= P.panel.title %></h2>
+        <p class="ps-lead"><%= P.panel.text %></p>
+        <ul class="ps-checks pl-panel__list">
+          <% P.panel.items.forEach(function (item) { %>
+          <li><%- include('../partials/icon', { name: 'check' }) %><span><%= item %></span></li>
+          <% }); %>
+        </ul>
+        <p class="ps-note"><%= P.panel.note %></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ps-final" aria-labelledby="pl-final">
+    <div class="container">
+      <h2 id="pl-final" class="ps-title"><%= P.final.title %></h2>
+      <p class="ps-lead"><%= P.final.text %></p>
+      <div class="ps-actions ps-actions--center">
+        <% if (P.primaryUrl) { %>
+        <a class="button button--primary button--large" href="<%= P.primaryUrl %>" target="_blank" rel="noopener noreferrer"><%- include('../partials/icon', { name: P.primaryIcon }) %> <%= P.final.primary %><%- ext %></a>
+        <% } else { %>
+        <button class="button button--secondary button--large pl-pending" type="button" disabled><%- include('../partials/icon', { name: P.primaryIcon }) %> <%= P.final.primary %> · <%= P.hero.pending %></button>
+        <% } %>
+        <a class="button button--<%= P.primaryUrl ? 'secondary' : 'primary' %> button--large" href="<%= url('/contact') %>"><%= P.final.contact %> <%- include('../partials/icon', { name: 'arrow' }) %></a>
+      </div>
+      <p class="ps-back"><a class="link-arrow link-arrow--back" href="<%= url('/projects') %>"><%= t('common.backToProjects') %> <span class="icon-flip"><%- include('../partials/icon', { name: 'arrow' }) %></span></a></p>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>

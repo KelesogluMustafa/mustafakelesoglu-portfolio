@@ -9,6 +9,10 @@ function envFlag(value, fallback = false) {
   return ['1', 'true', 'yes', 'on'].includes(String(value).toLowerCase());
 }
 
+function httpsUrl(value) {
+  return /^https:\/\/\S+$/.test(value || '') ? value : '';
+}
+
 const config = {
   env,
   isProduction: env === 'production',
@@ -45,6 +49,12 @@ const config = {
     // Voluntary donation page for /pdfstruct. Empty until the owner sets one; the page then
     // shows a "coming soon" state instead of a link. Only https URLs are accepted.
     donationUrl: /^https:\/\/\S+$/.test(process.env.PDFSTRUCT_DONATION_URL || '') ? process.env.PDFSTRUCT_DONATION_URL : '',
+  },
+  products: {
+    // Public targets for the short product pages. Empty until the owner publishes them; the
+    // page then shows a "not public yet" state instead of a dead link. Only https URLs count.
+    runnermanagerDownloadUrl: httpsUrl(process.env.RUNNERMANAGER_DOWNLOAD_URL),
+    researchstructRepoUrl: httpsUrl(process.env.RESEARCHSTRUCT_REPO_URL),
   },
 };
 

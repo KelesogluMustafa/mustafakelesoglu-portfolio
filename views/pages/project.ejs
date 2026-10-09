@@ -207,7 +207,7 @@
       <a class="link-arrow link-arrow--back" href="<%= url('/projects') %>"><%= t('common.backToProjects') %> <span class="icon-flip"><%- include('../partials/icon', { name: 'arrow' }) %></span></a>
       <div class="project-next__to">
         <p class="project-next__label"><%= t('common.nextProject') %></p>
-        <p class="project-next__title"><a href="<%= url('/projects/' + nextProject.slug) %>"><%= nextProject.title %> →</a></p>
+        <p class="project-next__title"><a href="<%= url(nextProject.pageUrl || '/projects/' + nextProject.slug) %>"><%= nextProject.title %> →</a></p>
       </div>
     </nav>
   </div>

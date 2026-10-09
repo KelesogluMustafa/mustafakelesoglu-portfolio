@@ -6,14 +6,18 @@
  */
 var v = typeof variant !== 'undefined' ? variant : 'card';
 var hasMedia = project.mediaAvailable && project.mediaAvailable.desktop;
+/* Product artwork for list cards: media.card = { base, widths, width, height, alt }. */
+var card = v === 'card' && project.media && project.media.card ? project.media.card : null;
 var statusLabel = t('common.statusLabels.' + project.statusKey);
 %>
 <div class="media-frame media-frame--<%= v %> media-frame--<%= project.accent %>">
   <div class="media-frame__chrome" aria-hidden="true">
     <span class="media-frame__dot"></span><span class="media-frame__dot"></span><span class="media-frame__dot"></span>
-    <span class="media-frame__url"><% var frameUrl = project.liveUrl || project.previewUrl; %><%= frameUrl ? frameUrl.replace(/^https?:\/\//, '').replace(/\/$/, '') : project.title + ' · ' + statusLabel %></span>
+    <span class="media-frame__url"><% var frameUrl = project.liveUrl || project.previewUrl || project.externalUrl; %><%= frameUrl ? frameUrl.replace(/^https?:\/\//, '').replace(/\/$/, '') : project.title + ' · ' + statusLabel %></span>
   </div>
-  <% if (hasMedia) { %>
+  <% if (card) { %>
+  <img class="media-frame__img media-frame__img--art" src="<%= card.base %>-<%= card.widths[card.widths.length - 1] %>.webp" srcset="<%= card.widths.map(function (w) { return card.base + '-' + w + '.webp ' + w + 'w'; }).join(', ') %>" sizes="(min-width: 62rem) 34rem, 92vw" alt="<%= project.title %> – <%= t('projects.mediaDesktop') %>" width="<%= card.width %>" height="<%= card.height %>" loading="lazy" decoding="async">
+  <% } else if (hasMedia) { %>
   <img class="media-frame__img" src="/img/projects/<%= project.media.desktop %>" alt="<%= project.title %> – <%= t('projects.mediaDesktop') %>" width="1280" height="800" loading="lazy" decoding="async">
   <% } else { %>
   <div class="media-frame__spec">

@@ -1,12 +1,20 @@
 <%
 /*
- * Developer hero: headline, lead and two CTAs on the left; two layered project cards on the
- * right. Adapted from a 21st.dev "hero-section" (React + Framer Motion) to this site's
- * EJS + CSS stack: the entrance animation is CSS keyframes (see home.css, .dhero), honours
- * prefers-reduced-motion, and the grid background lives in CSS because of the style-src CSP.
- * Card images are real project artwork from /public/img; both cards link to internal pages.
+ * Developer hero: headline, lead and two CTAs on the left; four product cards on the right.
+ * The card area is adapted from the 21st.dev "Split Hero With Image Cards" pattern (React +
+ * Motion) to this site's EJS + CSS stack: a two-by-two grid whose second column sits lower,
+ * so the four previews read as one staggered group without covering each other. The entrance
+ * animation is CSS keyframes (home.css, .dhero) and honours prefers-reduced-motion.
+ * Order is fixed: SaveFold, RunnerManager, PDFStruct, ResearchStruct. Images are real project
+ * artwork from /public/img; every card links to a page on this site.
  */
 var H = dict.hero;
+var heroCards = [
+  { key: 'savefold', href: '/projects/savefold', base: '/img/savefold/card', widths: [640, 1000], width: 1440, height: 810 },
+  { key: 'runnermanager', href: '/runnermanager', base: '/img/runnermanager/dashboard', widths: [480, 728], width: 728, height: 422 },
+  { key: 'pdfstruct', href: '/pdfstruct', base: '/img/pdfstruct/hero', widths: [640, 1100], width: 1672, height: 941 },
+  { key: 'researchstruct', href: '/researchstruct', base: '/img/researchstruct/hero', widths: [640, 1100], width: 1672, height: 941 },
+];
 %>
 <section class="dhero" aria-labelledby="hero-title">
   <div class="dhero__grid" aria-hidden="true"></div>
@@ -21,23 +29,18 @@ var H = dict.hero;
       </div>
     </div>
 
-    <div class="dhero__cards">
-      <a class="dhero__card dhero__card--back" href="<%= url('/projects/savefold') %>">
-        <img class="dhero__card-img" src="/img/savefold/card-1000.webp" srcset="/img/savefold/card-640.webp 640w, /img/savefold/card-1000.webp 1000w, /img/savefold/card-1440.webp 1440w" sizes="(min-width: 62rem) 30rem, 90vw" alt="<%= H.cardBack.alt %>" width="1440" height="810" decoding="async">
-        <span class="dhero__card-label">
-          <img class="dhero__card-logo" src="/img/savefold/logo-96.png" alt="" width="96" height="96" decoding="async">
-          <span class="dhero__card-text"><strong><%= H.cardBack.title %></strong><span><%= H.cardBack.caption %></span></span>
-          <span class="dhero__card-cta"><%= H.cardCta %> <%- include('icon', { name: 'arrow' }) %></span>
-        </span>
-      </a>
-      <a class="dhero__card dhero__card--front" href="<%= url('/pdfstruct') %>">
-        <img class="dhero__card-img" src="/img/pdfstruct/hero-1100.webp" srcset="/img/pdfstruct/hero-640.webp 640w, /img/pdfstruct/hero-1100.webp 1100w" sizes="(min-width: 62rem) 30rem, 90vw" alt="<%= H.cardFront.alt %>" width="1672" height="941" fetchpriority="high" decoding="async">
-        <span class="dhero__card-label">
-          <img class="dhero__card-logo dhero__card-logo--wide" src="/img/pdfstruct/logo-on-dark-360.webp" alt="" width="360" height="120" decoding="async">
-          <span class="dhero__card-text"><strong><%= H.cardFront.title %></strong><span><%= H.cardFront.caption %></span></span>
-          <span class="dhero__card-cta"><%= H.cardCta %> <%- include('icon', { name: 'arrow' }) %></span>
-        </span>
-      </a>
-    </div>
+    <ul class="dhero__cards" aria-label="<%= H.cardsLabel %>">
+      <% heroCards.forEach(function (card, i) { var copy = H.cards[card.key]; %>
+      <li class="dhero__item">
+        <a class="dhero__card" href="<%= url(card.href) %>">
+          <img class="dhero__card-img" src="<%= card.base %>-<%= card.widths[0] %>.webp" srcset="<%= card.widths.map(function (w) { return card.base + '-' + w + '.webp ' + w + 'w'; }).join(', ') %>" sizes="(min-width: 62rem) 18rem, (min-width: 48rem) 22rem, 45vw" alt="<%= copy.alt %>" width="<%= card.width %>" height="<%= card.height %>"<%- i === 0 ? ' fetchpriority="high"' : '' %> decoding="async">
+          <span class="dhero__card-label">
+            <span class="dhero__card-text"><strong><%= copy.title %></strong><span><%= copy.caption %></span></span>
+            <span class="dhero__card-cta"><span class="visually-hidden"><%= H.cardCta %></span><%- include('icon', { name: 'arrow' }) %></span>
+          </span>
+        </a>
+      </li>
+      <% }); %>
+    </ul>
   </div>
 </section>

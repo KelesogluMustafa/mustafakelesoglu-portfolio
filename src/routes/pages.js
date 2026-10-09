@@ -3,6 +3,7 @@
 const express = require('express');
 const projects = require('../content/projects');
 const pdfstruct = require('../content/pdfstruct');
+const products = require('../content/products');
 const services = require('../content/services');
 const skills = require('../content/skills');
 const { buildMeta, personSchema, projectSchema, breadcrumbSchema } = require('../lib/seo');
@@ -109,13 +110,55 @@ router.get('/pdfstruct', (req, res) => {
   });
 });
 
+// Short product pages (/runnermanager, /researchstruct): one template, data in content/products.js.
+for (const slug of products.slugs) {
+  const { path: productPath } = products.bySlug(slug);
+  router.get(productPath, (req, res) => {
+    const locale = res.locals.locale;
+    const dict = res.locals.dict;
+    const product = products.localized(slug, locale);
+    const site = require('../content/site');
+    const software = {
+      // Only verified facts: no price offer, rating, platform list or performance claim.
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: product.name,
+      description: product.meta.description,
+      applicationCategory: product.applicationCategory,
+      url: `${site.siteUrl}${res.locals.url(productPath)}`,
+      author: { '@type': 'Person', name: site.name },
+      inLanguage: locale,
+    };
+    if (product.version) software.softwareVersion = product.version.replace(/^v/, '');
+    page(res, 'pages/product', {
+      pagePath: productPath,
+      bodyClass: `page-product page-product--${slug}`,
+      title: product.meta.title,
+      description: product.meta.description,
+      image: product.images.og,
+      structuredData: [
+        software,
+        breadcrumbSchema(locale, [
+          { name: dict.nav.home, path: '/' },
+          { name: dict.nav.projects, path: '/projects' },
+          { name: product.name, path: productPath },
+        ]),
+      ],
+      extra: { product },
+    });
+  });
+}
+
 router.get('/projects/:slug', (req, res, next) => {
   const locale = res.locals.locale;
   const raw = projects.bySlug(req.params.slug);
   if (!raw) return next();
   if (raw.pageUrl) return res.redirect(301, res.locals.url(raw.pageUrl));
+  // Link-only projects (VisualStruct) have no page here: the card points at GitHub.
+  if (raw.externalUrl) return next();
   const project = projects.localized(raw, locale);
-  const all = projects.allLocalized(locale);
+  // "Next project" stays on this site: skip entries that only link out.
+  const all = projects.allLocalized(locale).filter((p) => !p.externalUrl);
   const index = all.findIndex((p) => p.slug === project.slug);
   const nextProject = all[(index + 1) % all.length];
   const relatedServices = services.allLocalized(locale).filter((s) => s.related.includes(project.slug));

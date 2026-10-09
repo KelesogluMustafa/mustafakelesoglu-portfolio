@@ -3,17 +3,30 @@
 const express = require('express');
 const site = require('../content/site');
 const projects = require('../content/projects');
+const products = require('../content/products');
 const { LOCALES, localePath, negotiateLocale, DEFAULT_LOCALE } = require('../i18n');
 
 const router = express.Router();
 
-const STATIC_PATHS = ['/', '/projects', '/services', '/about', '/skills', '/contact', '/imprint', '/privacy', '/pdfstruct'];
+const STATIC_PATHS = [
+  '/',
+  '/projects',
+  '/services',
+  '/about',
+  '/skills',
+  '/contact',
+  '/imprint',
+  '/privacy',
+  '/pdfstruct',
+  ...products.paths,
+];
 
 function allPaths() {
   // Projects with their own landing page (pageUrl) are listed under that path, not /projects/<slug>.
+  // Projects that only link out (externalUrl) have no page on this site at all.
   const generic = projects
     .all()
-    .filter((p) => !p.pageUrl)
+    .filter((p) => !p.pageUrl && !p.externalUrl)
     .map((p) => `/projects/${p.slug}`);
   return [...STATIC_PATHS, ...generic];
 }
@@ -25,12 +38,14 @@ router.get('/', (req, res) => {
   res.redirect(302, localePath(locale, '/'));
 });
 
-/** Locale-free short link used on GitHub and elsewhere: /pdfstruct -> /<locale>/pdfstruct */
-router.get('/pdfstruct', (req, res) => {
-  const locale = negotiateLocale(req.get('accept-language')) || DEFAULT_LOCALE;
-  res.set('Vary', 'Accept-Language');
-  res.redirect(302, localePath(locale, '/pdfstruct'));
-});
+/** Locale-free short links used on GitHub and elsewhere: /pdfstruct -> /<locale>/pdfstruct */
+for (const shortPath of ['/pdfstruct', ...products.paths]) {
+  router.get(shortPath, (req, res) => {
+    const locale = negotiateLocale(req.get('accept-language')) || DEFAULT_LOCALE;
+    res.set('Vary', 'Accept-Language');
+    res.redirect(302, localePath(locale, shortPath));
+  });
+}
 
 /** Trailing slashes on inner pages -> canonical form without slash (locale roots keep theirs). */
 router.use((req, res, next) => {

@@ -112,3 +112,38 @@ the landing page and `/projects/pdfstruct` redirects there; the sitemap lists on
 Downloads, source, checksums and release notes stay on GitHub; the site hosts only this page,
 one CSS module and the share image. The download button points at `releases/latest` so later
 versions need no site change. No donation links until a real one exists.
+
+## Product refresh: four hero cards, three new tools, two short product pages (2026-10-09)
+
+**Order.** The home page and the projects list now start with SaveFold, RunnerManager, PDFStruct,
+ResearchStruct and VisualStruct (`order` 1, 1.2, 1.4, 1.6, 1.8). Everything after keeps its
+earlier relative order. The hero shows the first four; VisualStruct is deliberately not in it.
+
+**Hero.** The two overlapping, rotated cards became a two-by-two grid whose second column sits
+lower from 62rem. Four rotated cards would have covered each other, and four previews have to
+stay legible down to 320px. The pattern is adapted from the 21st.dev "Split Hero With Image
+Cards" component (searched and read with the 21st CLI) to EJS and plain CSS; no dependency
+was added.
+
+**Short product pages.** `/runnermanager` and `/researchstruct` share one template
+(`views/pages/product.ejs`) and one data file (`src/content/products.js`), and reuse the
+PDFStruct page components. The connected step cards follow the 21st.dev "How It Works" pattern.
+All three locales are filled because every route on this site exists in DE, EN and TR.
+
+**No dead links.** RunnerManager has no public repository or release, and the ResearchStruct
+repository is private. Their primary buttons are therefore rendered as disabled "not public
+yet" buttons. Setting `RUNNERMANAGER_DOWNLOAD_URL` or `RESEARCHSTRUCT_REPO_URL` (https only)
+turns them into real links without a code change.
+
+**VisualStruct.** Card only. It links to the public repository (`externalUrl`), has no route
+on this site (`/visualstruct` and `/projects/visualstruct` return 404) and is not in the sitemap.
+
+**Artwork.** Images come from the owner's folders under `Projects/Projelerim`, files whose name
+starts with `1` first. The RunnerManager files are design boards that show several screens, so
+single panels were cropped from them unchanged. The `Visualstruct-görsel` folder was empty; the
+card uses `docs/assets/visualstruct-hero.png` from the VisualStruct repository, which is an
+image rendered by the tool itself. List cards for the five tools show this artwork through a
+new optional `media.card` field; the other projects keep their text-led frame.
+
+**Status labels.** Two were added: `unreleased` (RunnerManager) and `preRelease`
+(ResearchStruct), because "Technische Beta" and "Live" would both have been inaccurate.
