@@ -12,7 +12,7 @@ Record of the choices made during the autonomous build session on `fable/initial
 
 **No database.** The site has no state to persist. Contact requests are validated and logged (without personal data) until a delivery provider is approved.
 
-**Vendored dependencies during the initial session.** The original build environment had no access to the npm registry. Runtime dependencies (`express`, `ejs`, `helmet`, `express-rate-limit`, `compression`, `dotenv` and their trees) were fetched from their GitHub release tags or the local npm cache for testing only; nothing vendored was committed. A later Codex review completed a normal install, generated `package-lock.json`, and recorded the result in `docs/CODEX_REVIEW.md`.
+**Vendored dependencies during the initial session.** The original build environment had no access to the npm registry. Runtime dependencies (`express`, `ejs`, `helmet`, `express-rate-limit`, `compression`, `dotenv` and their trees) were fetched from their GitHub release tags or the local npm cache for testing only; nothing vendored was committed. A later Codex review completed a normal install, generated `package-lock.json`.
 
 ## Design direction
 
@@ -63,7 +63,7 @@ Helmet with a strict CSP: `default-src 'self'`, scripts only from self plus a pe
 - No WOFF2 font, no real screenshots or portrait (see `ASSET_CHECKLIST.md`).
 - No analytics or cookies of any kind.
 - No React/Vue/Svelte, no CSS framework, no bundler.
-- The design skills named in the task (`frontend-design`, `web-design-guidelines`, `accessibility`, `i18n`, `technical-seo`, `web-security`) were not available in this environment; the same checks were done manually and with the Playwright scripts, as documented in `SESSION_REPORT.md`.
+- The design skills named in the task (`frontend-design`, `web-design-guidelines`, `accessibility`, `i18n`, `technical-seo`, `web-security`) were not available in this environment; the same checks were done manually and with the Playwright scripts.
 
 ## Refinements applied on 2026-09-12
 
@@ -88,7 +88,6 @@ Visible name spelled `Mustafa Kelesoglu` (Latin only) across UI, metadata, JSON-
 **Description text.** The DE/EN/TR summary and outcomes text no longer call SaveFold "technische Beta / technical beta / teknik beta"; only the now-inaccurate status clause was rewritten (not the surrounding paragraph) to say the product is released, live, and under active continued development with new features and releases, explicitly not implying that development has stopped. The `outcomesNote` sentence explaining why no user/market numbers are given was kept, only its now-false "not launched publicly yet" justification was removed.
 
 **Turkish "live" label.** `common.statusLabels.live` in `src/locales/tr.js` was changed from `Yayında` to `Canlı` (the wording the owner specified for SaveFold's status). Because that status label is shared by every project marked `statusKey: 'live'`, this also renames the Turkish status badge for PV Solar GmbH, BestFood Chur and Verein Rhein from "Yayında" to "Canlı" — both words mean "live/online" in Turkish, and the change was made deliberately rather than introducing a second "live" status key, per the instruction to reuse the existing localization system instead of creating new status variants.
-
 
 ## LeseDeutsch added as an in-development product (2026-09-25)
 

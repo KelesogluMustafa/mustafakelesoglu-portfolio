@@ -11,25 +11,12 @@ Before changing code, read:
 
 The master brief is authoritative for scope, positioning, content, design constraints, and acceptance criteria.
 
-## Autonomous work mode
+## Working rules
 
-The owner may be unavailable for 3–4 hours. Continue independently within the approved scope.
-
-- Do not pause for routine design or implementation choices.
 - Choose the simplest professional solution consistent with the master brief.
 - Record meaningful assumptions and trade-offs in `docs/DECISIONS.md`.
 - Work in small, coherent commits.
-- Run build, lint, tests, accessibility checks, and browser QA when supported.
-- Fix issues found during QA instead of only reporting them.
-- Finish with `docs/SESSION_REPORT.md` describing work completed, checks run, remaining gaps, and exact next steps.
-
-## Git workflow
-
-- Work on the `fable/initial-build` branch.
-- Do not push implementation directly to `main`.
-- Commit and push completed work.
-- Open a draft pull request to `main` if the environment supports it.
-- Do not merge the pull request.
+- Run `npm run check` (lint, format check, tests) before pushing; CI runs the same checks plus browser flows.
 
 ## Fixed technical direction
 
