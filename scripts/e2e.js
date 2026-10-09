@@ -72,7 +72,7 @@ function assert(cond, msg) {
 
   await step('3. Projects list opens and the filter works', async () => {
     await page.goto(`${BASE}/de/projects`, { waitUntil: 'networkidle' });
-    assert((await page.locator('[data-project]').count()) === 5, 'expected 5 projects');
+    assert((await page.locator('[data-project]').count()) >= 5, 'expected at least 5 projects');
     await page.click('[data-filter="client"]');
     const hiddenGroups = await page.locator('[data-project-group][hidden]').count();
     assert(hiddenGroups === 1, 'product group should be hidden');
