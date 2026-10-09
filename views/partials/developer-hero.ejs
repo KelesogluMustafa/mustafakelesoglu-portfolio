@@ -33,7 +33,7 @@ var heroCards = [
       <% heroCards.forEach(function (card, i) { var copy = H.cards[card.key]; %>
       <li class="dhero__item">
         <a class="dhero__card" href="<%= url(card.href) %>">
-          <img class="dhero__card-img" src="<%= card.base %>-<%= card.widths[0] %>.webp" srcset="<%= card.widths.map(function (w) { return card.base + '-' + w + '.webp ' + w + 'w'; }).join(', ') %>" sizes="(min-width: 62rem) 21rem, (min-width: 48rem) 22rem, 45vw" alt="<%= copy.alt %>" width="<%= card.width %>" height="<%= card.height %>"<%- i === 0 ? ' fetchpriority="high"' : '' %> decoding="async">
+          <img class="dhero__card-img" src="<%= card.base %>-<%= card.widths[0] %>.webp" srcset="<%= card.widths.map(function (w) { return card.base + '-' + w + '.webp ' + w + 'w'; }).join(', ') %>" sizes="(min-width: 100rem) 23rem, (min-width: 62rem) 21rem, (min-width: 48rem) 22rem, 45vw" alt="<%= copy.alt %>" width="<%= card.width %>" height="<%= card.height %>"<%- i === 0 ? ' fetchpriority="high"' : '' %> decoding="async">
           <span class="dhero__card-label">
             <span class="dhero__card-text"><strong><%= copy.title %></strong><span><%= copy.caption %></span></span>
             <span class="dhero__card-cta"><span class="visually-hidden"><%= H.cardCta %></span><%- include('icon', { name: 'arrow' }) %></span>

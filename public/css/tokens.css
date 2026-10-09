@@ -171,3 +171,11 @@
   --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.55);
   color-scheme: dark;
 }
+
+/* Wide desktop monitors: let header, hero and sections use more of the screen instead of
+   leaving large empty margins. Everything stays on one shared container width. */
+@media (min-width: 100rem) {
+  :root {
+    --container: 88rem;
+  }
+}

@@ -144,6 +144,12 @@
   }
 }
 
+@media (min-width: 100rem) {
+  .dhero__inner {
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  }
+}
+
 .dhero__eyebrow {
   margin-bottom: var(--space-4);
 }
