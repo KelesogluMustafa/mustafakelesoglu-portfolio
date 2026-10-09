@@ -89,8 +89,11 @@ function parseMultipart(buffer, boundary) {
 
   for (;;) {
     if (buffer[cursor] === 0x2d && buffer[cursor + 1] === 0x2d) break; // "--": final boundary
-    if (buffer[cursor] === 0x0d && buffer[cursor + 1] === 0x0a) cursor += 2; // CRLF after boundary
-    else if (cursor >= buffer.length) throw new Error('multipart body ended unexpectedly');
+    if (buffer[cursor] === 0x0d && buffer[cursor + 1] === 0x0a) {
+      cursor += 2; // CRLF after boundary
+    } else if (cursor >= buffer.length) {
+      throw new Error('multipart body ended unexpectedly');
+    }
 
     const nextDelimiter = buffer.indexOf(delimiter, cursor);
     if (nextDelimiter === -1) throw new Error('multipart body is not terminated correctly');

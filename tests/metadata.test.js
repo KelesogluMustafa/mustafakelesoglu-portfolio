@@ -18,7 +18,7 @@ function meta(html, attr, value) {
 
 test('home page has localized title, description, canonical and hreflang set', async () => {
   const html = await (await srv.get('/de/')).text();
-  assert.match(html, /<title>Webentwickler in Dinslaken[^<]*Mustafa Keleşoğlu<\/title>/);
+  assert.match(html, /<title>Webentwickler in Dinslaken[^<]*Mustafa Kelesoglu<\/title>/);
   assert.ok(meta(html, 'name', 'description').length > 50);
   assert.match(html, /<link rel="canonical" href="https:\/\/mustafakelesoglu.de\/de\/">/);
   assert.match(html, /<link rel="alternate" hreflang="de" href="https:\/\/mustafakelesoglu.de\/de\/">/);
@@ -38,7 +38,7 @@ test('Open Graph and Twitter metadata are present with the right locale', async 
 
 test('project pages have project-specific share metadata and JSON-LD', async () => {
   const html = await (await srv.get('/tr/projects/authoritylab')).text();
-  assert.match(html, /<title>AuthorityLab – Projeler · Mustafa Keleşoğlu<\/title>/);
+  assert.match(html, /<title>AuthorityLab – Projeler · Mustafa Kelesoglu<\/title>/);
   assert.equal(meta(html, 'property', 'og:type'), 'article');
   assert.match(meta(html, 'property', 'og:image'), /\/img\/og\/authoritylab.png$/);
   const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
@@ -51,7 +51,7 @@ test('home page carries Person structured data without invented facts', async ()
   const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
   const person = ld.find((o) => o['@type'] === 'Person');
   assert.ok(person);
-  assert.equal(person.name, 'Mustafa Keleşoğlu');
+  assert.equal(person.name, 'Mustafa Kelesoglu');
   assert.equal(person.address.addressLocality, 'Dinslaken');
   assert.ok(!('telephone' in person));
 });

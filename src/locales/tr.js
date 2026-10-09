@@ -122,8 +122,16 @@ module.exports = {
     lead: 'Full-stack web uygulamaları, WordPress, PWA ve güvenli dijital ürünler geliştiriyorum.',
     ctaProjects: 'Projeleri Gör',
     ctaContact: 'İletişime Geç',
-    cardFront: { title: 'PDFStruct', alt: 'PDFStruct: belgeleri bilgisayarda dönüştüren açık kaynak araç, tanıtım görseli', caption: 'Belgeleri bilgisayarda dönüştür' },
-    cardBack: { title: 'SaveFold', alt: 'SaveFold uygulamasının arayüzü: telefon ve masaüstünde kayıtlı bağlantılar, konular ve arama', caption: 'Bağlantıları kaydet, yeniden bul' },
+    cardFront: {
+      title: 'PDFStruct',
+      alt: 'PDFStruct: belgeleri bilgisayarda dönüştüren açık kaynak araç, tanıtım görseli',
+      caption: 'Belgeleri bilgisayarda dönüştür',
+    },
+    cardBack: {
+      title: 'SaveFold',
+      alt: 'SaveFold uygulamasının arayüzü: telefon ve masaüstünde kayıtlı bağlantılar, konular ve arama',
+      caption: 'Bağlantıları kaydet, yeniden bul',
+    },
     cardCta: 'Projeyi incele',
     text: 'Şirketler, dernekler ve dijital projeler için WordPress, Elementor ve modern full-stack teknolojileriyle hızlı, responsive web siteleri ve özel web uygulamaları geliştiriyorum.',
     context: 'Almanya, Dinslaken · NRW’de ve uzaktan projeler',
@@ -393,9 +401,7 @@ module.exports = {
       'Güvenlik odaklı geliştirme: kimlik doğrulama, erişim kontrolü, doğrulama, güvenlik başlıkları',
       'Taşıma, hosting, deployment ve bakım',
     ],
-    education: [
-      { title: 'Makine mühendisliği (lisans)', text: 'ZAB değerlendirmesi: Alman lisans derecesiyle karşılaştırılabilir.' },
-    ],
+    education: [{ title: 'Makine mühendisliği (lisans)', text: 'ZAB değerlendirmesi: Alman lisans derecesiyle karşılaştırılabilir.' }],
     note: 'Diplomalar, sertifikalar ve ZAB değerlendirmesi istek üzerine sunulur, çevrim içi yayınlanmaz.',
   },
 

@@ -105,7 +105,10 @@ function validateAttachments(files) {
       return { ok: false, code: 'attachmentsType', filename };
     }
 
-    const declaredMime = String(file.mimetype || '').toLowerCase().split(';')[0].trim();
+    const declaredMime = String(file.mimetype || '')
+      .toLowerCase()
+      .split(';')[0]
+      .trim();
     const allowedMimes = ATTACHMENT_LIMITS.mimeByExtension[ext] || [];
     const mimeOk = allowedMimes.includes(declaredMime) || declaredMime === ATTACHMENT_LIMITS.genericMimeFallback || declaredMime === '';
     if (!mimeOk) {

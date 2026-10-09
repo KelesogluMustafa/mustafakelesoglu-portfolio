@@ -119,8 +119,16 @@ module.exports = {
     lead: 'Full-stack web applications, WordPress, PWAs and secure digital products.',
     ctaProjects: 'View projects',
     ctaContact: 'Get in touch',
-    cardFront: { title: 'PDFStruct', alt: 'PDFStruct: open-source tool that converts documents on your own computer, preview image', caption: 'Convert documents locally' },
-    cardBack: { title: 'SaveFold', alt: 'SaveFold app interface: saved links, topics and search on phone and desktop', caption: 'Save links, find them again' },
+    cardFront: {
+      title: 'PDFStruct',
+      alt: 'PDFStruct: open-source tool that converts documents on your own computer, preview image',
+      caption: 'Convert documents locally',
+    },
+    cardBack: {
+      title: 'SaveFold',
+      alt: 'SaveFold app interface: saved links, topics and search on phone and desktop',
+      caption: 'Save links, find them again',
+    },
     cardCta: 'View project',
     text: 'I build fast, responsive websites and custom web applications for companies, associations and digital projects, using WordPress, Elementor and modern full-stack technologies.',
     context: 'Based in Dinslaken, Germany · Projects in NRW and remote',
@@ -386,9 +394,7 @@ module.exports = {
       'Security-minded development: authentication, access control, validation, security headers',
       'Migration, hosting, deployment and maintenance',
     ],
-    education: [
-      { title: 'Degree in mechanical engineering', text: 'ZAB evaluation: comparable to a German bachelor’s degree.' },
-    ],
+    education: [{ title: 'Degree in mechanical engineering', text: 'ZAB evaluation: comparable to a German bachelor’s degree.' }],
     note: 'Certificates, transcripts and the ZAB evaluation are provided on request and are not published online.',
   },
 

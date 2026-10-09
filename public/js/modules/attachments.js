@@ -95,9 +95,7 @@ export function initAttachments() {
 
     if (files.length > 0) {
       const countText = countTemplate.replace('{count}', String(files.length)).replace('{max}', String(maxFiles));
-      const totalText = totalTemplate
-        .replace('{size}', formatBytes(totalBytes()))
-        .replace('{max}', formatBytes(maxTotalBytes));
+      const totalText = totalTemplate.replace('{size}', formatBytes(totalBytes())).replace('{max}', formatBytes(maxTotalBytes));
       summary.textContent = `${countText} · ${totalText}`;
       summary.hidden = false;
     } else {

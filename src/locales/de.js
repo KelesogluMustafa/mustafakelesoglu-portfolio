@@ -122,8 +122,16 @@ module.exports = {
     lead: 'Full-Stack-Web-Anwendungen, WordPress, PWAs und sichere digitale Produkte.',
     ctaProjects: 'Projekte ansehen',
     ctaContact: 'Kontakt aufnehmen',
-    cardFront: { title: 'PDFStruct', alt: 'PDFStruct: Open-Source-Tool, das Dokumente auf dem eigenen Rechner umwandelt, Vorschaubild', caption: 'Dokumente lokal umwandeln' },
-    cardBack: { title: 'SaveFold', alt: 'Oberfläche der SaveFold-App: gespeicherte Links, Themen und Suche auf Smartphone und Desktop', caption: 'Links speichern, wiederfinden' },
+    cardFront: {
+      title: 'PDFStruct',
+      alt: 'PDFStruct: Open-Source-Tool, das Dokumente auf dem eigenen Rechner umwandelt, Vorschaubild',
+      caption: 'Dokumente lokal umwandeln',
+    },
+    cardBack: {
+      title: 'SaveFold',
+      alt: 'Oberfläche der SaveFold-App: gespeicherte Links, Themen und Suche auf Smartphone und Desktop',
+      caption: 'Links speichern, wiederfinden',
+    },
     cardCta: 'Projekt ansehen',
     text: 'Ich entwickle schnelle, responsive Websites und individuelle Web-Anwendungen für Unternehmen, Vereine und digitale Projekte – mit WordPress, Elementor und modernen Full-Stack-Technologien.',
     context: 'Standort Dinslaken · Projekte in NRW und remote',
@@ -399,9 +407,7 @@ module.exports = {
       'Sicherheitsbewusste Entwicklung: Authentifizierung, Zugriffskontrolle, Validierung, Security-Header',
       'Migration, Hosting, Deployment und Wartung',
     ],
-    education: [
-      { title: 'Studium Maschinenbau (Abschluss)', text: 'ZAB-Bewertung: vergleichbar mit einem deutschen Bachelor-Abschluss.' },
-    ],
+    education: [{ title: 'Studium Maschinenbau (Abschluss)', text: 'ZAB-Bewertung: vergleichbar mit einem deutschen Bachelor-Abschluss.' }],
     note: 'Zeugnisse, Zertifikate und die ZAB-Bewertung werden auf Anfrage vorgelegt und nicht öffentlich veröffentlicht.',
   },
 
@@ -474,7 +480,8 @@ module.exports = {
       attachmentsCount: 'Bitte wählen Sie höchstens 5 Dateien aus.',
       attachmentsSize: 'Die ausgewählten Dateien sind zusammen zu groß (insgesamt maximal 10 MB).',
       attachmentsType: 'Nicht unterstütztes Dateiformat. Erlaubt sind PDF, DOC, DOCX oder TXT.',
-      uploadFailed: 'Die hochgeladenen Dateien konnten nicht verarbeitet werden. Bitte versuchen Sie es erneut oder senden Sie die Anfrage ohne Anhänge.',
+      uploadFailed:
+        'Die hochgeladenen Dateien konnten nicht verarbeitet werden. Bitte versuchen Sie es erneut oder senden Sie die Anfrage ohne Anhänge.',
       spam: 'Die Anfrage konnte nicht angenommen werden.',
       rateLimit: 'Zu viele Anfragen in kurzer Zeit. Bitte versuchen Sie es in einigen Minuten erneut.',
       generic:

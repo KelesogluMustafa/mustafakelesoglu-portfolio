@@ -170,14 +170,20 @@ describe('optional project attachments (0-5 files, 10 MB combined)', () => {
   });
 
   test('validateAttachments: exactly 10 MB combined is accepted, one byte over is rejected', () => {
-    const exact = [file('a.txt', 'text/plain', Buffer.alloc(5 * 1024 * 1024, 'a')), file('b.txt', 'text/plain', Buffer.alloc(5 * 1024 * 1024, 'a'))];
+    const exact = [
+      file('a.txt', 'text/plain', Buffer.alloc(5 * 1024 * 1024, 'a')),
+      file('b.txt', 'text/plain', Buffer.alloc(5 * 1024 * 1024, 'a')),
+    ];
     assert.equal(validateAttachments(exact).ok, true);
     assert.equal(
       exact.reduce((sum, f) => sum + f.buffer.length, 0),
       ATTACHMENT_LIMITS.maxTotalBytes,
     );
 
-    const overBy1 = [file('a.txt', 'text/plain', Buffer.alloc(5 * 1024 * 1024, 'a')), file('b.txt', 'text/plain', Buffer.alloc(5 * 1024 * 1024 + 1, 'a'))];
+    const overBy1 = [
+      file('a.txt', 'text/plain', Buffer.alloc(5 * 1024 * 1024, 'a')),
+      file('b.txt', 'text/plain', Buffer.alloc(5 * 1024 * 1024 + 1, 'a')),
+    ];
     assert.equal(validateAttachments(overBy1).code, 'attachmentsSize');
   });
 
@@ -261,7 +267,10 @@ describe('optional project attachments (0-5 files, 10 MB combined)', () => {
       ['en', /Unsupported file type/],
       ['tr', /Desteklenmeyen dosya biçimi/],
     ]) {
-      const res = await uploadSrv.postForm(`/${locale}/contact`, validContactFormData({}, [testFile('image.svg', 'image/svg+xml', Buffer.from('<svg/>'))]));
+      const res = await uploadSrv.postForm(
+        `/${locale}/contact`,
+        validContactFormData({}, [testFile('image.svg', 'image/svg+xml', Buffer.from('<svg/>'))]),
+      );
       assert.equal(res.status, 422);
       assert.match(await res.text(), text);
     }
